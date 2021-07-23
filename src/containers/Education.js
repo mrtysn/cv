@@ -22,23 +22,25 @@ class Education extends React.Component {
           jobTitle={"PhD, Computer Science"}
           startDate={"2018"}
           items={[
-            <span>
-              <em>Neuroscience:</em>&nbsp;&nbsp;Analysis of structural &
-              functional brain networks, brain state representations and
-              transitions. EEG data preprocessing and artifact removal,
-              de-coupling ECG & EEG signals. Temporal & spectral examination of
-              seizures using deep learning and wavelet based techniques.
-              Prediction of neonatal seizure onset via models fine-tuned per
-              patient.
-            </span>,
-            <span>
-              <em>Bioinformatics:</em>&nbsp;&nbsp;Disease subtyping using
-              genomic and clinical data. Identifying cancer subtypes via data
-              mining and machine learning methodologies. Integrating existing
-              datasets from multiple cohorts to better understand the cancer
-              subtypes. Transfer learning between distinct but similar cancer
-              types.
-            </span>,
+            <div>
+              <u>PhD project</u>
+              <br />
+              Prediction of neonatal seizure onset using models fine-tuned per
+              patient. Analysis of structural & functional brain networks, brain
+              state representations and transitions. EEG data preprocessing and
+              artifact removal, de-coupling ECG & EEG signals. Temporal &
+              spectral examination of seizures via deep learning and wavelet
+              based techniques.
+            </div>,
+            <div>
+              <u>Research project</u>
+              <br />
+              Disease subtyping using genomic and clinical data. Identifying
+              cancer subtypes via data mining and machine learning
+              methodologies. Integrating existing datasets from multiple cohorts
+              to better understand the cancer subtypes. Transfer learning
+              between different cancer types.
+            </div>,
           ]}
           relevantItems={[
             "MGG 7010: Molecular Biology and Genetics",

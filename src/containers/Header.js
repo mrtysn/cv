@@ -15,7 +15,7 @@ class MyHeader extends React.Component {
         <div
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "center",
             letterSpacing: "0.33px",
           }}
           className={"px12"}
