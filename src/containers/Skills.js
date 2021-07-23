@@ -20,13 +20,7 @@ class Skills extends React.Component {
             titleColumnWidth={titleColumnWidth}
             dataColumnWidth={dataColumnWidth}
             title="data science"
-            items={[
-              "Python",
-              "TensorFlow/Keras",
-              "MATLAB",
-              "R",
-              "MACHINE LEARNING!!!!!!!!!!!!!!!!!!",
-            ]}
+            items={["Python", "TensorFlow/Keras", "MATLAB", "R"]}
           />
           <SkillRow
             titleColumnWidth={titleColumnWidth}
