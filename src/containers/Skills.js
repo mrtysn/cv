@@ -25,6 +25,30 @@ class Skills extends React.Component {
           <SkillRow
             titleColumnWidth={titleColumnWidth}
             dataColumnWidth={dataColumnWidth}
+            title="machine learning"
+            items={[
+              "Deep Learning",
+              "Natural Language Processing",
+              "Computer Vision",
+              "Bayesian Decision Theory & Bayesian Estimation",
+              "Parametric Methods",
+              "Multivariate Methods",
+              "Dimensionality Reduction",
+              "Clustering",
+              "Nonparametric Methods",
+              "Decision Trees",
+              "Linear Discrimination",
+              "Multilayer Perceptrons",
+              "Kernel Machines",
+              "Hidden Markov Models",
+              "Reinforcement Learning",
+              "Probability & Statistics",
+              "Model Selection & Generalization",
+            ]}
+          />
+          <SkillRow
+            titleColumnWidth={titleColumnWidth}
+            dataColumnWidth={dataColumnWidth}
             title="mobile"
             items={[
               "Android; Java",
