@@ -18,7 +18,7 @@ class Experience extends React.Component {
               Wayne State University
             </a>
           }
-          location={"Michigan, USA"}
+          location={"Michigan, United States"}
           jobTitle={"Graduate Teaching Assistant, Instructor"}
           startDate={"08/2018"}
           items={[
@@ -127,14 +127,24 @@ class Experience extends React.Component {
           items={[
             <span>
               <b style={{ color: "rgba(0,0,0,.87)" }}>e-Invoice Adaptor:</b> A
-              facilitating mediator software platform that helps taxpaying
-              companies transition their accounting system to comply with the
-              Turkish Revenue Administration's e-Invoice and e-Archive mandate.
-              Taxpayers that opt to use a special integrator to issue e-Archive
-              invoices may use Novafortis to monitor, validate, and record
-              transactions.
+              facilitating middleware software that helps taxpaying companies
+              transition their accounting system to comply with the Turkish
+              Revenue Administration's e-Invoice and e-Archive mandate.
+              Taxpayers that opt to use a <i>private integrator</i> to issue
+              e-Archive invoices may use Novafortis to monitor, validate, and
+              record transactions
             </span>,
-            "Involved in surveying continously changing government regulations, project design, and software implementation",
+            <span>
+              E-Invoice Adaptor: A facilitating middleware software that creates
+              a platform for companies using "Private Integrator" to manage the
+              processes of sending and receiving invoices and waybills and
+              preparing e-ledgers. This application as an e-transformation
+              process manager creates a bridge between the accounting practices
+              of companies and the Revenue Administration, and will provide
+              great convenience in the transition and maintenance of electronic
+              invoicing processes.{" "}
+            </span>,
+            "Involved in surveying continuously changing government regulations, project design, and software implementation",
           ]}
         />
         <SectionItem
@@ -153,8 +163,8 @@ class Experience extends React.Component {
           startDate={"03/2014"}
           endDate={"07/2017"}
           items={[
-            "Wrote 12+ Android (Java) applications for shopping malls. Content management system (CMS) support for promoting mall events and campaigns, sending push notifications, managing brand loyalty programs",
-            "Indoor location detection and indoor navigation suggestions within shopping malls using Bluetooth low energy (BLE) beacons",
+            "Wrote 12+ Android (Java) applications that enhance shoppers' mall-shopping experience. Content management system (CMS) support for promoting mall events and campaigns, sending push notifications, managing brand loyalty programs",
+            "Indoor location detection and navigation suggestions inside shopping malls using Bluetooth low energy (BLE) beacons",
           ]}
         />
         <SectionItem
@@ -254,7 +264,9 @@ class Experience extends React.Component {
           endDate={"07/2014"}
           items={[
             <span>
-              Developed a CRUD report portal for{" "}
+              Interned at the Financial Transaction Applications department and
+              developed a CRUD report portal, integrated with Microsoft
+              Reporting Services (SSRS) for{" "}
               <a
                 href="https://www.qnbfinansbank.com/en/"
                 target="_blank"
