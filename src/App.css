@@ -1,11 +1,48 @@
-.px20 {
-    font-size: 20px !important;
+.px24 {
+  font-size: 24px !important;
 }
 
 .px18 {
-    font-size: 18px !important;
+  font-size: 18px !important;
+}
+
+.px16 {
+  font-size: 16px !important;
+}
+
+.px14 {
+  font-size: 14px !important;
+}
+
+.px12 {
+  font-size: 12px !important;
+}
+
+.px10 {
+  font-size: 10px !important;
+}
+
+.colorHighlight {
+  color: #4183c4 !important;
+}
+
+.textShadowCorner {
+  text-shadow: 1.5px 1.5px 0px rgb(0 0 0 / 20%);
 }
 
 * {
-    font-family: 'Ubuntu', sans-serif !important;
+  font-family: "Ubuntu", sans-serif !important;
+}
+
+.fontHeader {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 4px;
+  font-size: 22px !important;
+}
+
+.fontSectionHeader {
+  font-size: 18px !important;
+  letter-spacing: 4px;
+  font-weight: 300 !important;
 }

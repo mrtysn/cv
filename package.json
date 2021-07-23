@@ -16,5 +16,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {},
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   }
 }
