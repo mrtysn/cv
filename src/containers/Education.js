@@ -18,7 +18,7 @@ class Education extends React.Component {
               Wayne State University
             </a>
           }
-          location={"Michigan, USA"}
+          location={"Michigan, United States"}
           jobTitle={"PhD, Computer Science"}
           startDate={"2018"}
           items={[

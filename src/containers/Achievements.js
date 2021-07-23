@@ -3,7 +3,10 @@ import { List } from "semantic-ui-react";
 import SectionTitle from "../components/SectionTitle";
 
 const items = [
-  "Treasure hunting, running, cycling, swimming, cooking, playing the guitar, playing video games, learning to learn, learning",
+  <span>
+    Treasure hunting, running, cycling, swimming, cooking, playing the guitar,
+    playing video games, <i>learning to learn</i>
+  </span>,
   <span>
     Co-founded the volunteer alumni community{" "}
     <a

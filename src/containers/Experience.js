@@ -56,23 +56,6 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="http://novafortis.com/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(0,0,0,.87)" }}
-            >
-              Novafortis Software Counseling
-            </a>
-          }
-          location={"İzmir, Turkey (Remote)"}
-          jobTitle={"Software Engineer"}
-          startDate={"03/2018"}
-          endDate={"Present"}
-          items={["Site yönetim", "Hasta takip", "Dış Ticaret"]}
-        />
-        <SectionItem
-          companyTitle={
-            <a
               href="https://appliedai.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -124,6 +107,34 @@ class Experience extends React.Component {
                 AI With The Best
               </a>
             </span>,
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
+              href="http://novafortis.com/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              Novafortis Software Counseling
+            </a>
+          }
+          location={"İzmir, Turkey"}
+          jobTitle={"Software Engineer"}
+          startDate={"2015"}
+          endDate={"Present"}
+          items={[
+            <span>
+              <b style={{ color: "rgba(0,0,0,.87)" }}>e-Invoice Adaptor:</b> A
+              facilitating mediator software platform that helps taxpaying
+              companies transition their accounting system to comply with the
+              Turkish Revenue Administration's e-Invoice and e-Archive mandate.
+              Taxpayers that opt to use a special integrator to issue e-Archive
+              invoices may use Novafortis to monitor, validate, and record
+              transactions.
+            </span>,
+            "Involved in surveying continously changing government regulations, project design, and software implementation",
           ]}
         />
         <SectionItem
