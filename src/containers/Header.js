@@ -5,13 +5,14 @@ class MyHeader extends React.Component {
   render() {
     return (
       <div>
-        <Header
-          as="h1"
-          style={{ marginTop: 0 }}
-          className="fontHeader textShadowCorner"
-        >
+        <Header as="h1" className="fontHeader textShadowCorner">
           Mert Yaşin
         </Header>
+        <div style={{ textAlign: "center" }} className="px14">
+          Computer Science PhD Candidate &nbsp;&nbsp;{"•"}&nbsp;&nbsp; Computer
+          Engineer
+        </div>
+
         <div
           style={{
             display: "flex",

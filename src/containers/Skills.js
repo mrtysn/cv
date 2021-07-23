@@ -95,6 +95,12 @@ class Skills extends React.Component {
             title="others"
             items={["Prolog", "Perl", "LaTeX", "Arch Linux", "WSL 2", "Git"]}
           />
+          <SkillRow
+            titleColumnWidth={titleColumnWidth}
+            dataColumnWidth={dataColumnWidth}
+            title="languages"
+            items={["Turkish", "English", "German", "Macedonian"]}
+          />
         </Grid>
       </div>
     );

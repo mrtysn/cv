@@ -23,20 +23,18 @@ class Education extends React.Component {
           startDate={"2018"}
           items={[
             <div>
-              <u>PhD project</u>
-              <br />
-              Prediction of neonatal seizure onset using models fine-tuned per
-              patient. Analysis of structural & functional brain networks, brain
-              state representations and transitions. EEG data preprocessing and
-              artifact removal, de-coupling ECG & EEG signals. Temporal &
-              spectral examination of seizures via deep learning and wavelet
-              based techniques.
+              <b style={{ color: "rgba(0,0,0,.87)" }}>PhD project:</b>
+              &nbsp;&nbsp;Prediction of neonatal seizure onset using models
+              fine-tuned per patient. Analysis of structural & functional brain
+              networks, brain state representations and transitions. EEG data
+              preprocessing and artifact removal, de-coupling ECG & EEG signals.
+              Temporal & spectral examination of seizures via deep learning &
+              wavelet based techniques.
             </div>,
             <div>
-              <u>Research project</u>
-              <br />
-              Disease subtyping using genomic and clinical data. Identifying
-              cancer subtypes via data mining and machine learning
+              <b style={{ color: "rgba(0,0,0,.87)" }}>Research project:</b>
+              &nbsp;&nbsp;Disease subtyping using genomic and clinical data.
+              Identifying cancer subtypes via data mining and machine learning
               methodologies. Integrating existing datasets from multiple cohorts
               to better understand the cancer subtypes. Transfer learning
               between different cancer types.
@@ -235,6 +233,72 @@ class Education extends React.Component {
             "CmpE 482: Numerical Linear Algebra and Its Applications",
             "CmpE 58Z: Introduction to Biometrics",
             "CmpE 489: Cognitive Science",
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
+              href="https://egelisesi.k12.tr/overview"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              Özel Ege Lisesi
+            </a>
+          }
+          location={"İzmir, Turkey"}
+          jobTitle={"Private Anatolian High School"}
+          startDate={"2008"}
+          endDate={"2012"}
+          items={[
+            <span>
+              Represented Slovenia in the SOCHUM Committee of{" "}
+              <a
+                href="https://www.hnmun.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Harvard National Model United Nations (HNMUN)
+              </a>{" "}
+              – 2011
+            </span>,
+            <span>
+              Team captain of İzmir Gelişim College’s 1<sup>st</sup> and 2
+              <sup>nd</sup> Mathematics League winning team – 2011 & 2012
+            </span>,
+            <span>
+              University of Waterloo – Fermat, Hypatia, and Senior{" "}
+              <a
+                href="https://www.cemc.uwaterloo.ca/contests/past_contests.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                math contests
+              </a>{" "}
+              – two medals and several honor rolls – 2011 & 2012
+            </span>,
+            <span>
+              Participated in American Mathematics Competition{" "}
+              <a
+                href="https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                AMC12B
+              </a>{" "}
+              – 2011 & 2012
+            </span>,
+            <span>
+              Participated in{" "}
+              <a
+                href="http://matolimp.akdeniz.edu.tr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                National Antalya Mathematics Olympics
+              </a>{" "}
+              – 2010 & 2011
+            </span>,
           ]}
         />
       </div>

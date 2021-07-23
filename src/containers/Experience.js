@@ -19,13 +19,9 @@ class Experience extends React.Component {
             </a>
           }
           location={"Michigan, USA"}
-          jobTitle={"Graduate Teaching Assistant"}
+          jobTitle={"Graduate Teaching Assistant, Instructor"}
           startDate={"08/2018"}
           items={[
-            <span>
-              Instructor for{" "}
-              <i>CSC1101: Problem Solving and Programming Laboratory</i> (C++)
-            </span>,
             <span>
               Teaching Assistant for{" "}
               <i>CSC 7760: Introduction to Deep Learning</i> (Tensorflow)
@@ -50,6 +46,10 @@ class Experience extends React.Component {
                 Engineers
               </i>{" "}
               (MATLAB) for 3 terms
+            </span>,
+            <span>
+              Instructor for{" "}
+              <i>CSC1101: Problem Solving and Programming Laboratory</i> (C++)
             </span>,
           ]}
         />

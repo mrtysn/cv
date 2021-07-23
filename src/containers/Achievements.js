@@ -19,41 +19,6 @@ const items = [
   "TOEFL; Reading: 28, Listening: 28, Speaking: 24, Writing: 27 – 04/2018",
   "TOEFL; Reading: 26, Listening: 30, Speaking: 26, Writing: 26 – 10/2015",
   "GRE; Quantitative Reasoning: 168, Verbal Reasoning: 146, Analytical Writing: 3.0 – 10/2015",
-
-  <span>
-    University of Waterloo – Fermat, Hypatia, and Senior{" "}
-    <a
-      href="https://www.cemc.uwaterloo.ca/contests/past_contests.html"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      math contests
-    </a>{" "}
-    – two medals and several honor rolls – 2011 & 2012
-  </span>,
-  <span>
-    American Mathematics Competition{" "}
-    <a
-      href="https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      AMC12B
-    </a>{" "}
-    – 2011 & 2012 participant
-  </span>,
-  <span>
-    Team captain of İzmir Gelişim College’s 1<sup>st</sup> and 2<sup>nd</sup>{" "}
-    Mathematics League winning team – 2011 & 2012
-  </span>,
-  <span>
-    Represented Slovenia in the Social Humanitarian and Cultural Committee
-    (SOCHUM) of{" "}
-    <a href="https://www.hnmun.org/" target="_blank" rel="noopener noreferrer">
-      Harvard National Model United Nations (HNMUN)
-    </a>{" "}
-    – 2011
-  </span>,
 ];
 
 class Achievements extends React.Component {
@@ -61,7 +26,7 @@ class Achievements extends React.Component {
     if (items && items.length > 0) {
       return (
         <div>
-          <SectionTitle title={"ACHIEVEMENTS & HOBBIES"} />
+          <SectionTitle title={"EXTRACURRICULAR"} />
           <List bulleted>
             {items.map((item, ix) => {
               return (
