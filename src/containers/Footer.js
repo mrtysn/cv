@@ -30,7 +30,7 @@ class Footer extends React.Component {
           >
             React
           </a>{" "}
-          ▸ v2.12 ▸ 07/2021
+          ▸ v2.13 ▸ 07/2021
         </span>
       </div>
     );
