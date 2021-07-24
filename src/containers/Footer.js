@@ -13,8 +13,8 @@ class Footer extends React.Component {
         className={"px10"}
       >
         <span>
-          Made with <span style={{ color: "#DA0037" }}>❤</span> in Detroit, MI.
-          Powered by{" "}
+          Made with <span style={{ color: "#DA0037" }}>❤</span> in İstanbul,
+          Turkey ▸ Powered by{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -29,8 +29,8 @@ class Footer extends React.Component {
             href="https://reactjs.org/"
           >
             React
-          </a>
-          .
+          </a>{" "}
+          ▸ v2.12 ▸ 07/2021
         </span>
       </div>
     );
