@@ -127,24 +127,13 @@ class Experience extends React.Component {
           items={[
             <span>
               <b style={{ color: "rgba(0,0,0,.87)" }}>e-Invoice Adaptor:</b> A
-              facilitating middleware software that helps taxpaying companies
+              facilitating middleware platform that helps taxpaying companies
               transition their accounting system to comply with the Turkish
-              Revenue Administration's e-Invoice and e-Archive mandate.
-              Taxpayers that opt to use a <i>private integrator</i> to issue
-              e-Archive invoices may use Novafortis to monitor, validate, and
-              record transactions
+              Revenue Administration's e-Invoice mandate. Novafortis is used as
+              a <i>private integrator</i> to issue e-Archive invoices and to
+              prepare e-Ledgers as a part of the e-Transformation process
             </span>,
-            <span>
-              E-Invoice Adaptor: A facilitating middleware software that creates
-              a platform for companies using "Private Integrator" to manage the
-              processes of sending and receiving invoices and waybills and
-              preparing e-ledgers. This application as an e-transformation
-              process manager creates a bridge between the accounting practices
-              of companies and the Revenue Administration, and will provide
-              great convenience in the transition and maintenance of electronic
-              invoicing processes.{" "}
-            </span>,
-            "Involved in surveying continuously changing government regulations, project design, and software implementation",
+            "Involved in surveying the continuously changing government regulations, project design, and software implementation",
           ]}
         />
         <SectionItem

@@ -28,22 +28,16 @@ class Skills extends React.Component {
             title="machine learning"
             items={[
               "Deep Learning",
-              "Natural Language Processing",
               "Computer Vision",
-              "Bayesian Decision Theory & Bayesian Estimation",
-              "Parametric Methods",
-              "Multivariate Methods",
-              "Dimensionality Reduction",
-              "Clustering",
-              "Nonparametric Methods",
-              "Decision Trees",
-              "Linear Discrimination",
-              "Multilayer Perceptrons",
-              "Kernel Machines",
-              "Hidden Markov Models",
+              "NLP",
+              "CNNs",
+              "RNNs",
+              "GANs",
+              "Transfer Learning",
               "Reinforcement Learning",
+              "Digital Signal Processing",
+              "Feature Extraction",
               "Probability & Statistics",
-              "Model Selection & Generalization",
             ]}
           />
           <SkillRow

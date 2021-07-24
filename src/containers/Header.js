@@ -5,7 +5,7 @@ class MyHeader extends React.Component {
   render() {
     return (
       <div>
-        <Header as="h1" className="fontHeader textShadowCorner">
+        <Header as="h1" className="fontHeader">
           Mert Yaşin
         </Header>
         <div style={{ textAlign: "center" }} className="px14">

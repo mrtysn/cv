@@ -27,7 +27,7 @@ class Education extends React.Component {
               &nbsp;&nbsp;Prediction of neonatal seizure onset using models
               fine-tuned per patient. Analysis of structural & functional brain
               networks, brain state representations and transitions. EEG data
-              preprocessing and artifact removal, de-coupling ECG & EEG signals.
+              preprocessing and artifact removal, decoupling ECG & EEG signals.
               Temporal & spectral examination of seizures via deep learning &
               wavelet based techniques.
             </div>,
