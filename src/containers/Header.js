@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { Header } from "semantic-ui-react";
-import { CV_VERSION } from "../constants";
 
 export default function MyHeader() {
   useEffect(() => {
-    document.title = "Mert Yaşin CV ▸ " + CV_VERSION;
+    document.title = "Mert Yaşin ▸ CV";
   });
 
   return (
