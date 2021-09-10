@@ -1,5 +1,5 @@
 import React from "react";
-import { CV_VERSION } from "../constants";
+import { CV_VERSION, DATE } from "../constants";
 
 class Footer extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class Footer extends React.Component {
           >
             React
           </a>{" "}
-          ▸ {CV_VERSION} ▸ 07/2021
+          ▸ {CV_VERSION} ▸ {DATE}
         </span>
       </div>
     );
