@@ -21,6 +21,7 @@ export default function MyHeader() {
           display: "flex",
           justifyContent: "center",
           letterSpacing: "0.33px",
+          flexWrap: "wrap",
         }}
         className={"px12"}
       >

@@ -12,9 +12,10 @@ class SectionItem extends React.Component {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            flexWrap: "wrap",
           }}
         >
-          <div className={"px16"}>
+          <div className={"px16"} style={{ marginRight: "10px" }}>
             <strong>{this.props.companyTitle}</strong>
           </div>
           <div className={"px16"}>
@@ -26,9 +27,10 @@ class SectionItem extends React.Component {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            flexWrap: "wrap",
           }}
         >
-          <div className={"px14"}>
+          <div className={"px14"} style={{ marginRight: "10px" }}>
             <em>{this.props.jobTitle}</em>
           </div>
           <div className={"px14"}>
