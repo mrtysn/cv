@@ -10,6 +10,67 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
+              href="https://venuex.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              VenueX
+            </a>
+          }
+          location={"50% Remote - İstanbul, Turkey"}
+          jobTitle={"Senior Software Engineer"}
+          startDate={"11/2021"}
+          items={[
+            <span>
+              Helping retail merchants better adapt to online map providers such
+              as Google, Apple, and Yandex, with the vision of making physical
+              shopping as convenient as e-commerce experience. Facilitating
+              better personalized product recommendations for the advertisement
+              networks by connecting consumer search data with consumer purchase
+              data
+            </span>,
+            <span>
+              <b style={{ color: "rgba(0,0,0,.87)" }}>Tech Stack:</b> Docker,
+              Typescript, NodeJS, NestJS, MongoDB, Mongoose, CASL, ACL, Redis,
+              Bull, Jaeger, Swagger, Husky, Doppler, PNPM, Turbo, Vite, React,
+              Material UI, React Router, Formik, Redux, Google Maps, Google
+              Business Information (My Business), Cypress, Wix, Python, NumPy,
+              SciPy, Keras. <b style={{ color: "rgba(0,0,0,.87)" }}>Cloud:</b>{" "}
+              AWS S3, EC2, ECS, Redshift, DynamoDB, Lambda, Step Functions, SNS,
+              Cloudwatch, Route 53, Glue, IAM.{" "}
+              <b style={{ color: "rgba(0,0,0,.87)" }}>Interface:</b> Github,
+              Jira, Visual Studio Code, Notion, Slack, Spotify
+            </span>,
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
+              href="https://olymposhq.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              Olympos
+            </a>
+          }
+          location={"Remote"}
+          jobTitle={"Senior Software Engineer, Part-Time"}
+          startDate={"04/2022"}
+          endDate={"06/2022"}
+          items={[
+            <span>
+              Investigated methodologies from machine learning literature to
+              improve the proprietary tech talent matching algorithm of Olympos.
+              Worked on talent profiling, company profiling, and clustering
+              problems
+            </span>,
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
               href="https://wayne.edu/"
               target="_blank"
               rel="noopener noreferrer"
@@ -21,6 +82,7 @@ class Experience extends React.Component {
           location={"Michigan, United States"}
           jobTitle={"Graduate Teaching Assistant, Instructor"}
           startDate={"08/2018"}
+          endDate={"05/2021"}
           items={[
             <span>
               Teaching Assistant for{" "}
@@ -123,7 +185,7 @@ class Experience extends React.Component {
           location={"İzmir, Turkey"}
           jobTitle={"Software Engineer"}
           startDate={"2015"}
-          endDate={"Present"}
+          endDate={"2021"}
           items={[
             <span>
               <b style={{ color: "rgba(0,0,0,.87)" }}>e-Invoice Adaptor:</b> A

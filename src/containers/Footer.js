@@ -14,8 +14,19 @@ class Footer extends React.Component {
         className={"px10"}
       >
         <span>
-          Made with <span style={{ color: "#DA0037" }}>❤</span> in İstanbul,
-          Turkey ▸ Powered by{" "}
+          Designed and developed by{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://mrtysn.github.io/cv/"
+          >
+            Mert Yaşin
+          </a>{" "}
+          ▸ Made with <span style={{ color: "#DA0037" }}>❤</span> in İstanbul,
+          Turkey{" "}
+        </span>
+        <span>
+          Powered by{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -31,7 +42,14 @@ class Footer extends React.Component {
           >
             React
           </a>{" "}
-          ▸ {CV_VERSION} ▸ {DATE}
+          ▸ {CV_VERSION} ▸ {DATE} ▸{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/mrtysn/cv"
+          >
+            source
+          </a>
         </span>
       </div>
     );

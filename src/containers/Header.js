@@ -12,8 +12,8 @@ export default function MyHeader() {
         Mert Yaşin
       </Header>
       <div style={{ textAlign: "center" }} className="px14">
-        Computer Science PhD Candidate &nbsp;&nbsp;{"•"}&nbsp;&nbsp; Computer
-        Engineer
+        Computer Science PhD Candidate &nbsp;&nbsp;{"•"}&nbsp;&nbsp; Senior
+        Computer Engineer
       </div>
 
       <div

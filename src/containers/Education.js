@@ -19,8 +19,9 @@ class Education extends React.Component {
             </a>
           }
           location={"Michigan, United States"}
-          jobTitle={"PhD, Computer Science"}
+          jobTitle={"PhD, Computer Science – Incomplete"}
           startDate={"2018"}
+          endDate={"2021"}
           items={[
             <div>
               <b style={{ color: "rgba(0,0,0,.87)" }}>PhD project:</b>
@@ -191,16 +192,16 @@ class Education extends React.Component {
           items={[
             <span>Honors: Dean’s Honor List; GPA: 3.28 / 4.00</span>,
             <span>
+              <b style={{ color: "rgba(0,0,0,.87)" }}>Bachelor Thesis:</b>{" "}
               <a
                 href="https://github.com/mrtysn/lstm"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Bachelor Thesis
+                Learning Sequences Using RNNs and LSTMs
               </a>
-              : Learning Sequences Using RNNs and LSTMs. Deep poem generation
-              similar to the style of a poet. Step by step activation analysis
-              of LSTM cells' gates
+              . Deep poem generation similar to the style of a poet. Step by
+              step activation analysis of LSTM cells' gates
             </span>,
             <span>
               Ranked 1<sup>st</sup> in the operations round of the case study
