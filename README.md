@@ -2,9 +2,7 @@
 
 - CV of Mert Yaşin as a single page React application
 
-- This project was bootstrapped with [⚛️ Create React App](https://github.com/facebook/create-react-app)
-
-### 🔗 Online Demo
+### 🔗 Online Demo v2.20 (Last updated on 10/2021)
 
 - Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
