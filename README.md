@@ -4,6 +4,10 @@
 
 - This project was bootstrapped with [⚛️ Create React App](https://github.com/facebook/create-react-app)
 
+### 🔗 Online Demo
+
+- Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
+
 ### 🖨️ How to create a PDF locally
 
 - Start the project in development mode with `yarn start`
