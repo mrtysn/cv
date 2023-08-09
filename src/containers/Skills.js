@@ -22,7 +22,7 @@ function Skills() {
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
           title="data science"
-          items={["Python; TensorFlow, Keras", "MATLAB", "R"]}
+          items={["Python; TensorFlow, Keras, PyTorch", "MATLAB", "R"]}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -50,7 +50,7 @@ function Skills() {
             "Android; Java",
             "Unity3D; C#",
             "Godot; GDScript",
-            "React Native; NativeBase, UI Kitten",
+            "React Native",
           ]}
         />
         <SkillRow
@@ -62,6 +62,7 @@ function Skills() {
             "React Router",
             "Next.js",
             "MobX",
+            "Material UI",
             "styled-components",
             "Tailwind CSS",
             "Chakra UI",
@@ -77,6 +78,7 @@ function Skills() {
           dataColumnWidth={dataColumnWidth}
           title="back-end"
           items={[
+            "NestJS",
             "Django; Django REST",
             "Java; Spring",
             "ASP.NET MVC C#",
@@ -96,11 +98,11 @@ function Skills() {
           dataColumnWidth={dataColumnWidth}
           title="dev-ops"
           items={[
-            "AWS; EC2, RDS, S3, Lambda, VPC",
+            "AWS; EC2, ECS, S3, Lambda, VPC",
+            "Terraform, CDKTF",
             "Heroku",
             "Docker",
             "Jenkins",
-            "Digital Ocean",
           ]}
         />
         <SkillRow
