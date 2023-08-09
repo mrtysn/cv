@@ -18,14 +18,14 @@ class Experience extends React.Component {
               VenueX
             </a>
           }
-          location={"50% Remote - İstanbul, Turkey"}
+          location={"Remote - İstanbul, Turkey"}
           jobTitle={"Senior Software Engineer"}
           startDate={"11/2021"}
           items={[
             <span>
               Helping retail merchants better adapt to online map providers such
               as Google, Apple, and Yandex, with the vision of making physical
-              shopping as convenient as e-commerce experience. Facilitating
+              shopping as convenient as the e-commerce experience. Facilitating
               better personalized product recommendations for the advertisement
               networks by connecting consumer search data with consumer purchase
               data
@@ -33,14 +33,14 @@ class Experience extends React.Component {
             <span>
               <b style={{ color: "rgba(0,0,0,.87)" }}>Tech Stack:</b> Docker,
               Typescript, NodeJS, NestJS, MongoDB, Mongoose, CASL, ACL, Redis,
-              Bull, Jaeger, Swagger, Husky, Doppler, PNPM, Turbo, Vite, React,
+              Bull, Jaeger, Swagger, Husky, Doppler, Turbo, Vite, React,
               Material UI, React Router, Formik, Redux, Google Maps, Google
               Business Information (My Business), Cypress, Wix, Python, NumPy,
               SciPy, Keras. <b style={{ color: "rgba(0,0,0,.87)" }}>Cloud:</b>{" "}
               AWS S3, EC2, ECS, Redshift, DynamoDB, Lambda, Step Functions, SNS,
-              Cloudwatch, Route 53, Glue, IAM.{" "}
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Interface:</b> Github,
-              Jira, Visual Studio Code, Notion, Slack, Spotify
+              CloudWatch, Route 53, Glue, IAM.{" "}
+              <b style={{ color: "rgba(0,0,0,.87)" }}>Interface:</b> GitHub,
+              Jira, Visual Studio Code, Notion, Slack, Miro, Figma
             </span>,
           ]}
         />
