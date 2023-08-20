@@ -10,6 +10,7 @@ export class SkillRow extends React.Component {
           width={this.props.titleColumnWidth}
           textAlign="right"
           className={"colorHighlight"}
+          id={this.props.isNarrow ? "narrowSkillTitle" : ""}
         >
           {this.props.title}
         </Grid.Column>

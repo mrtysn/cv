@@ -30,7 +30,7 @@
 
 ### 🖨️ How to create a PDF online
 
-- Visit [cv-mrtysn.vercel.app](https://cv-mrtysn.vercel.app/) on Google Chrome
+- Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/) on Google Chrome
 
 - Remove the margins at the top and the bottom of the page manually (i.e. delete divider elements)
 
