@@ -22,11 +22,11 @@
 
 - Save as PDF
 
-### 🛠️ How to deploy
+### 🛠️ How to deploy to GitHub Pages
 
-- Push to [github.com/mrtysn/cv](https://github.com/mrtysn/cv)
-
-- Visit [cv-mrtysn.vercel.app](https://cv-mrtysn.vercel.app/)
+<!-- wrap in code block -->
+- `pnpm run predeploy`
+- `pnpm run deploy`
 
 ### 🖨️ How to create a PDF online
 
