@@ -2,7 +2,7 @@
 
 - CV of Mert Yaşin as a single page React application
 
-### 🔗 Online Demo v2.20 (Last updated on 10/2021)
+### 🔗 Online Demo v2.3 (Last updated on 2023/08)
 
 - Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
