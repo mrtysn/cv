@@ -23,6 +23,7 @@ function Skills() {
           dataColumnWidth={dataColumnWidth}
           title="data science"
           items={["Python; TensorFlow, Keras, PyTorch", "MATLAB", "R"]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -41,6 +42,7 @@ function Skills() {
             "Feature Extraction",
             "Probability & Statistics",
           ]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -52,6 +54,7 @@ function Skills() {
             "Godot; GDScript",
             "React Native",
           ]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -72,6 +75,7 @@ function Skills() {
             "Server Side Rendering",
             "PWA",
           ]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -92,6 +96,7 @@ function Skills() {
             "MySQL",
             "MongoDB",
           ]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
@@ -104,24 +109,28 @@ function Skills() {
             "Docker",
             "Jenkins",
           ]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
           title="game-dev"
           items={["Unity3D; C#", "Godot; GDScript"]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
           title="others"
           items={["Prolog", "Perl", "LaTeX", "Arch Linux", "WSL 2", "Git"]}
+          isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
           title="languages"
           items={["Turkish", "English", "German", "Macedonian"]}
+          isNarrow={isNarrow}
         />
       </Grid>
     </div>
