@@ -19,18 +19,21 @@ class Education extends React.Component {
             </a>
           }
           location={"Michigan, United States"}
-          jobTitle={"PhD, Computer Science – Incomplete"}
+          jobTitle={"PhD Candidate, Computer Science – Incomplete"}
           startDate={"2018"}
           endDate={"2021"}
           items={[
             <div>
-              <b style={{ color: "rgba(0,0,0,.87)" }}>PhD project:</b>
-              &nbsp;&nbsp;Prediction of neonatal seizure onset using models
-              fine-tuned per patient. Analysis of structural & functional brain
-              networks, brain state representations and transitions. EEG data
-              preprocessing and artifact removal, decoupling ECG & EEG signals.
-              Temporal & spectral examination of seizures via deep learning &
-              wavelet based techniques.
+              Successfully passed the <b>Ph.D. Qualifying Exam</b> in November
+              2020: Research project titled
+              <i>
+                'Early Seizure Detection of the Neonatal Brain Using
+                Electroencephalography Data'
+              </i>{" "}
+              employed techniques such as structural & functional brain network
+              analysis, EEG data preprocessing, artifact removal, and temporal &
+              spectral examination through deep learning & wavelet-based
+              methodologies.
             </div>,
             <div>
               <b style={{ color: "rgba(0,0,0,.87)" }}>Research project:</b>

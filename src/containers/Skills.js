@@ -83,14 +83,14 @@ function Skills() {
           title="back-end"
           items={[
             "NestJS",
+            "Node.js",
+            "TypeScript",
             "Django; Django REST",
             "Java; Spring",
             "ASP.NET MVC C#",
-            "Node.js",
             "Apache",
             "nginx",
             "Redis",
-            "Memcached",
             "RabbitMQ",
             "PostgreSQL",
             "MySQL",
