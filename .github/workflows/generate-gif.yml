@@ -21,8 +21,8 @@ jobs:
           window_height: 720
           final_width: 640
           final_height: 480
-          scroll_step: 10
-          time_per_frame: 300
+          scroll_step: 15
+          time_per_frame: 200
           start_delay: 4000
       - name: Commit GIF to the Repository
         run: |
