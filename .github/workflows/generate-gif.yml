@@ -18,6 +18,7 @@ jobs:
           file_format: "GIF"
           file_name: "cv-preview"
           window_width: 960
+          window_height: 720
           scroll_step: 15
           time_per_frame: 100
           start_delay: 200
