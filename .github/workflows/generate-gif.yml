@@ -19,6 +19,8 @@ jobs:
           file_name: "cv-preview"
           window_width: 960
           window_height: 720
+          final_width: 640
+          final_height: 480
           scroll_step: 15
           time_per_frame: 100
           start_delay: 200
