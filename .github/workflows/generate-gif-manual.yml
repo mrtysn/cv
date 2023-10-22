@@ -1,0 +1,31 @@
+name: Generate demo gif
+
+on:
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
+
+jobs:
+  generate-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate GIF from Website
+        uses: PabloLec/website-to-gif@2.1.1
+        with:
+          url: "https://mrtysn.github.io/cv/"
+          save_path: "/"
+          file_format: "GIF"
+          file_name: "cv-preview"
+          window_width: 960
+          window_height: 720
+          final_width: 640
+          final_height: 480
+          scroll_step: 15
+          time_per_frame: 100
+          start_delay: 4000
+      - name: Commit GIF to the Repository
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m 'Automatically generate GIF of the CV website'
+          git push
