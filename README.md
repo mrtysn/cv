@@ -2,7 +2,7 @@
 
 - CV of Mert Yaşin as a single page React application
 
-![Demo](demo.gif)
+![CV Preview](cv-preview.gif)
 
 ### 🔗 Online Demo
 
