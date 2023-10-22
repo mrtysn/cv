@@ -1,4 +1,4 @@
-name: Generate demo gif
+name: Generate demo gif (manually)
 
 on:
   workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
