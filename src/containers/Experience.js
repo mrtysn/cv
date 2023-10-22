@@ -281,6 +281,7 @@ class Experience extends React.Component {
                 href="https://apkpure.com/peak-box-game-arcade-machine/net.peakgames.peakbox.android"
                 target="_blank"
                 rel="noopener noreferrer"
+                className={"colorHighlight"}
               >
                 Peak Box
               </a>

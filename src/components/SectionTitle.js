@@ -8,7 +8,7 @@ class SectionTitle extends React.Component {
         <Header
           as="h2"
           style={{ marginTop: "1em", marginBottom: 0 }}
-          className={"fontSectionHeader textShadowCorner"}
+          className={"fontSectionHeader colorDim"}
         >
           {this.props.title}
         </Header>

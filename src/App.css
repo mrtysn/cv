@@ -18,8 +18,16 @@
   font-weight: 300 !important;
 }
 
-.colorHighlight {
-  color: #4183c4 !important;
+a, .colorHighlight {
+  color: #4D002B !important
+}
+
+.colorDim {
+  color: #404040 !important;
+}
+
+.colorHeart {
+  color: #DA0037 !important;
 }
 
 .textShadowCorner {
