@@ -21,9 +21,9 @@ jobs:
           window_height: 720
           final_width: 640
           final_height: 480
-          scroll_step: 200
-          time_per_frame: 200
-          start_delay: 1000
+          scroll_step: 20
+          time_per_frame: 250
+          start_delay: 3000
       - name: Commit GIF to the Repository
         run: |
           git config --global user.name "${{ github.actor }}"
