@@ -63,7 +63,7 @@ class Education extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="http://www.boun.edu.tr/"
+              href="https://bogazici.edu.tr/en-US"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
@@ -101,7 +101,7 @@ class Education extends React.Component {
               Attended the meetings of the convex-optimization reading group of
               the{" "}
               <a
-                href="https://www.cmpe.boun.edu.tr/pilab/doku.php"
+                href="https://www.cmpe.boun.edu.tr/perceptual-intelligence-laboratory-pilab"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -180,7 +180,7 @@ class Education extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="http://www.boun.edu.tr/"
+              href="https://bogazici.edu.tr/en-US"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
@@ -210,7 +210,7 @@ class Education extends React.Component {
               Ranked 1<sup>st</sup> in the operations round of the case study
               competition{" "}
               <a
-                href="https://www.facebook.com/pg/All-Rounder-798557960200525/photos/?tab=album&album_id=1030521643670821"
+                href="https://www.facebook.com/media/set/?set=a.1030521643670821"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -242,7 +242,7 @@ class Education extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="https://egelisesi.k12.tr/overview"
+              href="https://egelisesi.k12.tr/school-profile"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}

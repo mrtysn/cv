@@ -118,7 +118,7 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="https://appliedai.com/"
+              href="https://web.archive.org/web/20190501133923/http://appliedai.com/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
@@ -174,7 +174,7 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="http://novafortis.com/index.html"
+              href="https://www.novafortis.com.tr/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
@@ -264,16 +264,9 @@ class Experience extends React.Component {
           endDate={"09/2015"}
           items={[
             <span>
-              Designed and implemented four games using{" "}
-              <a
-                href="https://unity.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Unity3D
-              </a>
-              ; Color Rush, Paper Dreams, Car Crossing, Tap to Aim. Used both
-              open-source assets and created new prefabs from scratch
+              Designed and implemented four games using Unity3D; Color Rush,
+              Paper Dreams, Car Crossing, Tap to Aim. Used both open-source
+              assets and created new prefabs from scratch
             </span>,
             <span>
               Implemented a gamification infrastructure for{" "}

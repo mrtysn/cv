@@ -129,7 +129,7 @@ function Skills() {
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
           title="languages"
-          items={["Turkish", "English", "German", "Macedonian"]}
+          items={["Turkish", "English", "German", "Macedonian", "Dutch"]}
           isNarrow={isNarrow}
         />
       </Grid>
