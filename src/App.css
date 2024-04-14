@@ -18,11 +18,16 @@
   font-weight: 300 !important;
 }
 
-a, .colorHighlight {
-  color: #4D002B !important
+/* disabled setting a color for all the links for now */
+/* a { */
+  /* color: red !important; */
+/* } */
+
+.colorHighlight {
+  color: #4183c4 !important;
 }
 
-.colorDim {
+.colorDim, .colorSectionItem, .colorSkillTitle {
   color: #404040 !important;
 }
 

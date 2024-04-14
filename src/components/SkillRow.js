@@ -9,7 +9,7 @@ export class SkillRow extends React.Component {
           style={{ fontWeight: 700 }}
           width={this.props.titleColumnWidth}
           textAlign="right"
-          className={"colorDim"}
+          className={"colorSkillTitle"}
           id={this.props.isNarrow ? "narrowSkillTitle" : ""}
         >
           {this.props.title}

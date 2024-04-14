@@ -40,7 +40,7 @@ const items = [
   <span>
     Co-founded the volunteer alumni community{" "}
     <a
-      href="https://boyutbogazici.org/en/about-boyut-2/"
+      href="https://web.archive.org/web/20231005025306/https://boyutbogazici.org/en/about-boyut-2/"
       target="_blank"
       rel="noopener noreferrer"
     >

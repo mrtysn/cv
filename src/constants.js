@@ -1,2 +1,2 @@
-export const CV_VERSION = "v2.31";
-export const DATE = "10/2023";
+export const CV_VERSION = "v2.4";
+export const DATE = "04/2024";
