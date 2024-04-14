@@ -32,7 +32,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0",
+    "gh-pages": "^6.1.1",
     "react-snap": "^1.23.0"
   },
   "homepage": "http://mrtysn.github.io/cv",
