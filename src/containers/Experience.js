@@ -18,9 +18,10 @@ class Experience extends React.Component {
               VenueX
             </a>
           }
-          location={"Remote - İstanbul, Turkey"}
+          location={"İstanbul, Turkey (Remote)"}
           jobTitle={"Senior Software Engineer"}
           startDate={"11/2021"}
+          endDate={"12/2023"}
           items={[
             <span>
               Helping retail merchants better adapt to online map providers such
@@ -55,7 +56,7 @@ class Experience extends React.Component {
               Olympos
             </a>
           }
-          location={"Remote"}
+          location={"Washington, United States (Remote)"}
           jobTitle={"Senior Software Engineer, Part-Time"}
           startDate={"04/2022"}
           endDate={"06/2022"}

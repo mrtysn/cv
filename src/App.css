@@ -20,19 +20,21 @@
 
 /* disabled setting a color for all the links for now */
 /* a { */
-  /* color: red !important; */
+/* color: red !important; */
 /* } */
 
 .colorHighlight {
   color: #4183c4 !important;
 }
 
-.colorDim, .colorSectionItem, .colorSkillTitle {
+.colorDim,
+.colorSectionItem,
+.colorSkillTitle {
   color: #404040 !important;
 }
 
 .colorHeart {
-  color: #DA0037 !important;
+  color: #da0037 !important;
 }
 
 .textShadowCorner {
@@ -58,4 +60,26 @@
 div#narrowSkillTitle {
   padding-bottom: 0px !important;
   padding-top: 0px !important;
+}
+
+@media print {
+  .noPageBreak {
+    page-break-inside: avoid;
+  }
+
+  .hideFromPrint {
+    display: none;
+  }
+
+  body {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 700px !important;
+    /* padding-top: 5mm; */
+    /* Manually set 0.19 top padding via the print pop-up window */
+  }
+}
+
+@page {
+  size: A4;
 }
