@@ -11,14 +11,14 @@ import Skills from "./containers/Skills";
 function App() {
   return (
     <Container text>
-      <Divider hidden style={{ marginTop: 10 }} />
+      <Divider hidden style={{ marginTop: 10 }} className="hideFromPrint" />
       <Header />
       <Skills />
       <Experience />
       <Education />
       <Achievements />
       <Footer />
-      <Divider hidden style={{ marginTop: 10 }} />
+      <Divider hidden style={{ marginTop: 10 }} className="hideFromPrint" />
     </Container>
   );
 }

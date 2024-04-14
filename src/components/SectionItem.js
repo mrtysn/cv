@@ -6,6 +6,7 @@ class SectionItem extends React.Component {
     return (
       <div
         style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}
+        className="noPageBreak"
       >
         <div
           style={{
