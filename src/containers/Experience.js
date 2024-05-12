@@ -33,7 +33,7 @@ class Experience extends React.Component {
             </span>,
             <span>
               <b style={{ color: "rgba(0,0,0,.87)" }}>Tech Stack:</b> Docker,
-              Typescript, NodeJS, NestJS, MongoDB, Mongoose, CASL, ACL, Redis,
+              TypeScript, NodeJS, NestJS, MongoDB, Mongoose, CASL, ACL, Redis,
               Bull, Jaeger, Swagger, Husky, Doppler, Turbo, Vite, React,
               Material UI, React Router, Formik, Redux, Google Maps, Google
               Business Information (My Business), Cypress, Wix, Python, NumPy,
