@@ -39,9 +39,7 @@ class Experience extends React.Component {
               Business Information (My Business), Cypress, Wix, Python, NumPy,
               SciPy, Keras. <b style={{ color: "rgba(0,0,0,.87)" }}>Cloud:</b>{" "}
               AWS S3, EC2, ECS, Redshift, DynamoDB, Lambda, Step Functions, SNS,
-              CloudWatch, Route 53, Glue, IAM.{" "}
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Interface:</b> GitHub,
-              Jira, Visual Studio Code, Notion, Slack, Miro, Figma
+              CloudWatch, Route 53, Glue, IAM
             </span>,
           ]}
         />
