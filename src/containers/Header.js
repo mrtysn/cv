@@ -50,7 +50,7 @@ export default function MyHeader() {
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          LinkedIn
+          linkedin
         </a>
       </div>
     </div>

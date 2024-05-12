@@ -49,6 +49,7 @@ const items = [
     with the aim of supporting institutional autonomy and academic freedom in
     every university and particularly in Boğaziçi University – 01/2021
   </span>,
+  "Languages: Turkish (Native), English (Fluent), German (Pre-Intermediate), Macedonian (Pre-Intermediate), Dutch (Beginner)",
 ];
 
 class Achievements extends React.Component {
