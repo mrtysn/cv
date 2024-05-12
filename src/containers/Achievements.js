@@ -52,6 +52,7 @@ const items = [
   "TOEFL: 107; Reading: 28, Listening: 28, Speaking: 24, Writing: 27 – 04/2018",
   "TOEFL: 108; Reading: 26, Listening: 30, Speaking: 26, Writing: 26 – 10/2015",
   "GRE; Quantitative Reasoning: 168, Verbal Reasoning: 146, Analytical Writing: 3.0 – 10/2015",
+  "Languages: Turkish (Native), English (Fluent), German (Pre-Intermediate), Macedonian (Pre-Intermediate), Dutch (Beginner)",
 ];
 
 class Achievements extends React.Component {

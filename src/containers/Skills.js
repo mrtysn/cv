@@ -125,13 +125,6 @@ function Skills() {
           items={["Prolog", "Perl", "LaTeX", "Arch Linux", "WSL 2", "Git"]}
           isNarrow={isNarrow}
         />
-        <SkillRow
-          titleColumnWidth={titleColumnWidth}
-          dataColumnWidth={dataColumnWidth}
-          title="languages"
-          items={["Turkish", "English", "German", "Macedonian", "Dutch"]}
-          isNarrow={isNarrow}
-        />
       </Grid>
     </div>
   );
