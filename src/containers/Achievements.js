@@ -4,7 +4,7 @@ import SectionTitle from "../components/SectionTitle";
 
 const items = [
   <span>
-    Running, cycling, swimming, cooking, playing the guitar, playing video
+    Running, cooking, cycling, swimming, playing the guitar, playing video
     games, developing video games, <i>learning to learn</i>
   </span>,
   <span>
