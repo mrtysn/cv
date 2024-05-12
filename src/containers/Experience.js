@@ -182,7 +182,7 @@ class Experience extends React.Component {
             </a>
           }
           location={"İzmir, Turkey"}
-          jobTitle={"Software Engineer"}
+          jobTitle={"Freelance Software Engineer"}
           startDate={"2015"}
           endDate={"2021"}
           items={[
