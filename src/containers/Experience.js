@@ -24,24 +24,40 @@ class Experience extends React.Component {
           endDate={"12/2023"}
           items={[
             <span>
-              Helping retail merchants better adapt to online map providers such
-              as Google, Apple, and Yandex, with the vision of making physical
-              shopping as convenient as the e-commerce experience. Facilitating
-              better personalized product recommendations for the advertisement
-              networks by connecting consumer search data with consumer purchase
-              data
+              Designed and maintained ETL pipelines (using AWS Lambda, S3) to
+              consume store, product, and stock data from retail merchants.
+              Developed a data feed diff tool using hashing and reduced the feed
+              ingestion workload by over 80%
             </span>,
             <span>
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Tech Stack:</b> Docker,
-              TypeScript, NodeJS, NestJS, MongoDB, Mongoose, CASL, ACL, Redis,
-              Bull, Jaeger, Swagger, Husky, Doppler, Turbo, Vite, React,
-              Material UI, React Router, Formik, Redux, Google Maps, Google
-              Business Information (My Business), Cypress, Wix, Python, NumPy,
-              SciPy, Keras. <b style={{ color: "rgba(0,0,0,.87)" }}>Cloud:</b>{" "}
-              AWS S3, EC2, ECS, Redshift, DynamoDB, Lambda, Step Functions, SNS,
-              CloudWatch, Route 53, Glue, IAM.{" "}
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Interface:</b> GitHub,
-              Jira, Visual Studio Code, Notion, Slack, Miro, Figma
+              Implemented robust data validation steps for the pipelines that
+              continuously push processed retail merchant data to third-party
+              APIs (Google Business Profile, Google Content API) in order to
+              guarantee accurate and up-to-date product and location information
+              on map and location providers (Google Maps, Google Merchant
+              Center, Google Shopping)
+            </span>,
+            <span>
+              Developed and maintained backend RESTful APIs (NestJS, TypeScript)
+              to handle merchant data logic and aggregation, with custom
+              validations for data consistency. Developed dashboards, report
+              pages (ReactJS, TypeScript, MUI), and data integration channels
+              for partner merchants. Implemented end-to-end tests for user
+              scenarios using Cypress
+            </span>,
+            <span>
+              Maintained and troubleshooted the Terraform-deployed
+              infrastructure stack (EC2, ECS) and MongoDB database layer. Set up
+              custom alerts (SNS) and notifications (to Slack) for early
+              detection of infrastructure and database anomalies
+            </span>,
+            <span>
+              Authored the successful proposal of a{" "}
+              <i>TEYDEB 1501 Grant for Industrial R&D projects</i> from TÜBİTAK.
+              This project focuses on using the state-of-the-art Computer Vision
+              (CV) and Large Language Model (LLM) techniques to batch process
+              merchant data and store location review data (from Google Maps) to
+              generate insights for the merchants
             </span>,
           ]}
         />
