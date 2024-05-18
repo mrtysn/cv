@@ -19,7 +19,7 @@ class Education extends React.Component {
             </a>
           }
           location={"Michigan, United States"}
-          jobTitle={"PhD Candidate, Computer Science – Incomplete"}
+          jobTitle={"PhD ABD, Computer Science"}
           startDate={"2018"}
           endDate={"2021"}
           items={[
