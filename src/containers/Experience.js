@@ -102,33 +102,20 @@ class Experience extends React.Component {
           endDate={"05/2021"}
           items={[
             <span>
-              Teaching Assistant for{" "}
-              <i>CSC 7760: Introduction to Deep Learning</i> (Tensorflow)
-            </span>,
-            <span>
-              Teaching Assistant for{" "}
-              <i>CSC 7810: Data Mining: Algorithms and Applications</i> for 2
-              terms
-            </span>,
-            <span>
-              Teaching Assistant for{" "}
-              <i>CSC 5800: Intelligent Systems: Algorithms and Tools</i> (R,
-              Weka)
-            </span>,
-            <span>
-              Teaching Assistant for <i>CSC 4992: Python Programming</i>
-            </span>,
-            <span>
-              Teaching Assistant for{" "}
+              Teaching Assistant for <i>Introduction to Deep Learning</i>{" "}
+              (Tensorflow), <i>Data Mining: Algorithms and Applications</i>{" "}
+              (Python, R)
+              {", "}
+              <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka){", "}
+              <i>Python Programming</i> (Python){", "}
               <i>
-                BE 1500: Introduction to Programming and Computation for
-                Engineers
+                Introduction to Programming and Computation for Engineers
               </i>{" "}
-              (MATLAB) for 3 terms
+              (MATLAB)
             </span>,
             <span>
-              Instructor for{" "}
-              <i>CSC1101: Problem Solving and Programming Laboratory</i> (C++)
+              Instructor for <i>Problem Solving and Programming Laboratory</i>{" "}
+              (C++)
             </span>,
           ]}
         />
