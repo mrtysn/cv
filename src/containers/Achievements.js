@@ -4,10 +4,6 @@ import SectionTitle from "../components/SectionTitle";
 
 const items = [
   <span>
-    Running, cooking, cycling, swimming, playing the guitar, playing video
-    games, developing video games, <i>learning to learn</i>
-  </span>,
-  <span>
     <a
       href="https://twitter.com/mertyas_in/status/1479888082598084613"
       target="_blank"
@@ -38,16 +34,20 @@ const items = [
     – 01/2022
   </span>,
   <span>
-    Co-founded the volunteer alumni community{" "}
+    Co-founded the volunteer alumni community Boğaziçi University International
+    Community{" "}
     <a
       href="https://web.archive.org/web/20231005025306/https://boyutbogazici.org/en/about-boyut-2/"
       target="_blank"
       rel="noopener noreferrer"
     >
-      BOYUT (Boğaziçi University International Community)
+      (BOYUT)
     </a>{" "}
-    with the aim of supporting institutional autonomy and academic freedom in
-    every university and particularly in Boğaziçi University – 01/2021
+    – 01/2021
+  </span>,
+  <span>
+    Running, cooking, cycling, swimming, playing guitar, playing video games,
+    developing video games, <i>learning to learn</i>
   </span>,
   "Languages: Turkish (Native), English (Fluent), Macedonian (Pre-Intermediate), Dutch (Beginner)",
 ];

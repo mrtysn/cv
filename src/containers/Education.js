@@ -23,25 +23,22 @@ class Education extends React.Component {
           startDate={"2018"}
           endDate={"2021"}
           items={[
+            <div>Successfully passed Ph.D. Qualifying Exam – 2020</div>,
             <div>
-              Successfully passed the <b>Ph.D. Qualifying Exam</b> in November
-              2020: Research project titled
-              <i>
-                'Early Seizure Detection of the Neonatal Brain Using
-                Electroencephalography Data'
-              </i>{" "}
-              employed techniques such as structural & functional brain network
-              analysis, EEG data preprocessing, artifact removal, and temporal &
-              spectral examination through deep learning & wavelet-based
-              methodologies.
-            </div>,
-            <div>
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Research project:</b>
-              &nbsp;&nbsp;Disease subtyping using genomic and clinical data.
-              Identifying cancer subtypes via data mining and machine learning
-              methodologies. Integrating existing datasets from multiple cohorts
-              to better understand the cancer subtypes. Transfer learning
-              between different cancer types.
+              Research Projects:
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;
+                <i>Early seizure detection in neonatal brains with EEG data</i>,
+                using structural & functional brain network models, and deep
+                learning & wavelet-based methodologies to perform temporal &
+                spectral analyses
+              </div>
+              <div style={{ marginTop: "5px", marginBottom: "10px" }}>
+                {"◦"}&nbsp;&nbsp;
+                <i>Disease subtyping using genomic and clinical data</i>,
+                integrating datasets from multiple cohorts, and identifying
+                cancer subtypes via data mining and machine learning
+              </div>
             </div>,
           ]}
           relevantItems={[
@@ -56,7 +53,6 @@ class Education extends React.Component {
             "CSC 8260: Seminar in Energy Efficient Mobile/Cloud Computing",
             "CSC 5591: Engineering Innovation and Entrepreneurship",
             "CSC 5430: Game Programming & Design",
-            "CSC 5431: Game Programming & Design Lab",
             "CSC 5591: Unix Security with Shell Programming",
           ]}
         />
@@ -83,11 +79,11 @@ class Education extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                deep-learning @ boun
+                Deep Learning Boun
               </a>
             </span>,
             <span>
-              Student assistant for{" "}
+              Prepared and graded homework as a Student Assistant for{" "}
               <a
                 href="https://www.cmpe.boun.edu.tr/courses/cmpe300"
                 target="_blank"
@@ -95,38 +91,36 @@ class Education extends React.Component {
               >
                 CmpE 300: Analysis of Algorithms
               </a>
-              . Prepared and graded homework questions
             </span>,
             <span>
-              Attended the meetings of the convex-optimization reading group of
+              Attended the meetings of the Convex Optimization Reading Group of
               the{" "}
               <a
                 href="https://www.cmpe.boun.edu.tr/perceptual-intelligence-laboratory-pilab"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Perceptual Intelligence Laboratory (PILAB)
+                Perceptual Intelligence Lab
               </a>
             </span>,
             <span>
-              Invited speaker at the event{" "}
+              Spoke at{" "}
               <a
                 href="https://www.eventbrite.com/e/garaj-ama-machinelearning-tickets-30715371503"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Ask Me Anything #machinelearning
-              </a>
-            </span>,
-            <span>
-              Invited speaker at the panel{" "}
+              </a>{" "}
+              and the{" "}
               <a
                 href="https://www.facebook.com/events/1853350238248699/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Learning to Learn
-              </a>
+              </a>{" "}
+              panel
             </span>,
           ]}
           relevantItems={[
@@ -163,17 +157,10 @@ class Education extends React.Component {
           endDate={"08/2016"}
           items={[
             <span>
-              <a
-                href="http://cmp.felk.cvut.cz/summerschool2016/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                VS3
-              </a>
-              : A summer school that covers state-of-the-art computer vision
-              applications and recently published conference papers as well as
-              various sports activities – archery, orienteering, climbing,
-              ultimate frisbee, floorball (unihockey)
+              Attended a summer school that covers state-of-the-art computer
+              vision applications and recent literature in addition to
+              team-building sports activities such as archery, orienteering,
+              climbing, ultimate frisbee, and unihockey
             </span>,
           ]}
         />
@@ -195,20 +182,19 @@ class Education extends React.Component {
           items={[
             <span>Honors: Dean’s Honor List; GPA: 3.28 / 4.00</span>,
             <span>
-              <b style={{ color: "rgba(0,0,0,.87)" }}>Bachelor Thesis:</b>{" "}
+              Coded recurrent neural networks (RNNs and LSTMs) in Python from
+              scratch and generated new poems, plays in the style of William
+              Shakespeare and Nazım Hikmet for my{" "}
               <a
                 href="https://github.com/mrtysn/lstm"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Learning Sequences Using RNNs and LSTMs
+                Bachelor Thesis
               </a>
-              . Deep poem generation similar to the style of a poet. Step by
-              step activation analysis of LSTM cells' gates
             </span>,
             <span>
-              Ranked 1<sup>st</sup> in the operations round of the case study
-              competition{" "}
+              Ranked 1<sup>st</sup> in the case study competition{" "}
               <a
                 href="https://www.facebook.com/media/set/?set=a.1030521643670821"
                 target="_blank"
@@ -251,7 +237,7 @@ class Education extends React.Component {
             </a>
           }
           location={"İzmir, Turkey"}
-          jobTitle={"Private Anatolian High School"}
+          jobTitle={"High School"}
           startDate={"2008"}
           endDate={"2012"}
           items={[
@@ -267,11 +253,11 @@ class Education extends React.Component {
               – 2011
             </span>,
             <span>
-              Team captain of İzmir Gelişim College’s 1<sup>st</sup> and 2
-              <sup>nd</sup> Mathematics League winning team – 2011 & 2012
+              Led the winning team at İzmir Gelişim College’s Mathematics League
+              – 2011 & 2012
             </span>,
             <span>
-              University of Waterloo – Fermat, Hypatia, and Senior{" "}
+              Won two medals at University of Waterloo's{" "}
               <a
                 href="https://www.cemc.uwaterloo.ca/contests/past_contests.html"
                 target="_blank"
@@ -279,21 +265,18 @@ class Education extends React.Component {
               >
                 math contests
               </a>{" "}
-              – two medals and several honor rolls – 2011 & 2012
+              – 2011 & 2012
             </span>,
             <span>
-              Participated in American Mathematics Competition{" "}
+              Participated in{" "}
               <a
                 href="https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                AMC12B
+                American Mathematics Competition
               </a>{" "}
-              – 2011 & 2012
-            </span>,
-            <span>
-              Participated in{" "}
+              and{" "}
               <a
                 href="http://matolimp.akdeniz.edu.tr/"
                 target="_blank"
