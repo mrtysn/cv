@@ -248,17 +248,24 @@ class Experience extends React.Component {
           jobTitle={"Machine Learning Consultant"}
           startDate={"12/2016"}
           endDate={"01/2017"}
-          description={
-            <span>
+          items={[
+            <div>
               Planned roadmaps for machine learning projects, collaborating with
               data warehouse and analytics teams to prepare training data and
               structure base models for preliminary predictions
-            </span>
-          }
-          items={[
-            "Predictive maintenance of automated teller machines (ATMs)",
-            "Credit limit prediction of potential customers and credit limit management of current customers",
-            "Net promoter score (NPS) prediction of customers",
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Predictive maintenance of automated teller
+                machines (ATMs)
+              </div>
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Credit limit prediction of potential customers
+                and credit limit management of current customers
+              </div>
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Net promoter score (NPS) prediction of
+                customers
+              </div>
+            </div>,
           ]}
         />
         <SectionItem
