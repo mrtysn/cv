@@ -154,7 +154,7 @@ class Education extends React.Component {
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
             >
-              Vision and Sports Summer School (VS3) – 2016
+              Vision and Sports Summer School (VS3)
             </a>
           }
           endDate={"08/2016"}
