@@ -28,16 +28,19 @@ class Education extends React.Component {
               Research Projects:
               <div style={{ marginTop: "5px" }}>
                 {"◦"}&nbsp;&nbsp;
-                <i>Early seizure detection in neonatal brains with EEG data</i>,
+                <i>
+                  Early seizure detection in neonatal brains with EEG data;
+                </i>{" "}
                 using structural & functional brain network models, and deep
                 learning & wavelet-based methodologies to perform temporal &
                 spectral analyses
               </div>
               <div style={{ marginTop: "5px", marginBottom: "10px" }}>
                 {"◦"}&nbsp;&nbsp;
-                <i>Disease subtyping using genomic and clinical data</i>,
+                <i>Disease subtyping using genomic and clinical data;</i>{" "}
                 integrating datasets from multiple cohorts, and identifying
-                cancer subtypes via data mining and machine learning
+                cancer subtypes via bioinformatics, data mining, and machine
+                learning
               </div>
             </div>,
           ]}
@@ -157,10 +160,10 @@ class Education extends React.Component {
           endDate={"08/2016"}
           items={[
             <span>
-              Attended a summer school that covers state-of-the-art computer
-              vision applications and recent literature in addition to
-              team-building sports activities such as archery, orienteering,
-              climbing, ultimate frisbee, and unihockey
+              Attended a summer school focused on state-of-the-art Computer
+              Vision applications in the industry and recent literature, with
+              team-building activities such as ultimate frisbee, orienteering,
+              climbing, archery, and unihockey
             </span>,
           ]}
         />
@@ -182,9 +185,9 @@ class Education extends React.Component {
           items={[
             <span>Honors: Dean’s Honor List; GPA: 3.28 / 4.00</span>,
             <span>
-              Coded recurrent neural networks (RNNs and LSTMs) in Python from
-              scratch and generated new poems, plays in the style of William
-              Shakespeare and Nazım Hikmet for my{" "}
+              Implemented recurrent neural networks (RNNs and LSTMs) in Python
+              from scratch and generated new poems, plays in the style of
+              William Shakespeare and Nazım Hikmet for my{" "}
               <a
                 href="https://github.com/mrtysn/lstm"
                 target="_blank"
@@ -211,7 +214,7 @@ class Education extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                5. Finance and Software Days
+                5<sup>th</sup> Finance and Software Days
               </a>{" "}
               Code Contest – 2014
             </span>,
