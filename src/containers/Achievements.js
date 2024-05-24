@@ -34,7 +34,7 @@ const items = [
     – 01/2022
   </span>,
   <span>
-    Co-founded the volunteer alumni community Boğaziçi University International
+    Co-founded the volunteer alumni community, Boğaziçi University International
     Community{" "}
     <a
       href="https://web.archive.org/web/20231005025306/https://boyutbogazici.org/en/about-boyut-2/"

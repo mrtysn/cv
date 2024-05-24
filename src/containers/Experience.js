@@ -190,6 +190,41 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
+              href="http://federation.com.tr/project/ing-orange-lab"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              ING Bank - OrangeLab
+            </a>
+          }
+          location={"İstanbul, Turkey"}
+          jobTitle={"Machine Learning Consultant"}
+          startDate={"12/2016"}
+          endDate={"01/2017"}
+          items={[
+            <div>
+              Planned roadmaps for machine learning projects, collaborating with
+              data warehouse and analytics teams to prepare training data and
+              structure base models for preliminary predictions
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Predictive maintenance of automated teller
+                machines (ATMs)
+              </div>
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Credit limit prediction of potential customers
+                and credit limit management of current customers
+              </div>
+              <div style={{ marginTop: "5px" }}>
+                {"◦"}&nbsp;&nbsp;Net promoter score (NPS) prediction of
+                customers
+              </div>
+            </div>,
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
               href="https://www.novafortis.com.tr/"
               target="_blank"
               rel="noopener noreferrer"
@@ -236,41 +271,6 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="http://federation.com.tr/project/ing-orange-lab"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(0,0,0,.87)" }}
-            >
-              ING Bank - OrangeLab
-            </a>
-          }
-          location={"İstanbul, Turkey"}
-          jobTitle={"Machine Learning Consultant"}
-          startDate={"12/2016"}
-          endDate={"01/2017"}
-          items={[
-            <div>
-              Planned roadmaps for machine learning projects, collaborating with
-              data warehouse and analytics teams to prepare training data and
-              structure base models for preliminary predictions
-              <div style={{ marginTop: "5px" }}>
-                {"◦"}&nbsp;&nbsp;Predictive maintenance of automated teller
-                machines (ATMs)
-              </div>
-              <div style={{ marginTop: "5px" }}>
-                {"◦"}&nbsp;&nbsp;Credit limit prediction of potential customers
-                and credit limit management of current customers
-              </div>
-              <div style={{ marginTop: "5px" }}>
-                {"◦"}&nbsp;&nbsp;Net promoter score (NPS) prediction of
-                customers
-              </div>
-            </div>,
-          ]}
-        />
-        <SectionItem
-          companyTitle={
-            <a
               href="https://www.peak.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -285,9 +285,9 @@ class Experience extends React.Component {
           endDate={"09/2015"}
           items={[
             <span>
-              Designed and implemented four Unity3D games (Color Rush, Paper
-              Dreams, Car Crossing, Tap to Aim) using open-source assets and
-              creating new prefabs from scratch
+              Designed and implemented four 2D & 3D games (Color Rush, Paper
+              Dreams, Car Crossing, Tap to Aim) using open-source assets, and
+              creating new models from scratch in Unity3D
             </span>,
             <span>
               Built and monetized the gamification infrastructure for{" "}
@@ -302,7 +302,7 @@ class Experience extends React.Component {
               with interstitial video ads
             </span>,
             <span>
-              Added internationalization and localization support for Peak Box
+              Added localization support and multiple translations to Peak Box
             </span>,
           ]}
         />
