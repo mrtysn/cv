@@ -280,14 +280,14 @@ class Experience extends React.Component {
             </a>
           }
           location={"İstanbul, Turkey"}
-          jobTitle={<span>Software Engineer, Intern</span>}
+          jobTitle={"Game Developer, Intern"}
           startDate={"06/2015"}
           endDate={"09/2015"}
           items={[
             <span>
-              Designed and implemented four 2D & 3D games (Color Rush, Paper
-              Dreams, Car Crossing, Tap to Aim) using open-source assets, and
-              creating new models from scratch in Unity3D
+              Designed and implemented four 2D & 3D hypercasual games (Color
+              Rush, Paper Dreams, Car Crossing, Tap to Aim) using open-source
+              assets, and creating new models from scratch in Unity3D
             </span>,
             <span>
               Built and monetized the gamification infrastructure for{" "}
