@@ -12,7 +12,17 @@ export class SkillRow extends React.Component {
           className={"colorSkillTitle"}
           id={this.props.isNarrow ? "narrowSkillTitle" : ""}
         >
-          {this.props.title}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "end",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            {this.props.title}
+          </div>
         </Grid.Column>
         <Grid.Column width={this.props.dataColumnWidth}>
           {this.props.items ? (
