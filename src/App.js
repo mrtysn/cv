@@ -13,9 +13,9 @@ function App() {
     <Container text>
       <Divider hidden style={{ marginTop: 10 }} className="hideFromPrint" />
       <Header />
-      <Skills />
       <Experience />
       <Education />
+      <Skills />
       <Achievements />
       <Footer />
       <Divider hidden style={{ marginTop: 10 }} className="hideFromPrint" />
