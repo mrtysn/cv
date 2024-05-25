@@ -12,12 +12,14 @@
 
 On the root folder of the project, run
 
+- `pnpm install`
 - `pnpm run start`
 
 ### 🛠️ How to deploy to GitHub Pages
 
 On the root folder of the project, run
 
+- `pnpm install`
 - `pnpm run predeploy`
 - `pnpm run deploy`
 
@@ -25,7 +27,7 @@ On the root folder of the project, run
 
 - 👨‍💻 If you are working on a local copy
 
-  - Run `pnpm run start`
+  - Run `pnpm install` and `pnpm run start`
   - Visit [localhost:3000](http://localhost:3000) (where the app is running)
 
 - 🌐 If you already deployed
