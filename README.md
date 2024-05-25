@@ -1,45 +1,40 @@
 ### 📝 CV
 
-- CV of Mert Yaşin as a single page React application
-
-[![CV Preview](cv-preview.gif)](https://mrtysn.github.io/cv/)
+- A CV template from Mert Yaşin designed from scratch using Semantic UI and React
 
 ### 🔗 Online Demo
 
 - Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
-### 🖨️ How to create a PDF locally
+  [![CV Preview](cv-preview.gif)](https://mrtysn.github.io/cv/)
 
-- Start the project in development mode with `yarn start`
+### 💻 How to run locally
 
-- Go to http://localhost:3000 on Google Chrome
+On the root folder of the project, run
 
-- Remove the margins at the top and the bottom of the page manually (i.e. delete divider elements)
-
-- Open the print dialog
-
-- Set A4 as the page size
-
-- Enable "background graphics"
-
-- Save as PDF
+- `pnpm run start`
 
 ### 🛠️ How to deploy to GitHub Pages
 
-<!-- wrap in code block -->
+On the root folder of the project, run
+
 - `pnpm run predeploy`
 - `pnpm run deploy`
 
-### 🖨️ How to create a PDF online
+### 🖨️ How to create a PDF
 
-- Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/) on Google Chrome
+- 👨‍💻 If you are working on a local copy
 
-- Remove the margins at the top and the bottom of the page manually (i.e. delete divider elements)
+  - Run `pnpm run start`
+  - Visit [localhost:3000](http://localhost:3000) (where the app is running)
 
-- Open the print dialog
+- 🌐 If you already deployed
 
-- Set A4 as the page size
+  - Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/) (where you deployed it)
 
-- Enable "background graphics"
-
-- Save as PDF
+- Open the print dialog by hitting `ctrl + P`
+  - Set margins to custom. Set the top padding to `0.19 inches` inches and the rest to `0 inches`. This is (unfortunately) necessary to get the text to align properly while dealing with CSS and the browser print dialog
+  - 📃 Set `A4` as the page size
+  - 🎨 Enable `background graphics` so you get that nice accent color
+  - 🖨️ Save as PDF
+  - 📤 Remember to properly _rename the document_ before sending it out!
