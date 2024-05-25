@@ -4,10 +4,6 @@ import SectionTitle from "../components/SectionTitle";
 
 const items = [
   <span>
-    Running, cycling, swimming, cooking, playing the guitar, playing video
-    games, developing video games, <i>learning to learn</i>
-  </span>,
-  <span>
     <a
       href="https://twitter.com/mertyas_in/status/1479888082598084613"
       target="_blank"
@@ -38,20 +34,22 @@ const items = [
     – 01/2022
   </span>,
   <span>
-    Co-founded the volunteer alumni community{" "}
+    Co-founded the volunteer alumni community, Boğaziçi University International
+    Community{" "}
     <a
       href="https://web.archive.org/web/20231005025306/https://boyutbogazici.org/en/about-boyut-2/"
       target="_blank"
       rel="noopener noreferrer"
     >
-      BOYUT (Boğaziçi University International Community)
+      (BOYUT)
     </a>{" "}
-    with the aim of supporting institutional autonomy and academic freedom in
-    every university and particularly in Boğaziçi University – 01/2021
+    – 01/2021
   </span>,
-  "TOEFL: 107; Reading: 28, Listening: 28, Speaking: 24, Writing: 27 – 04/2018",
-  "TOEFL: 108; Reading: 26, Listening: 30, Speaking: 26, Writing: 26 – 10/2015",
-  "GRE; Quantitative Reasoning: 168, Verbal Reasoning: 146, Analytical Writing: 3.0 – 10/2015",
+  <span>
+    Running, cooking, cycling, swimming, playing guitar, playing video games,
+    developing video games, <i>learning to learn</i>
+  </span>,
+  "Languages: Turkish (Native), English (Fluent), Macedonian (Pre-Intermediate), Dutch (Beginner)",
 ];
 
 class Achievements extends React.Component {

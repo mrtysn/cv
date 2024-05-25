@@ -21,8 +21,13 @@ function Skills() {
         <SkillRow
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
-          title="data science"
-          items={["Python; TensorFlow, Keras, PyTorch", "MATLAB", "R"]}
+          title="game-dev & mobile"
+          items={[
+            "Unity3D; C#",
+            "Godot; GDScript",
+            "Android; Java",
+            "React Native",
+          ]}
           isNarrow={isNarrow}
         />
         <SkillRow
@@ -32,27 +37,23 @@ function Skills() {
           items={[
             "Deep Learning",
             "Computer Vision",
-            "NLP",
-            "CNNs",
-            "RNNs",
-            "GANs",
+            "Natural Language Processing",
+            "Recurrent Neural Networks",
             "Transfer Learning",
             "Reinforcement Learning",
+            "Bioinformatics",
             "Digital Signal Processing",
-            "Feature Extraction",
-            "Probability & Statistics",
           ]}
           isNarrow={isNarrow}
         />
         <SkillRow
           titleColumnWidth={titleColumnWidth}
           dataColumnWidth={dataColumnWidth}
-          title="mobile"
+          title="data science"
           items={[
-            "Android; Java",
-            "Unity3D; C#",
-            "Godot; GDScript",
-            "React Native",
+            "Python; TensorFlow, Keras, PyTorch, NumPy, Pandas",
+            "MATLAB",
+            "R",
           ]}
           isNarrow={isNarrow}
         />
@@ -62,18 +63,10 @@ function Skills() {
           title="front-end"
           items={[
             "React.js",
-            "React Router",
+            "Angular",
             "Next.js",
-            "MobX",
-            "Material UI",
-            "styled-components",
-            "Tailwind CSS",
-            "Chakra UI",
-            "Semantic UI",
-            "Three.js",
-            "AngularJS",
-            "Server Side Rendering",
-            "PWA",
+            "MobX, Easy Peasy",
+            "Material UI, Semantic UI, Tailwind CSS",
           ]}
           isNarrow={isNarrow}
         />
@@ -85,16 +78,14 @@ function Skills() {
             "NestJS",
             "Node.js",
             "TypeScript",
-            "Django; Django REST",
+            "Python; Django, Flask",
             "Java; Spring",
-            "ASP.NET MVC C#",
-            "Apache",
-            "nginx",
+            "ASP.NET",
+            "MongoDB, PostgreSQL, MySQL",
             "Redis",
-            "RabbitMQ",
-            "PostgreSQL",
-            "MySQL",
-            "MongoDB",
+            "BullMQ, RabbitMQ",
+            "Jaeger, New Relic",
+            "Swagger",
           ]}
           isNarrow={isNarrow}
         />
@@ -103,19 +94,11 @@ function Skills() {
           dataColumnWidth={dataColumnWidth}
           title="dev-ops"
           items={[
-            "AWS; EC2, ECS, S3, Lambda, VPC",
+            "AWS; EC2, ECS, S3, Lambda, Step Functions, DynamoDB",
             "Terraform, CDKTF",
-            "Heroku",
             "Docker",
-            "Jenkins",
+            "Heroku",
           ]}
-          isNarrow={isNarrow}
-        />
-        <SkillRow
-          titleColumnWidth={titleColumnWidth}
-          dataColumnWidth={dataColumnWidth}
-          title="game-dev"
-          items={["Unity3D; C#", "Godot; GDScript"]}
           isNarrow={isNarrow}
         />
         <SkillRow
@@ -123,13 +106,6 @@ function Skills() {
           dataColumnWidth={dataColumnWidth}
           title="others"
           items={["Prolog", "Perl", "LaTeX", "Arch Linux", "WSL 2", "Git"]}
-          isNarrow={isNarrow}
-        />
-        <SkillRow
-          titleColumnWidth={titleColumnWidth}
-          dataColumnWidth={dataColumnWidth}
-          title="languages"
-          items={["Turkish", "English", "German", "Macedonian", "Dutch"]}
           isNarrow={isNarrow}
         />
       </Grid>

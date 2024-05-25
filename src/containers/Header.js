@@ -12,8 +12,7 @@ export default function MyHeader() {
         Mert Yaşin
       </Header>
       <div style={{ textAlign: "center" }} className="px14">
-        Computer Science PhD Candidate &nbsp;&nbsp;{"•"}&nbsp;&nbsp; Senior
-        Computer Engineer
+        Senior Software Engineer
       </div>
 
       <div
@@ -26,8 +25,6 @@ export default function MyHeader() {
         className={"px12"}
       >
         <span>+90 538 470 03 93</span>
-        &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
-        <span>+1 312 934 6883</span>
         &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
         <a
           href="mailto:mert.yasin@gmail.com"
@@ -53,7 +50,7 @@ export default function MyHeader() {
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          LinkedIn
+          linkedin
         </a>
       </div>
     </div>
