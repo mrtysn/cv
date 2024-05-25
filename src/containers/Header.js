@@ -41,7 +41,7 @@ export default function MyHeader() {
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          github.com/mrtysn
+          github/mrtysn
         </a>
         &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
         <a
@@ -50,7 +50,7 @@ export default function MyHeader() {
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          linkedin
+          linkedin/mert-yasin
         </a>
       </div>
     </div>

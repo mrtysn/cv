@@ -96,18 +96,17 @@ class Education extends React.Component {
               </a>
             </span>,
             <span>
-              Attended the meetings of the Convex Optimization Reading Group of
-              the{" "}
+              Attended the Convex Optimization reading group of the{" "}
               <a
                 href="https://www.cmpe.boun.edu.tr/perceptual-intelligence-laboratory-pilab"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Perceptual Intelligence Lab
+                Perceptual Intelligence Laboratory
               </a>
             </span>,
             <span>
-              Spoke at{" "}
+              Spoke at the{" "}
               <a
                 href="https://www.eventbrite.com/e/garaj-ama-machinelearning-tickets-30715371503"
                 target="_blank"
@@ -115,7 +114,7 @@ class Education extends React.Component {
               >
                 Ask Me Anything #machinelearning
               </a>{" "}
-              and the{" "}
+              event and the{" "}
               <a
                 href="https://www.facebook.com/events/1853350238248699/"
                 target="_blank"
