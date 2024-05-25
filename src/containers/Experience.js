@@ -230,7 +230,7 @@ class Experience extends React.Component {
               rel="noopener noreferrer"
               style={{ color: "rgba(0,0,0,.87)" }}
             >
-              Novafortis Software Counseling
+              Novafortis Software Consulting
             </a>
           }
           location={"İzmir, Turkey"}
