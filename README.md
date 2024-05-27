@@ -13,11 +13,23 @@ A minimalistic CV / Resume template for academic and professional use, designed 
 - [💻 How to Run Locally](#-how-to-run-locally)
 - [🛠️ How to Deploy to GitHub Pages](#%EF%B8%8F-how-to-deploy-to-github-pages)
 - [🖨️ How to Create a PDF](#%EF%B8%8F-how-to-create-a-pdf)
-- [🎨 How to Customize the CV for yourself](#customize)
-- [🐌 Does a CV Need to be a Bloated Web Application?](#why)
+- [🎨 How to Customize the CV for yourself](#-how-to-customize-the-cv-for-yourself)
+- [🐌 Does a CV Need to be a Bloated Web Application?](#-does-a-cv-need-to-be-a-bloated-web-application)
 - [🙌 How to Contribute](#-how-to-contribute)
 
+### Documentation
+
+- [💻 How to Run Locally](#run)
+- [🛠️ How to Deploy to GitHub Pages](#deploy)
+- [🖨️ How to Create a PDF](#create-pdf)
+- [🎨 How to Customize the CV for yourself ZERO](#customize0)
+- [🎨 How to Customize the CV for yourself](#customize)
+- [🐌 Does a CV Need to be a Bloated Web Application?](#why)
+- [🙌 How to Contribute](#contribute)
+
 ### 💻 How to Run Locally
+
+## <a name="run"></a>
 
 On the root folder of the project, run:
 
@@ -26,6 +38,8 @@ On the root folder of the project, run:
 - Visit [localhost:3000](http://localhost:3000)
 
 ### 🛠️ How to Deploy to GitHub Pages
+
+## <a name="deploy"></a>
 
 Make sure your GitHub repository is properly configured for GitHub Pages:
 
@@ -42,6 +56,8 @@ On the root folder of the project, run:
 - Visit [{your-username}.github.io/cv](https://mrtysn.github.io/cv/)
 
 ### 🖨️ How to Create a PDF
+
+## <a name="create-pdf"></a>
 
 - 👨‍💻 If you are working locally on your computer
 
@@ -60,7 +76,11 @@ On the root folder of the project, run:
   - 💾 Set the `destination` to `Save as PDF`, and save
   - 📤 Remember to properly _rename the document_ before sending it out!
 
-### <a name="customize">🎨 How to Customize the CV for yourself</a>
+## <a name="customize0"></a>
+
+### 🎨 How to Customize the CV for yourself
+
+## <a name="customize"></a>
 
 - ⤴️ Fork the repository to your own account.
 
@@ -98,7 +118,9 @@ On the root folder of the project, run:
 - Check the `constants.js` file if you are using the `Footer` component, to properly date and version your CV. Remember this will be an always-updating document throughout your career and it's very useful to keep everything in check.
 - _Tip:_ You can maintain multiple versions of your CV for different job titles through separate git branches. Versioning also helps keep track of your applications since you would know which variant you applied with.
 
-### <a name="why"></a>🐌 Does a CV Need to be a Bloated Web Application?
+### 🐌 Does a CV Need to be a Bloated Web Application?
+
+## <a name="why"></a>
 
 No, it doesn't. What could be a simple document is transformed into a much larger package with this project. However, after finalizing your resume, there are ways to minimize the end result:
 
@@ -108,6 +130,8 @@ No, it doesn't. What could be a simple document is transformed into a much large
 For individuals versed in web development, this serves as an intuitive method to efficiently generate, update, and distribute a CV.
 
 ### 🙌 How to Contribute
+
+## <a name="contribute"></a>
 
 First of all, how kind of you 🤗
 
