@@ -1,6 +1,6 @@
-### 📝 Curriculum Vitae (CV)
+### 📝 Curriculum Vitae (CV) Template
 
-A CV template designed from scratch using Semantic UI and React, by Mert Yaşin 🪁
+A minimalistic CV / Resume template for academic and professional use, designed with React and Semantic UI by Mert Yaşin
 
 ### 🔗 Online Demo
 
@@ -37,7 +37,7 @@ On the root folder of the project, run
   - Visit [{your-username}.github.io/cv](https://mrtysn.github.io/cv/) (where you deployed it)
 
 - 🖨️ Open the print dialog by hitting `ctrl/cmd + P` on your keyboard or by right clicking the web page
-  - 🖊️ Set `margins` to `custom`. Set the top padding to `0.19 inches` inches and the rest to `0 inches`. This is (unfortunately) necessary to get the text to align properly while dealing with CSS and the browser print dialog
+  - 🖊️ Set `margins` to `custom`. Manually, set the top and bottom margins to around `0.19 inches` inches and the rest to `0`. This is (unfortunately) necessary to get the text to align properly while dealing with CSS and the browser print dialog.
   - 🖌️ Disable `headers and footers`
   - 🧹 Enable `background graphics` so you get that nice accent color
   - 📃 Set `page size` to `A4`
@@ -88,12 +88,12 @@ First of all, how kind of you 🤗
 You can
 
 - ↩️ Raise issues and send pull requests via GitHub
-- ⭐ Star this project on Github
+- ⭐ Star this project on GitHub
 
 You might
 
 - 🗣️ Tell your friends and co-workers about your new CV
-- 💭 Talk about this _CV with code_ on social media
+- 💭 Talk about this CV/resume template on social media
 
 You are welcome to
 
