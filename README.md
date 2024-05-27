@@ -8,6 +8,15 @@ A minimalistic CV / Resume template for academic and professional use, designed 
 
   [![CV Preview](cv-preview.gif)](https://mrtysn.github.io/cv/)
 
+### Documentation
+
+- [💻 How to Run Locally](#-how-to-run-locally)
+- [🛠️ How to Deploy to GitHub Pages](#%EF%B8%8F-how-to-deploy-to-github-pages)
+- [🖨️ How to Create a PDF](#%EF%B8%8F-how-to-create-a-pdf)
+- [🎨 How to Customize the CV for yourself](#customize)
+- [🐌 Does a CV Need to be a Bloated Web Application?](#why)
+- [🙌 How to Contribute](#-how-to-contribute)
+
 ### 💻 How to Run Locally
 
 On the root folder of the project, run:
@@ -51,7 +60,7 @@ On the root folder of the project, run:
   - 💾 Set the `destination` to `Save as PDF`, and save
   - 📤 Remember to properly _rename the document_ before sending it out!
 
-### 🎨 How to Customize the CV for _yourself_
+### <a name="customize">🎨 How to Customize the CV for yourself</a>
 
 - ⤴️ Fork the repository to your own account.
 
@@ -89,7 +98,7 @@ On the root folder of the project, run:
 - Check the `constants.js` file if you are using the `Footer` component, to properly date and version your CV. Remember this will be an always-updating document throughout your career and it's very useful to keep everything in check.
 - _Tip:_ You can maintain multiple versions of your CV for different job titles through separate git branches. Versioning also helps keep track of your applications since you would know which variant you applied with.
 
-### ❔ Does a CV Need to be a Bloated Web Application?
+### <a name="why"></a>🐌 Does a CV Need to be a Bloated Web Application?
 
 No, it doesn't. What could be a simple document is transformed into a much larger package with this project. However, after finalizing your resume, there are ways to minimize the end result:
 
