@@ -2,7 +2,7 @@
 
 A minimalistic CV / Resume template for academic and professional use, designed with React and Semantic UI by Mert Yaşin
 
-### 🔗 Online Demo
+### 🔗 GitHub Pages Demo
 
 - Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
@@ -10,7 +10,7 @@ A minimalistic CV / Resume template for academic and professional use, designed 
 
 ### 💻 How to Run Locally
 
-On the root folder of the project, run
+On the root folder of the project, run:
 
 - `pnpm install`
 - `pnpm run start`
@@ -18,7 +18,14 @@ On the root folder of the project, run
 
 ### 🛠️ How to Deploy to GitHub Pages
 
-On the root folder of the project, run
+Make sure your GitHub repository is properly configured for GitHub Pages:
+
+- Set `source` to `deploy from branch`
+- Set `branch` to `gh-pages`
+- Set `folder` to `/ (root)`
+- Update the `homepage` URL in `package.json` with your GitHub username
+
+On the root folder of the project, run:
 
 - `pnpm install`
 - `pnpm run predeploy`
@@ -78,8 +85,18 @@ On the root folder of the project, run
 - You have complete control of the layout. I found text editors to be insufficient for my margin and padding needs, that's why I built this. ✨ Style as you wish ✨, or keep it as it is.
 - Most of the styling is handled by `Semantic UI` and `App.css`. However, you'll find custom in-line stylings and one-off CSS classes in the code. _CSS in code_ is not ideal, but it's sometimes the fastest to iterate with.
 - If your styling changes fail due to a conflict with `Semantic UI`, the `!important` flag is (sometimes) your friend.
+- Don't forget to update the `homepage` URL in `package.json` with your GitHub username if you want to deploy this web application to `GitHub Pages`.
 - Check the `constants.js` file if you are using the `Footer` component, to properly date and version your CV. Remember this will be an always-updating document throughout your career and it's very useful to keep everything in check.
 - _Tip:_ You can maintain multiple versions of your CV for different job titles through separate git branches. Versioning also helps keep track of your applications since you would know which variant you applied with.
+
+### ❔ Does a CV Need to be a Bloated Web Application?
+
+No, it doesn't. What could be a simple document is transformed into a much larger package with this project. However, after finalizing your resume, there are ways to minimize the end result:
+
+- You can render the React application into static `HTML`. This minified version (around 50-300KB) can be deployed on the web or used as a document.
+- You can save the webpage as a `PDF`, which can be further compressed using mainstream PDF editor tools, reducing it from around 1MB to 700KB.
+
+For individuals versed in web development, this serves as an intuitive method to efficiently generate, update, and distribute a CV.
 
 ### 🙌 How to Contribute
 
@@ -87,7 +104,8 @@ First of all, how kind of you 🤗
 
 You can
 
-- ↩️ Raise issues and send pull requests via GitHub
+- 💯 Make suggestions and report problems through GitHub issues
+- ↩️ Send pull requests via GitHub
 - ⭐ Star this project on GitHub
 
 You might
