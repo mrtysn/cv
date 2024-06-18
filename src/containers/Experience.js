@@ -98,40 +98,6 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
-              href="https://wayne.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(0,0,0,.87)" }}
-            >
-              Wayne State University
-            </a>
-          }
-          location={"Michigan, United States"}
-          jobTitle={"Instructor, Graduate Teaching Assistant"}
-          startDate={"08/2018"}
-          endDate={"05/2021"}
-          items={[
-            <span>
-              Instructor for <i>Problem Solving and Programming Laboratory</i>{" "}
-              (C++)
-            </span>,
-            <span>
-              Teaching Assistant for <i>Introduction to Deep Learning</i>{" "}
-              (Tensorflow), <i>Data Mining: Algorithms and Applications</i>{" "}
-              (Python, R)
-              {", "}
-              <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka){", "}
-              <i>Python Programming</i> (Python){", "}
-              <i>
-                Introduction to Programming and Computation for Engineers
-              </i>{" "}
-              (MATLAB)
-            </span>,
-          ]}
-        />
-        <SectionItem
-          companyTitle={
-            <a
               href="https://web.archive.org/web/20190501133923/http://appliedai.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -266,71 +232,6 @@ class Experience extends React.Component {
           items={[
             "Developed 12+ Android (Java) applications to enhance shoppers' mall experiences, including CMS support for promoting mall events and campaigns, sending push notifications, and managing brand loyalty programs",
             "Implemented indoor location detection and navigation using Bluetooth Low Energy (BLE) beacons in shopping malls",
-          ]}
-        />
-        <SectionItem
-          companyTitle={
-            <a
-              href="https://www.peak.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(0,0,0,.87)" }}
-            >
-              Peak Games
-            </a>
-          }
-          location={"İstanbul, Turkey"}
-          jobTitle={"Game Developer, Intern"}
-          startDate={"06/2015"}
-          endDate={"09/2015"}
-          items={[
-            <span>
-              Designed and implemented four 2D & 3D hypercasual games (Color
-              Rush, Paper Dreams, Car Crossing, Tap to Aim) using open-source
-              assets, and creating new models from scratch in Unity3D
-            </span>,
-            <span>
-              Built and monetized the gamification infrastructure for{" "}
-              <a
-                href="https://apkpure.com/peak-box-game-arcade-machine/net.peakgames.peakbox.android"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={"colorHighlight"}
-              >
-                Peak Box
-              </a>{" "}
-              with interstitial video ads
-            </span>,
-            <span>
-              Added localization support and multiple translations to Peak Box
-            </span>,
-          ]}
-        />
-        <SectionItem
-          companyTitle={
-            <a
-              href="http://www.innova.com.tr/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(0,0,0,.87)" }}
-            >
-              Innova IT Solutions
-            </a>
-          }
-          location={"İstanbul, Turkey"}
-          jobTitle={"Software Engineer, Intern"}
-          startDate={"06/2014"}
-          endDate={"07/2014"}
-          items={[
-            <span>
-              Interned at the Financial Transaction Applications department and
-              developed a CRUD report portal integrated with Microsoft Reporting
-              Services (SSRS) for an international bank using ASP.NET MVC 5
-            </span>,
-            <span>
-              Automated report generation for 30+ report types using Perl
-              scripts and ASP.NET Razor (C# and HTML)
-            </span>,
           ]}
         />
       </div>
