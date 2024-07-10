@@ -143,4 +143,4 @@ You are welcome to
 - 📧 Mail me through [mert.yasin@gmail.com](mailto:mert.yasin@gmail.com)
 - ♟️ Follow me on [github/mrtysn](https://github.com/mrtysn)
 - 🐦 Follow me on [twitter/mertyas_in](https://twitter.com/mertyas_in)
-- 🆗 Add me on [linkedin/mert-yasin](linkedin.com/in/mert-yasin/)
+- 🆗 Add me on [linkedin/mert-yasin](https://linkedin.com/in/mert-yasin/)
