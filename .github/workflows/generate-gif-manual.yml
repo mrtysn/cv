@@ -8,7 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Check for changes in src folder
+        id: check_changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- src/; then
+            echo "No changes in the src folder."
+            echo "::set-output name=changed::false"
+          else
+            echo "Changes detected in the src folder."
+            echo "::set-output name=changed::true"
+          fi
+
       - name: Generate GIF from Website
+        if: steps.check_changes.outputs.changed == 'true'
         uses: PabloLec/website-to-gif@2.1.1
         with:
           url: "https://mrtysn.github.io/cv/"
@@ -22,10 +35,22 @@ jobs:
           scroll_step: 15
           time_per_frame: 100
           start_delay: 4000
+
       - name: Commit GIF to the Repository
+        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git commit -m 'Automatically generate GIF of the CV website'
-          git push
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit."
+            echo "::set-output name=changed_commit::false"
+          else
+            git commit -m 'Automatically generate GIF of the CV website'
+            echo "::set-output name=changed_commit::true"
+          fi
+
+      - name: Push changes
+        if: steps.commit.outputs.changed_commit == 'true'
+        run: git push
