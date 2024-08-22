@@ -14,12 +14,20 @@ Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
 ### Documentation
 
+- [📋 Project Progress](#progress)
 - [💻 How to Run Locally](#run)
 - [🛠️ How to Deploy to GitHub Pages](#deploy)
 - [🖨️ How to Save as a PDF](#save)
 - [🎨 How to Customize the CV for yourself](#customize)
 - [🐌 Does a CV Need to be a Bloated Web Application?](#why)
 - [🙌 How to Contribute](#contribute)
+
+## <a name="progress"></a>
+
+### 📋 Project Progress
+
+- See the current progress at the [kanban board](https://github.com/users/mrtysn/projects/2) of this project
+- Browse the [open issues](https://github.com/mrtysn/cv/issues) on GitHub
 
 ## <a name="run"></a>
 
@@ -129,7 +137,8 @@ First of all, how kind of you 🤗
 
 You can
 
-- 💯 Make suggestions and report problems through GitHub issues
+- ⤴️ Fork this project and create your own CV
+- 💯 Make suggestions and report problems through [GitHub issues](https://github.com/mrtysn/cv/issues)
 - ↩️ Send pull requests via GitHub
 - ⭐ Star this project on GitHub
 
