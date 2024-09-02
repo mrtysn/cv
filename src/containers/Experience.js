@@ -10,6 +10,21 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
+              href="https://kranzwolfe.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              Kranz Wolfe Associates
+            </a>
+          }
+          location={"Belgium, Malaysia, Turkey (Remote)"}
+          jobTitle={"Software Consultant, Contract"}
+          startDate={"08/2024"}
+        />
+        <SectionItem
+          companyTitle={
+            <a
               href="https://venuex.io/"
               target="_blank"
               rel="noopener noreferrer"
