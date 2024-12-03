@@ -10,6 +10,27 @@ class Experience extends React.Component {
         <SectionItem
           companyTitle={
             <a
+              href="https://www.cyphergames.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(0,0,0,.87)" }}
+            >
+              Cypher Games
+            </a>
+          }
+          location={"İstanbul, Turkey"}
+          jobTitle={"Lead Backend Engineer"}
+          startDate={"10/2024"}
+          items={[
+            <span>
+              Leading the backend development of a new mobile match-3 game, architecting scalable
+              systems designed to support 10M+ monthly active users using .NET, SignalR and MongoDB
+            </span>
+          ]}
+        />
+        <SectionItem
+          companyTitle={
+            <a
               href="https://kranzwolfe.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -21,6 +42,17 @@ class Experience extends React.Component {
           location={"Belgium, Malaysia, Turkey (Remote)"}
           jobTitle={"Software Consultant, Contract"}
           startDate={"08/2024"}
+          endDate={"10/2024"}
+          items={[
+            <span>Collaborated with business consultants to develop preliminary
+              analyses and scheduling plans for the metal supply chain in galvanized
+              steel production, using{" "}
+              <a href="https://www.3ds.com/products/delmia/quintiq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={"colorHighlight"}
+              >DELMIA Quintiq</a>{" "}Scheduler</span>
+          ]}
         />
         <SectionItem
           companyTitle={
