@@ -17,10 +17,10 @@ class SectionItem extends React.Component {
           }}
         >
           <div className={"px16"} style={{ marginRight: "10px" }}>
-            <strong>{this.props.companyTitle}</strong>
+            <span style={{ fontWeight: 500 }}>{this.props.companyTitle}</span>
           </div>
           <div className={"px16"}>
-            <strong>{this.props.location}</strong>
+            <span style={{ fontWeight: 500 }}>{this.props.location}</span>
           </div>
         </div>
         <div

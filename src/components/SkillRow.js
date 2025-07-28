@@ -6,7 +6,7 @@ export class SkillRow extends React.Component {
     return (
       <Grid.Row style={{ padding: 0 }}>
         <Grid.Column
-          style={{ fontWeight: 700 }}
+          style={{ fontWeight: 500 }}
           width={this.props.titleColumnWidth}
           textAlign="right"
           className={"colorSkillTitle"}
