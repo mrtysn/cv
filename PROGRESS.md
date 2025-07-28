@@ -45,3 +45,15 @@ Task management system established with TODO.md and PROGRESS.md. Custom commands
 - Separated coding vs user action tasks
 - Commands streamlined per user style preferences
 
+## 2025-07-28 - TODO.md Restructure
+**Type**: Architecture
+**Impact**: Medium
+
+Reorganized TODO.md with cleaner structure: Next/Backlog/IRL sections. Removed priority labels from task items for cleaner readability.
+
+**Changes**:
+- Created "Next" section for immediate development tasks
+- Moved content modification tasks to "Backlog" 
+- Removed redundant priority indicators
+- Identified duplicate tasks (JSON loading vs hardcoded content extraction)
+
