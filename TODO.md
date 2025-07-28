@@ -13,10 +13,10 @@ This file tracks tasks and progress for the CV repository. Future Claude instanc
 
 ## Next
 
-### [PENDING] Add "download as PDF" button
+### [COMPLETED] Add "download as PDF" button
 - **Description**: Add button to web version that allows users to download CV as PDF
 - **Acceptance Criteria**: Button triggers PDF generation/download with proper formatting
-- **Notes**: Improves user experience for web version
+- **Notes**: Improves user experience for web version. Implemented with jsPDF + html2canvas
 - **Updated**: 2025-07-28
 
 ### [PENDING] Convert all text input to load from JSON file
