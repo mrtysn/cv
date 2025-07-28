@@ -2,60 +2,12 @@
 
 This file tracks tasks and progress for the CV repository. Future Claude instances should use this file to manage development work.
 
-## Task Lifecycle Instructions
-
-### 1. Task States
-- **PENDING** - Task identified but not started
-- **IN PROGRESS** - Currently working on this task  
-- **COMPLETED** - Task finished successfully
-- **BLOCKED** - Task cannot proceed (note blocker reason)
-- **CANCELLED** - Task no longer needed
-
-### 2. Task Management Rules
-- **ALWAYS mark a task as IN PROGRESS before starting work**
-- Only have ONE task IN PROGRESS at a time
-- Mark tasks COMPLETED immediately when finished
-- Update PROGRESS.md for any substantial changes or findings
-- Remove COMPLETED tasks periodically to keep file clean
-
-### 3. Task Format
-```
-## [STATUS] Task Title
-- **Priority**: High/Medium/Low
-- **Description**: Brief description of what needs to be done
-- **Acceptance Criteria**: What constitutes completion
-- **Notes**: Any relevant context or blockers
-- **Updated**: YYYY-MM-DD
-```
-
-### 4. Task Granularity - Keep Tasks Atomic
-- **Break down complex tasks** into smaller, actionable pieces
-- Each task should be completable in a single focused work session
-- If a task has multiple steps, split it into separate tasks
-- **Avoid time estimates** - focus on making tasks small and well-defined
-- **Examples of good atomic tasks**:
-  - "Add email validation to contact form"
-  - "Update header component to use new logo"
-  - "Fix responsive layout issue in Skills section"
-- **Examples of tasks that need breaking down**:
-  - "Redesign the entire website" → Split into layout, styling, content tasks
-  - "Add contact form" → Split into form component, validation, submission tasks
-
-### 5. When to Create Tasks
-- New features or enhancements (broken into atomic pieces)
-- Bug fixes (each bug as separate task)
-- Code refactoring (component by component)
-- Documentation updates (file by file)
-- Testing requirements (feature by feature)
-- Deployment changes (step by step)
-
-### 6. When to Update PROGRESS.md
-- Significant architectural decisions
-- Important discoveries about the codebase
-- Breaking changes or major refactors
-- Performance improvements
-- New dependencies or tools
-- Deployment or configuration changes
+## Task Management Rules
+- Mark task as IN PROGRESS before starting work
+- Only ONE task IN PROGRESS at a time
+- Mark COMPLETED immediately when finished
+- Update PROGRESS.md for substantial changes
+- Keep tasks atomic and single-session completable
 
 ---
 
@@ -264,34 +216,3 @@ This file tracks tasks and progress for the CV repository. Future Claude instanc
 - **Notes**: Part of creating multiple CV variants for different job applications
 - **Updated**: 2025-07-28
 
----
-
-## Completed Tasks
-
-### [COMPLETED] Create development tracking structure
-- **Priority**: High
-- **Description**: Set up TODO.md and PROGRESS.md files for project tracking with atomic task focus
-- **Acceptance Criteria**: Both files exist with clear instructions, no time estimates, emphasis on atomic tasks
-- **Notes**: Part of initial project organization, updated to remove time estimates
-- **Updated**: 2025-07-28
-
-### [COMPLETED] Extract tasks from Todoist output and organize TODO structure
-- **Priority**: High
-- **Description**: Parse user's Todoist copy-paste output to extract complete task hierarchy including sublists
-- **Acceptance Criteria**: All main tasks and CV feedback sublist properly categorized in TODO.md
-- **Notes**: Identified 16 main tasks + 10 CV feedback items, separated coding vs IRL tasks
-- **Updated**: 2025-07-28
-
-### [COMPLETED] Create custom Claude Code command /progress
-- **Priority**: Medium
-- **Description**: Set up reusable slash command for updating progress files and committing
-- **Acceptance Criteria**: /progress command available in .claude/commands/progress.md
-- **Notes**: Allows quick progress updates without retyping full request
-- **Updated**: 2025-07-28
-
-### [COMPLETED] Create raw task extraction documentation
-- **Priority**: Medium
-- **Description**: Save complete extracted task list in extracted-tasks-raw.md for reference
-- **Acceptance Criteria**: All original tasks preserved with categorization notes
-- **Notes**: Maintains audit trail of original task structure from Todoist
-- **Updated**: 2025-07-28
