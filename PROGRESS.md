@@ -19,6 +19,18 @@ This file documents substantial updates, changes, and important notes for the CV
 **Type**: [Architecture/Discovery/Breaking Change/Performance/Dependency/Config/Notes]
 **Impact**: [High/Medium/Low]
 
+---
+
+## 2025-07-28 - Font Loading and Typography Consistency
+**Type**: Breaking Change/Performance
+**Impact**: Medium
+
+- **Fixed Firefox font loading issues** - Updated Google Fonts API URLs with proper preconnect links and weight specifications
+- **Added missing font weight 500** - Ubuntu font now loads 300;400;500;700 weights for better typography options
+- **Removed unnecessary Open Sans font** - Eliminated duplicate font loading, all text now uses Ubuntu consistently
+- **Updated typography hierarchy** - Skills titles, company names, locations use font-weight 500; main name uses 500
+- **Performance improvement** - Reduced font requests from 2 separate fonts to 1 unified Ubuntu implementation
+
 Description of the change or finding...
 
 **Related Files**: 
