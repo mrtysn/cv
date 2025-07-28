@@ -1,9 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const PdfDownloadButton = () => {
   const buttonRef = useRef(null);
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const newOpacity = Math.max(0, 1 - scrollY / 300);
+      setOpacity(newOpacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const downloadPDF = async () => {
     // Hide the button before generating PDF
@@ -71,6 +83,7 @@ const PdfDownloadButton = () => {
         fontSize: "12px",
         fontWeight: "bold",
         transition: "all 0.2s ease",
+        opacity: opacity,
       }}
       onMouseEnter={(e) => {
         e.target.style.backgroundColor = "#2185d0";
