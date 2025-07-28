@@ -75,3 +75,19 @@ Reorganized TODO.md with cleaner structure: Next/Backlog/IRL sections. Removed p
 - Removed redundant priority indicators
 - Identified duplicate tasks (JSON loading vs hardcoded content extraction)
 
+## 2025-07-28 - GitHub Link Button with Scroll Fade
+**Type**: Feature/Performance
+**Impact**: Low
+
+Added GitHub repository link button with scroll-based fade animation matching PDF download button styling.
+
+**Key Implementation**:
+- SVG GitHub icon positioned next to PDF button
+- Shared opacity fade effect on scroll (0-300px range)
+- React hooks for scroll event handling with cleanup
+- Consistent styling and transitions with existing UI
+
+**Related Files**:
+- src/components/GitHubLinkButton.js (new component)
+- src/App.js (component integration)
+
