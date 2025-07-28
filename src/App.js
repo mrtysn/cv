@@ -7,10 +7,12 @@ import Experience from "./containers/Experience";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
 import Skills from "./containers/Skills";
+import PdfDownloadButton from "./components/PdfDownloadButton";
 
 function App() {
   return (
     <Container text>
+      <PdfDownloadButton />
       <Divider hidden style={{ marginTop: 10 }} className="hideFromPrint" />
       <Header />
       <Experience />
