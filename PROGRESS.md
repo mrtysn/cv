@@ -58,5 +58,41 @@ This establishes a structured approach for future development work, ensuring con
 - Integration with existing CLAUDE.md documentation
 
 **Next Steps**:
-- [ ] Update CLAUDE.md to reference new tracking files
-- [ ] Begin populating TODO.md with actual project tasks
+- [x] Update CLAUDE.md to reference new tracking files
+- [x] Begin populating TODO.md with actual project tasks
+
+## 2025-07-28 - Complete Task Organization and Custom Command Setup
+**Type**: Architecture  
+**Impact**: High
+
+Major progress on task management and workflow automation:
+
+1. **Complete Task Extraction** - Successfully parsed user's Todoist output to extract full task hierarchy:
+   - 16 main CV tasks identified and categorized
+   - 10-item "CV feedback" sublist properly structured
+   - Clear separation between coding tasks (implementable by Claude) and IRL tasks (user action required)
+
+2. **Enhanced Task Structure** - Organized TODO.md with proper categorization:
+   - Coding tasks section for Claude-implementable work
+   - IRL tasks section for user-driven activities (social media, content creation)
+   - CV feedback implementation tasks as priority items
+
+3. **Custom Command Creation** - Built `/progress` slash command for workflow efficiency:
+   - Eliminates need to retype progress update requests
+   - Streamlines the update → commit workflow
+   - Provides consistent approach for future sessions
+
+**Related Files**:
+- TODO.md (major updates with all extracted tasks)
+- extracted-tasks-raw.md (new - audit trail)
+- .claude/commands/progress.md (new - custom command)
+- CLAUDE.md (updated with quick start workflow)
+
+**Architecture Decisions**:
+- Separated atomic coding tasks from user action items
+- CV feedback items prioritized as high-impact quick wins
+- Task extraction documented for future reference
+- Workflow automation via custom commands
+
+**Impact Assessment**:
+The repository now has a complete, actionable task structure with 26 total tasks properly categorized and prioritized. The custom `/progress` command creates a sustainable workflow for ongoing development sessions.
