@@ -22,27 +22,25 @@ const renderContent = (item) => {
   return <span dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
-class Achievements extends React.Component {
-  render() {
-    if (achievementsData && achievementsData.length > 0) {
-      return (
-        <div>
-          <SectionTitle title={"EXTRACURRICULAR"} />
-          <List bulleted>
-            {achievementsData.map((item, ix) => {
-              return (
-                <List.Item key={ix} className={"px12"}>
-                  {renderContent(item)}
-                </List.Item>
-              );
-            })}
-          </List>
-        </div>
-      );
-    } else {
-      return null;
-    }
+const Achievements = () => {
+  if (achievementsData && achievementsData.length > 0) {
+    return (
+      <div>
+        <SectionTitle title={"EXTRACURRICULAR"} />
+        <List bulleted>
+          {achievementsData.map((item, ix) => {
+            return (
+              <List.Item key={ix} className={"px12"}>
+                {renderContent(item)}
+              </List.Item>
+            );
+          })}
+        </List>
+      </div>
+    );
+  } else {
+    return null;
   }
-}
+};
 
 export default Achievements;

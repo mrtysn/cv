@@ -121,6 +121,29 @@ Converted TODO.md from verbose format (190 lines) to concise checkbox format (37
 
 **Impact**: Future Claude instances can parse tasks 5x faster, reducing decision paralysis and improving task selection speed.
 
+## 2025-07-29 - Component Modernization: Class to Functional Conversion
+**Type**: Architecture
+**Impact**: Medium
+
+Converted SectionItem and Achievements class components to functional components for better React patterns and performance.
+
+**Key Changes**:
+- **SectionItem**: Most used component (Experience, Education) converted to functional with props destructuring
+- **Achievements**: Converted to functional while preserving renderContent helper for HTML/link parsing  
+- Maintained exact same functionality and styling
+- No hooks needed - both were purely props-based components
+- Build verification successful - no breaking changes
+
+**Technical Details**:
+- Removed `this.props` references in favor of destructured props
+- Preserved all inline styling and CSS classes
+- Maintained dangerouslySetInnerHTML logic in Achievements
+- All rendering logic identical to original class versions
+
+**Related Files**:
+- src/components/SectionItem.js (class → functional)
+- src/containers/Achievements.js (class → functional)
+
 ## 2025-07-28 - GitHub Link Button with Scroll Fade
 **Type**: Feature/Performance
 **Impact**: Low

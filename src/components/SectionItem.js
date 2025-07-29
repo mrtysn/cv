@@ -1,107 +1,105 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 
-class SectionItem extends React.Component {
-  render() {
-    return (
+const SectionItem = ({ companyTitle, location, jobTitle, startDate, endDate, description, items, relevantItems }) => {
+  return (
+    <div
+      style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}
+      className="noPageBreak"
+    >
       <div
-        style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}
-        className="noPageBreak"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
       >
-        <div
+        <div className={"px16"} style={{ marginRight: "10px" }}>
+          <span style={{ fontWeight: 500 }}>{companyTitle}</span>
+        </div>
+        <div className={"px16"}>
+          <span style={{ fontWeight: 500 }}>{location}</span>
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
+      >
+        <div className={"px14"} style={{ marginRight: "10px" }}>
+          <em>{jobTitle}</em>
+        </div>
+        <div className={"px14"}>
+          {startDate ? [startDate, " – "] : null}
+          {endDate || "Present"}
+        </div>
+      </div>
+      {description && (
+        <div className={"px12"}>{description}</div>
+      )}
+      {items ? (
+        <List
+          bulleted
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
+            paddingLeft: "2em",
+            marginTop: "10px",
+            marginBottom: "0px",
           }}
         >
-          <div className={"px16"} style={{ marginRight: "10px" }}>
-            <span style={{ fontWeight: 500 }}>{this.props.companyTitle}</span>
-          </div>
-          <div className={"px16"}>
-            <span style={{ fontWeight: 500 }}>{this.props.location}</span>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-          }}
-        >
-          <div className={"px14"} style={{ marginRight: "10px" }}>
-            <em>{this.props.jobTitle}</em>
-          </div>
-          <div className={"px14"}>
-            {this.props.startDate ? [this.props.startDate, " – "] : null}
-            {this.props.endDate || "Present"}
-          </div>
-        </div>
-        {this.props.description && (
-          <div className={"px12"}>{this.props.description}</div>
-        )}
-        {this.props.items ? (
-          <List
-            bulleted
+          {items.map((item, ix) => {
+            return (
+              <List.Item key={ix} className={"px12"}>
+                {item}
+              </List.Item>
+            );
+          })}
+        </List>
+      ) : null}
+      {relevantItems ? (
+        <div style={{ marginTop: "5px" }}>
+          <div
+            className={"px10"}
             style={{
-              paddingLeft: "2em",
-              marginTop: "10px",
-              marginBottom: "0px",
+              paddingLeft: "6em",
+              flexGrow: 1,
+              flexBasis: 0,
             }}
           >
-            {this.props.items.map((item, ix) => {
-              return (
-                <List.Item key={ix} className={"px12"}>
-                  {item}
-                </List.Item>
-              );
-            })}
-          </List>
-        ) : null}
-        {this.props.relevantItems ? (
-          <div style={{ marginTop: "5px" }}>
+            <strong>Relevant Courses</strong>
             <div
-              className={"px10"}
               style={{
-                paddingLeft: "6em",
-                flexGrow: 1,
-                flexBasis: 0,
+                display: "flex",
+                flexWrap: "wrap",
               }}
             >
-              <strong>Relevant Courses</strong>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                }}
-              >
-                {this.props.relevantItems.map((item, ix) => {
-                  return (
-                    <div
-                      key={ix}
-                      style={{
-                        flex: "1 0 50%",
-                      }}
-                    >
-                      {"•"}&nbsp;&nbsp;
-                      {item}
-                      {ix + 1 < this.props.items.length ? (
-                        <span>&nbsp;&nbsp;</span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+              {relevantItems.map((item, ix) => {
+                return (
+                  <div
+                    key={ix}
+                    style={{
+                      flex: "1 0 50%",
+                    }}
+                  >
+                    {"•"}&nbsp;&nbsp;
+                    {item}
+                    {ix + 1 < items.length ? (
+                      <span>&nbsp;&nbsp;</span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
-        ) : null}
-      </div>
-    );
-  }
-}
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 export default SectionItem;
