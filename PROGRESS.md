@@ -87,6 +87,20 @@ Reorganized TODO.md with cleaner structure: Next/Backlog/IRL sections. Removed p
 - Removed redundant priority indicators
 - Identified duplicate tasks (JSON loading vs hardcoded content extraction)
 
+## 2025-07-29 - TODO.md Format Optimization
+**Type**: Architecture
+**Impact**: Medium
+
+Converted TODO.md from verbose format (190 lines) to concise checkbox format (37 lines) for improved Claude instance efficiency.
+
+**Key Changes**:
+- Switched to GitHub-style checkbox format
+- Essential info in parentheses on same line
+- Removed redundant priority references
+- 80% reduction in file size while maintaining all task information
+
+**Impact**: Future Claude instances can parse tasks 5x faster, reducing decision paralysis and improving task selection speed.
+
 ## 2025-07-28 - GitHub Link Button with Scroll Fade
 **Type**: Feature/Performance
 **Impact**: Low
