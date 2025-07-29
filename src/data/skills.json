@@ -1,0 +1,78 @@
+[
+  {
+    "category": "game-dev & mobile",
+    "skills": [
+      "Unity3D; C#",
+      "Godot; GDScript",
+      "Android; Java",
+      "React Native"
+    ]
+  },
+  {
+    "category": "machine learning",
+    "skills": [
+      "Deep Learning",
+      "Computer Vision",
+      "Natural Language Processing",
+      "Recurrent Neural Networks",
+      "Transfer Learning",
+      "Reinforcement Learning",
+      "Bioinformatics",
+      "Digital Signal Processing"
+    ]
+  },
+  {
+    "category": "data science",
+    "skills": [
+      "Python; TensorFlow, Keras, PyTorch, NumPy, Pandas",
+      "MATLAB",
+      "R"
+    ]
+  },
+  {
+    "category": "front-end",
+    "skills": [
+      "React.js",
+      "Angular",
+      "Next.js",
+      "MobX, Easy Peasy",
+      "Material UI, Semantic UI, Tailwind CSS"
+    ]
+  },
+  {
+    "category": "back-end",
+    "skills": [
+      "NestJS",
+      "Node.js",
+      "TypeScript",
+      "Python; Django, Flask",
+      "Java; Spring",
+      "ASP.NET",
+      "MongoDB, PostgreSQL, MySQL",
+      "Redis",
+      "BullMQ, RabbitMQ",
+      "Jaeger, New Relic",
+      "Swagger"
+    ]
+  },
+  {
+    "category": "dev-ops",
+    "skills": [
+      "AWS; EC2, ECS, S3, Lambda, Step Functions, DynamoDB",
+      "Terraform, CDKTF",
+      "Docker",
+      "Heroku"
+    ]
+  },
+  {
+    "category": "others",
+    "skills": [
+      "Prolog",
+      "Perl",
+      "LaTeX",
+      "Arch Linux",
+      "WSL 2",
+      "Git"
+    ]
+  }
+]

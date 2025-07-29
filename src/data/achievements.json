@@ -1,0 +1,42 @@
+[
+  {
+    "type": "achievement",
+    "content": "{Ranked 1<sup>st</sup>} at {inzva}'s {AI Projects #7} with the project {Deep Learning for Procedural Pattern Generation} – 01/2022",
+    "links": {
+      "Ranked 1<sup>st</sup>": {
+        "url": "https://x.com/mertyas_in/status/1479888082598084613",
+        "className": ""
+      },
+      "inzva": {
+        "url": "https://inzva.com/",
+        "className": ""
+      },
+      "AI Projects #7": {
+        "url": "https://inzva.com/reports/2022/ai-projects-7",
+        "className": ""
+      },
+      "Deep Learning for Procedural Pattern Generation": {
+        "url": "https://github.com/inzva/procedural-pattern-generation",
+        "className": ""
+      }
+    }
+  },
+  {
+    "type": "community", 
+    "content": "Co-founded the volunteer alumni community, Boğaziçi University International Community {(BOYUT)} – 01/2021",
+    "links": {
+      "(BOYUT)": {
+        "url": "https://web.archive.org/web/20231005025306/https://boyutbogazici.org/en/about-boyut-2/",
+        "className": ""
+      }
+    }
+  },
+  {
+    "type": "interests",
+    "content": "Running, cooking, cycling, swimming, playing guitar, playing video games, developing video games, <i>learning to learn</i>"
+  },
+  {
+    "type": "languages", 
+    "content": "Languages: Turkish (Native), English (Fluent), Macedonian (Pre-Intermediate), Dutch (Beginner)"
+  }
+]

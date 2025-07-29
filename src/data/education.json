@@ -1,0 +1,174 @@
+[
+  {
+    "institution": {
+      "name": "Wayne State University",
+      "url": "https://wayne.edu/"
+    },
+    "location": "Michigan, United States",
+    "degree": "PhD ABD, Computer Science",
+    "startDate": "2018",
+    "endDate": "2021",
+    "achievements": [
+      "Successfully passed Ph.D. Qualifying Exam – 2020",
+      {
+        "type": "complex",
+        "content": "Research Projects:",
+        "subItems": [
+          {
+            "content": "<i>Early seizure detection in neonatal brains with EEG data;</i> using structural & functional brain network models, and deep learning & wavelet-based methodologies to perform temporal & spectral analyses"
+          },
+          {
+            "content": "<i>Disease subtyping using genomic and clinical data;</i> integrating datasets from multiple cohorts, and identifying cancer subtypes via bioinformatics, data mining, and machine learning"
+          }
+        ]
+      }
+    ],
+    "relevantCourses": [
+      "MGG 7010: Molecular Biology and Genetics",
+      "PSY 5040: Cognitive Neuroscience",
+      "CSC 7991: Introduction to Deep Learning",
+      "CSC 6860: Digital Image Processing and Analysis",
+      "CSC 7810: Data Mining: Algorithms and Applications",
+      "CSC 5800: Intelligent Systems: Algorithms and Tools",
+      "CSC 7991: Advanced Cyber-Human Interactions",
+      "CSC 7991: Information Retrieval",
+      "CSC 8260: Seminar in Energy Efficient Mobile/Cloud Computing",
+      "CSC 5591: Engineering Innovation and Entrepreneurship",
+      "CSC 5430: Game Programming & Design",
+      "CSC 5591: Unix Security with Shell Programming"
+    ]
+  },
+  {
+    "institution": {
+      "name": "Boğaziçi University",
+      "url": "https://bogazici.edu.tr/en"
+    },
+    "location": "İstanbul, Turkey",
+    "degree": "Master of Science, Computer Engineering – Incomplete",
+    "startDate": "2016",
+    "endDate": "2018",
+    "achievements": [
+      "Co-founded the reading group {Deep Learning Boun}",
+      "Prepared and graded homework as a Student Assistant for {CmpE 300: Analysis of Algorithms}",
+      "Attended the Convex Optimization reading group of the {Perceptual Intelligence Laboratory}",
+      "Spoke at the {Ask Me Anything #machinelearning} event and the {Learning to Learn} panel"
+    ],
+    "links": {
+      "Deep Learning Boun": {
+        "url": "https://deepboun.github.io/",
+        "className": ""
+      },
+      "CmpE 300: Analysis of Algorithms": {
+        "url": "https://www.cmpe.boun.edu.tr/courses/cmpe300",
+        "className": ""
+      },
+      "Perceptual Intelligence Laboratory": {
+        "url": "https://www.cmpe.boun.edu.tr/perceptual-intelligence-laboratory-pilab",
+        "className": ""
+      },
+      "Ask Me Anything #machinelearning": {
+        "url": "https://www.eventbrite.com/e/garaj-ama-machinelearning-tickets-30715371503",
+        "className": ""
+      },
+      "Learning to Learn": {
+        "url": "https://www.facebook.com/events/1853350238248699/",
+        "className": ""
+      }
+    },
+    "relevantCourses": [
+      "CmpE 59M: Interaction Design",
+      "CmpE 59H: Bioinformatics",
+      "CmpE 537: Computer Vision",
+      "CmpE 557: Complex Systems",
+      "CmpE 547: Bayesian Statistics and Machine Learning",
+      "IE 501: Optimization Techniques"
+    ]
+  },
+  {
+    "institution": {
+      "name": "Czech Technical University",
+      "url": "https://www.cvut.cz/en"
+    },
+    "location": "Prague, Czech Republic",
+    "program": {
+      "name": "Vision and Sports Summer School (VS3)",
+      "url": "http://cmp.felk.cvut.cz/summerschool2016/"
+    },
+    "endDate": "08/2016",
+    "achievements": [
+      "Attended a summer school focused on state-of-the-art Computer Vision applications in the industry and recent literature, with team-building activities such as ultimate frisbee, orienteering, climbing, archery, and unihockey"
+    ]
+  },
+  {
+    "institution": {
+      "name": "Boğaziçi University",
+      "url": "https://bogazici.edu.tr/en"
+    },
+    "location": "İstanbul, Turkey",
+    "degree": "Bachelor of Science, Computer Engineering",
+    "startDate": "2012",
+    "endDate": "2016",
+    "achievements": [
+      "Honors: Dean's Honor List; GPA: 3.28 / 4.00",
+      "Implemented recurrent neural networks (RNNs and LSTMs) in Python from scratch and generated new poems, plays in the style of William Shakespeare and Nazım Hikmet for my {Bachelor Thesis}",
+      "Ranked 1<sup>st</sup> in the case study competition {All-Rounder} by designing a puzzle game – 2016",
+      "Ranked 1<sup>st</sup> in Yıldız Technical University {5<sup>th</sup> Finance and Software Days} Code Contest – 2014"
+    ],
+    "links": {
+      "Bachelor Thesis": {
+        "url": "https://github.com/mrtysn/lstm",
+        "className": ""
+      },
+      "All-Rounder": {
+        "url": "https://www.facebook.com/media/set/?set=a.1030521643670821",
+        "className": ""
+      },
+      "5<sup>th</sup> Finance and Software Days": {
+        "url": "https://web.archive.org/web/20170507144338/http://ytukvk.org.tr:80/5-finans-ve-yazilim-gunleri/",
+        "className": ""
+      }
+    },
+    "relevantCourses": [
+      "CmpE 544: Pattern Recognition",
+      "CmpE 545: Artificial Neural Networks",
+      "CmpE 540: Principles of Artificial Intelligence",
+      "CmpE 482: Numerical Linear Algebra and Its Applications",
+      "CmpE 58Z: Introduction to Biometrics",
+      "CmpE 489: Cognitive Science"
+    ]
+  },
+  {
+    "institution": {
+      "name": "Özel Ege Lisesi",
+      "url": "https://egelisesi.k12.tr/school-profile"
+    },
+    "location": "İzmir, Turkey",
+    "degree": "High School",
+    "startDate": "2008",
+    "endDate": "2012",
+    "achievements": [
+      "Represented Slovenia in the SOCHUM Committee of {Harvard National Model United Nations (HNMUN)} – 2011",
+      "Led the winning team at İzmir Gelişim College's Mathematics League – 2011 & 2012",
+      "Won two medals at University of Waterloo's {math contests} – 2011 & 2012",
+      "Participated in {American Mathematics Competition} and {National Antalya Mathematics Olympics} – 2010 & 2011"
+    ],
+    "links": {
+      "Harvard National Model United Nations (HNMUN)": {
+        "url": "https://www.hnmun.org/",
+        "className": ""
+      },
+      "math contests": {
+        "url": "https://www.cemc.uwaterloo.ca/contests/past_contests.html",
+        "className": ""
+      },
+      "American Mathematics Competition": {
+        "url": "https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions",
+        "className": ""
+      },
+      "National Antalya Mathematics Olympics": {
+        "url": "http://matolimp.akdeniz.edu.tr/",
+        "className": ""
+      }
+    }
+  }
+]

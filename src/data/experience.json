@@ -1,0 +1,201 @@
+[
+  {
+    "company": {
+      "name": "Cypher Games",
+      "url": "https://www.cyphergames.com/"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "Lead Backend Engineer",
+    "startDate": "10/2024",
+    "endDate": null,
+    "responsibilities": [
+      "Leading the backend development of a new mobile match-3 game, architecting scalable systems designed to support 10M+ monthly active users using .NET, SignalR and MongoDB"
+    ]
+  },
+  {
+    "company": {
+      "name": "Kranz Wolfe Associates",
+      "url": "https://kranzwolfe.com/"
+    },
+    "location": "Belgium, Malaysia, Turkey (Remote)",
+    "position": "Software Consultant, Contract",
+    "startDate": "08/2024",
+    "endDate": "10/2024",
+    "responsibilities": [
+      "Collaborated with business consultants to develop preliminary analyses and scheduling plans for the metal supply chain in galvanized steel production, using {DELMIA Quintiq} Scheduler"
+    ],
+    "links": {
+      "DELMIA Quintiq": {
+        "url": "https://www.3ds.com/products/delmia/quintiq",
+        "className": "colorHighlight"
+      }
+    }
+  },
+  {
+    "company": {
+      "name": "VenueX",
+      "url": "https://venuex.io/"
+    },
+    "location": "İstanbul, Turkey (Remote)",
+    "position": "Senior Software Engineer",
+    "startDate": "11/2021",
+    "endDate": "12/2023",
+    "responsibilities": [
+      "Designed and maintained ETL pipelines (using AWS Lambda, S3) to consume store, product, and stock data from retail merchants. Developed a data feed diff tool using hashing and reduced the feed ingestion workload by over 80%",
+      "Implemented robust data validation steps for the pipelines that continuously push processed retail merchant data to third-party APIs (Google Business Profile, Google Content API) in order to guarantee accurate and up-to-date product and location information on map and location providers (Google Maps, Google Merchant Center, Google Shopping)",
+      "Developed and maintained backend RESTful APIs (NestJS, TypeScript) to handle merchant data logic and aggregation, with custom validations for data consistency. Developed dashboards, report pages (ReactJS, TypeScript, MUI), and data integration channels for partner merchants. Implemented end-to-end tests for user scenarios using Cypress",
+      "Maintained and troubleshooted the Terraform-deployed infrastructure stack (EC2, ECS) and MongoDB database layer. Set up custom alerts (SNS) and notifications (to Slack) for early detection of infrastructure and database anomalies",
+      "Authored the successful proposal of a <i>{TEYDEB 1501 Grant} for Industrial R&D projects</i> from TÜBİTAK. This project focuses on using the state-of-the-art Computer Vision (CV) and Large Language Model (LLM) techniques to batch process merchant data and store location review data (from Google Maps) to generate insights for the merchants"
+    ],
+    "links": {
+      "TEYDEB 1501 Grant": {
+        "url": "https://tubitak.gov.tr/en/funds/industrial/national-support-programs/1501-industrial-rd-projects-grant-programme",
+        "className": "colorHighlight"
+      }
+    }
+  },
+  {
+    "company": {
+      "name": "Olympos",
+      "url": "https://olymposhq.com/"
+    },
+    "location": "Washington, United States (Remote)",
+    "position": "Senior Software Engineer, Part-Time",
+    "startDate": "04/2022",
+    "endDate": "06/2022",
+    "responsibilities": [
+      "Investigated methodologies from machine learning literature to improve Olympos' propriety AI-powered tech talent matching algorithms. Worked on talent profiling, company profiling, and clustering problems"
+    ]
+  },
+  {
+    "company": {
+      "name": "Wayne State University",
+      "url": "https://wayne.edu/"
+    },
+    "location": "Michigan, United States",
+    "position": "Instructor, Graduate Teaching Assistant",
+    "startDate": "08/2018",
+    "endDate": "05/2021",
+    "responsibilities": [
+      "Instructor for <i>Problem Solving and Programming Laboratory</i> (C++)",
+      "Teaching Assistant for <i>Introduction to Deep Learning</i> (Tensorflow), <i>Data Mining: Algorithms and Applications</i> (Python, R), <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka), <i>Python Programming</i> (Python), <i>Introduction to Programming and Computation for Engineers</i> (MATLAB)"
+    ]
+  },
+  {
+    "company": {
+      "name": "appliedAI",
+      "url": "https://web.archive.org/web/20190501133923/http://appliedai.com/"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "CTO",
+    "startDate": "06/2017",
+    "endDate": "01/2018",
+    "responsibilities": [
+      "Led the technical team of a newly founded startup at the accelerator {Garanti BBVA Partners}, coordinating core product development with the team, interns, and freelance developers",
+      "Scaled the B2B data analytics and artificial intelligence solution platform appliedAI to 2700+ monthly active users",
+      "Curated a niche database of 3000+ AI companies, detailing their application areas and customers via web crawling and organic user acquisition. Established a lead generation pipeline through PoC partnerships with potential vendors",
+      "Migrated the front-end MVP from Angular to React",
+      "Maintained the full stack of {appliedAI.com} using ReactJS, MobX, Django REST Framework, and PostgreSQL; achieved zero downtime deployments with Heroku",
+      "Mentored junior developers in front-end development and web crawling",
+      "Talked about <i>Quantifiable AI</i> at the {AI With The Best} online conference"
+    ],
+    "links": {
+      "Garanti BBVA Partners": {
+        "url": "https://www.garantibbvapartners.com/",
+        "className": ""
+      },
+      "appliedAI.com": {
+        "url": "https://web.archive.org/web/20190501133923/http://appliedai.com/",
+        "className": ""
+      },
+      "AI With The Best": {
+        "url": "https://web.archive.org/web/20171010052526/http://ai.withthebest.com:80/",
+        "className": ""
+      }
+    }
+  },
+  {
+    "company": {
+      "name": "ING Bank - OrangeLab",
+      "url": "http://federation.com.tr/project/ing-orange-lab"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "Machine Learning Consultant",
+    "startDate": "12/2016",
+    "endDate": "01/2017",
+    "responsibilities": [
+      {
+        "type": "complex",
+        "content": "Planned roadmaps for machine learning projects, collaborating with data warehouse and analytics teams to prepare training data and structure base models for preliminary predictions",
+        "subItems": [
+          "Predictive maintenance of automated teller machines (ATMs)",
+          "Credit limit prediction of potential customers and credit limit management of current customers",
+          "Net promoter score (NPS) prediction of customers"
+        ]
+      }
+    ]
+  },
+  {
+    "company": {
+      "name": "Novafortis Software Consulting",
+      "url": "https://www.novafortis.com.tr/"
+    },
+    "location": "İzmir, Turkey",
+    "position": "Software Engineer, Freelance",
+    "startDate": "2015",
+    "endDate": "2021",
+    "responsibilities": [
+      "Developed an e-Invoice Adaptor middleware to help companies transition accounting systems for compliance with the Turkish Revenue Administration's e-Invoice mandate. Novafortis is used as a <i>private integrator</i> to issue e-Archive invoices and to prepare e-Ledgers as a part of the e-Transformation process",
+      "Conducted surveys on evolving government regulations, designed projects, and implemented software solutions"
+    ]
+  },
+  {
+    "company": {
+      "name": "KNS Information Technologies",
+      "url": "https://www.kns.com.tr/"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "Android Developer, Freelance",
+    "startDate": "03/2014",
+    "endDate": "07/2017",
+    "responsibilities": [
+      "Developed 12+ Android (Java) applications to enhance shoppers' mall experiences, including CMS support for promoting mall events and campaigns, sending push notifications, and managing brand loyalty programs",
+      "Implemented indoor location detection and navigation using Bluetooth Low Energy (BLE) beacons in shopping malls"
+    ]
+  },
+  {
+    "company": {
+      "name": "Peak Games",
+      "url": "https://www.peak.com/"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "Game Developer, Intern",
+    "startDate": "06/2015",
+    "endDate": "09/2015",
+    "responsibilities": [
+      "Designed and implemented four 2D & 3D hypercasual games (Color Rush, Paper Dreams, Car Crossing, Tap to Aim) using open-source assets, and creating new models from scratch in Unity3D",
+      "Built and monetized the gamification infrastructure for {Peak Box} with interstitial video ads",
+      "Added localization support and multiple translations to Peak Box"
+    ],
+    "links": {
+      "Peak Box": {
+        "url": "https://apkpure.com/peak-box-game-arcade-machine/net.peakgames.peakbox.android",
+        "className": "colorHighlight"
+      }
+    }
+  },
+  {
+    "company": {
+      "name": "Innova IT Solutions",
+      "url": "http://www.innova.com.tr/en/"
+    },
+    "location": "İstanbul, Turkey",
+    "position": "Software Engineer, Intern",
+    "startDate": "06/2014",
+    "endDate": "07/2014",
+    "responsibilities": [
+      "Interned at the Financial Transaction Applications department and developed a CRUD report portal integrated with Microsoft Reporting Services (SSRS) for an international bank using ASP.NET MVC 5",
+      "Automated report generation for 30+ report types using Perl scripts and ASP.NET Razor (C# and HTML)"
+    ]
+  }
+]
