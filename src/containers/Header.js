@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { Header } from "semantic-ui-react";
+import headerData from "../data/header.json";
 
 export default function MyHeader() {
   useEffect(() => {
-    document.title = "Mert Yaşin ▸ CV";
+    document.title = headerData.documentTitle;
   });
 
   return (
     <div>
       <Header as="h1" className="fontHeader">
-        Mert Yaşin
+        {headerData.name}
       </Header>
       <div style={{ textAlign: "center" }} className="px14">
-        Senior Software Engineer
+        {headerData.title}
       </div>
 
       <div
@@ -24,33 +25,33 @@ export default function MyHeader() {
         }}
         className={"px12"}
       >
-        <span>+90 538 470 03 93</span>
+        <span>{headerData.contact.phone}</span>
         &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
         <a
-          href="mailto:mert.yasin@gmail.com"
+          href={`mailto:${headerData.contact.email}`}
           target="_blank"
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          mert.yasin@gmail.com
+          {headerData.contact.email}
         </a>
         &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
         <a
-          href="https://github.com/mrtysn"
+          href={headerData.contact.github.url}
           target="_blank"
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          github/mrtysn
+          {headerData.contact.github.label}
         </a>
         &nbsp;&nbsp;{"•"}&nbsp;&nbsp;
         <a
-          href="https://www.linkedin.com/in/mert-yasin/"
+          href={headerData.contact.linkedin.url}
           target="_blank"
           rel="noopener noreferrer"
           className={"colorHighlight"}
         >
-          linkedin/mert-yasin
+          {headerData.contact.linkedin.label}
         </a>
       </div>
     </div>

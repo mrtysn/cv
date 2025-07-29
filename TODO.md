@@ -2,10 +2,12 @@
 
 Task tracking for CV repository. Rules: Mark tasks in progress before starting, only one task in progress at a time, mark completed immediately when finished.
 
+**Legend**: [ ] = pending, [🔄] = in progress, [x] = completed
+
 ## Next
 - [x] Add "download as PDF" button (implemented with jsPDF + html2canvas)
-- [ ] Convert all text input to load from JSON file (extract hardcoded content to JSON)
-- [ ] Extract hardcoded content to data files (create JSON files for all CV content)
+- [x] Convert all text input to load from JSON file (extract hardcoded content to JSON)
+- [x] Extract hardcoded content to data files (create JSON files for all CV content)
 - [ ] Add hover previews to links for web version (show preview/tooltip on hover)
 - [ ] Convert Experience class component to functional component (maintain same functionality)
 - [ ] Convert Education class component to functional component (modernize to functional style)
