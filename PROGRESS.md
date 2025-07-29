@@ -21,25 +21,10 @@ This file documents substantial updates, changes, and important notes for the CV
 
 ---
 
-## 2025-07-28 - Font Loading and Typography Consistency
-**Type**: Breaking Change/Performance
+## 2025-07-28 - Font Loading Fix
 **Impact**: Medium
 
-- **Fixed Firefox font loading issues** - Updated Google Fonts API URLs with proper preconnect links and weight specifications
-- **Added missing font weight 500** - Ubuntu font now loads 300;400;500;700 weights for better typography options
-- **Removed unnecessary Open Sans font** - Eliminated duplicate font loading, all text now uses Ubuntu consistently
-- **Updated typography hierarchy** - Skills titles, company names, locations use font-weight 500; main name uses 500
-- **Performance improvement** - Reduced font requests from 2 separate fonts to 1 unified Ubuntu implementation
-
-Description of the change or finding...
-
-**Related Files**: 
-- path/to/file.js
-- path/to/other/file.css
-
-**Next Steps**: (if applicable)
-- [ ] Follow-up task 1
-- [ ] Follow-up task 2
+Fixed Firefox font loading. Ubuntu font only, added weight 500.
 ```
 
 ---
@@ -47,116 +32,42 @@ Description of the change or finding...
 ## Progress Log
 
 ## 2025-07-28 - Development Tracking System
-**Type**: Architecture  
 **Impact**: High
 
-Task management system established with TODO.md and PROGRESS.md. Custom commands updated for concise workflow.
+TODO.md and PROGRESS.md established. Single task rule.
 
-**Architecture Decisions**:
-- Single task IN PROGRESS rule
-- Separated coding vs user action tasks
-- Commands streamlined per user style preferences
-
-## 2025-07-28 - PDF Download Feature Implementation
-**Type**: Dependency/Architecture
+## 2025-07-28 - PDF Download Implementation
 **Impact**: Medium
 
-Successfully implemented PDF download functionality with library migration from html2pdf.js to jsPDF + html2canvas due to blank page issues.
-
-**Key Changes**:
-- Added jsPDF + html2canvas dependencies (replaced html2pdf.js)
-- Fixed React 18 warnings (ReactDOM.render → createRoot)
-- Implemented ghost button design with proper hover effects
-- Resolved blank page issue with exact dimension calculations
-- A4 width with 0.5" margins and dynamic height based on content
-
-**Related Files**:
-- src/components/PdfDownloadButton.js (new component)
-- src/App.js (component integration)
-- src/index.js (React 18 compatibility fix)
+jsPDF + html2canvas. Fixed blank page issue. React 18 compatibility.
 
 ## 2025-07-28 - TODO.md Restructure
-**Type**: Architecture
 **Impact**: Medium
 
-Reorganized TODO.md with cleaner structure: Next/Backlog/IRL sections. Removed priority labels from task items for cleaner readability.
+Next/Backlog/IRL sections. Removed priority labels.
 
-**Changes**:
-- Created "Next" section for immediate development tasks
-- Moved content modification tasks to "Backlog" 
-- Removed redundant priority indicators
-- Identified duplicate tasks (JSON loading vs hardcoded content extraction)
-
-## 2025-07-29 - Complete JSON Data Architecture Migration  
-**Type**: Architecture
+## 2025-07-29 - JSON Data Migration
 **Impact**: High
 
-Successfully migrated all hardcoded CV content to JSON files while preserving 100% of original formatting, including HTML tags, CSS classes, and complex nested structures.
-
-**Key Implementation**:
-- Created 5 JSON data files: header, experience, education, skills, achievements
-- Template-based system with `{linkText}` placeholders for dynamic link insertion
-- Complex object support for nested structures (PhD research projects, ING Bank ML projects)
-- Selective CSS class application per link (colorHighlight vs no class)
-- HTML tag preservation in JSON strings (`<i>`, `<sup>`, etc.)
-
-**Technical Innovation**:
-- Enhanced renderer functions that handle both simple strings and complex objects
-- Link replacement system that maintains exact original link styling
-- Support for mixed content types (JSX + HTML + plain text)
-
-**Impact**: 100% modular CV content with zero styling loss. Future content updates require no component changes.
+Migrated all hardcoded content to JSON. Template system with link placeholders. 100% formatting preserved.
 
 ## 2025-07-29 - TODO.md Format Optimization
-**Type**: Architecture
 **Impact**: Medium
 
-Converted TODO.md from verbose format (190 lines) to concise checkbox format (37 lines) for improved Claude instance efficiency.
+80% size reduction. GitHub-style checkboxes for faster Claude parsing.
 
-**Key Changes**:
-- Switched to GitHub-style checkbox format
-- Essential info in parentheses on same line
-- Removed redundant priority references
-- 80% reduction in file size while maintaining all task information
-
-**Impact**: Future Claude instances can parse tasks 5x faster, reducing decision paralysis and improving task selection speed.
-
-## 2025-07-29 - Component Modernization: Class to Functional Conversion
-**Type**: Architecture
+## 2025-07-29 - Button Scroll Behavior: 100-0-100 Pattern
 **Impact**: Medium
 
-Converted SectionItem and Achievements class components to functional components for better React patterns and performance.
+Buttons now fade out in middle, reappear at bottom. Percentage-based scroll calculation.
 
-**Key Changes**:
-- **SectionItem**: Most used component (Experience, Education) converted to functional with props destructuring
-- **Achievements**: Converted to functional while preserving renderContent helper for HTML/link parsing  
-- Maintained exact same functionality and styling
-- No hooks needed - both were purely props-based components
-- Build verification successful - no breaking changes
+## 2025-07-29 - Class to Functional Component Conversion  
+**Impact**: Medium
 
-**Technical Details**:
-- Removed `this.props` references in favor of destructured props
-- Preserved all inline styling and CSS classes
-- Maintained dangerouslySetInnerHTML logic in Achievements
-- All rendering logic identical to original class versions
+SectionItem and Achievements converted to functional components. No breaking changes.
 
-**Related Files**:
-- src/components/SectionItem.js (class → functional)
-- src/containers/Achievements.js (class → functional)
-
-## 2025-07-28 - GitHub Link Button with Scroll Fade
-**Type**: Feature/Performance
+## 2025-07-28 - GitHub Link Button
 **Impact**: Low
 
-Added GitHub repository link button with scroll-based fade animation matching PDF download button styling.
-
-**Key Implementation**:
-- SVG GitHub icon positioned next to PDF button
-- Shared opacity fade effect on scroll (0-300px range)
-- React hooks for scroll event handling with cleanup
-- Consistent styling and transitions with existing UI
-
-**Related Files**:
-- src/components/GitHubLinkButton.js (new component)
-- src/App.js (component integration)
+Added GitHub button with scroll fade animation.
 

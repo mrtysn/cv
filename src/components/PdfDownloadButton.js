@@ -9,8 +9,25 @@ const PdfDownloadButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const newOpacity = Math.max(0, 1 - scrollY / 300);
-      setOpacity(newOpacity);
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const maxScroll = documentHeight - windowHeight;
+      const scrollPercent = maxScroll > 0 ? scrollY / maxScroll : 0;
+      
+      // Create 100-0-100 pattern: visible at top, disappear in middle, visible at bottom
+      let newOpacity;
+      if (scrollPercent <= 0.15) {
+        // Top 15%: fade from 1 to 0
+        newOpacity = 1 - (scrollPercent / 0.15);
+      } else if (scrollPercent >= 0.85) {
+        // Bottom 15%: fade from 0 to 1
+        newOpacity = (scrollPercent - 0.85) / 0.15;
+      } else {
+        // Middle 70%: completely hidden
+        newOpacity = 0;
+      }
+      
+      setOpacity(Math.max(0, Math.min(1, newOpacity)));
     };
 
     window.addEventListener('scroll', handleScroll);
