@@ -8,6 +8,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Add "download as PDF" button (implemented with jsPDF + html2canvas)
 - [x] Convert all text input to load from JSON file (extract hardcoded content to JSON)
 - [x] Extract hardcoded content to data files (create JSON files for all CV content)
+- [x] Modify PDF and GitHub button scroll behavior (100-0-100 pattern: visible at top, hidden in middle, reappear at bottom)
 - [ ] Add hover previews to links for web version (show preview/tooltip on hover)
 - [ ] Convert Experience class component to functional component (maintain same functionality)
 - [ ] Convert Education class component to functional component (modernize to functional style)
