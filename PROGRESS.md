@@ -79,3 +79,11 @@ SectionItem and Achievements converted to functional components. No breaking cha
 
 Added GitHub button with scroll fade animation.
 
+---
+
+## 2025-08-12 - GitHub Icon Enhancement & UI Refinements
+**Type**: UI/UX Improvement
+**Impact**: Medium
+
+Enhanced GitHub icon with outline/filled hover states using custom SVG files. Replaced traditional borders with `box-shadow` technique (0.5px inset shadow) for precise border control on PDF download button. Added dynamic PDF filename with version number (`Mert_Yasin_CV_v3_3.pdf`). Improved print styling with `!important` rules. Key learning: box-shadow borders bypass CSS cascading issues better than traditional borders.
+
