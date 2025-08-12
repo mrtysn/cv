@@ -29,6 +29,14 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2025-08-12 - Link Preview Implementation Removed
+**Type**: Breaking Change
+**Impact**: Low
+
+Implemented and immediately removed link preview functionality per user preference. Attempted multiple screenshot services (screenshotone, microlink.io, thum.io) - all had API limitations. Reverted all components (Header, Footer, GitHub button, Experience/Education renderers, Achievements) back to standard anchor tags. Bundle size reduced by 1.28kB. Lesson: validate user requirements before implementing complex UI features.
+
+---
+
 ## Progress Log
 
 ## 2025-07-28 - Development Tracking System
