@@ -35,7 +35,7 @@ const GitHubLinkButton = () => {
       className="hideFromPrint"
       style={{
         position: "fixed",
-        top: "30px", // Center aligned with PDF button (20px + 15px padding - 10px for icon center)
+        top: "28px", // Center aligned with PDF button
         right: "160px", // Positioned to the left of PDF button
         zIndex: 1000,
         opacity: opacity,

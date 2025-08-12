@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { CV_VERSION } from "../constants";
 
 const PdfDownloadButton = () => {
   const buttonRef = useRef(null);
@@ -68,7 +69,7 @@ const PdfDownloadButton = () => {
       });
 
       pdf.addImage(imgData, "JPEG", margin, margin, contentWidth, contentHeight);
-      pdf.save("CV.pdf");
+      pdf.save(`Mert_Yasin_CV_${CV_VERSION.replace(/\./g, '_')}.pdf`);
 
     } catch (error) {
       console.error("Error generating PDF:", error);
