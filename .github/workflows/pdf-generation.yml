@@ -38,7 +38,7 @@ jobs:
       - name: 🔧 Install system dependencies for Puppeteer
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2
+          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
           
       - name: 🌐 Install Chrome for Puppeteer
         run: |
