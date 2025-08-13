@@ -32,14 +32,32 @@ jobs:
         run: |
           pnpm install
           pnpm add puppeteer --save-dev
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+          
+      - name: 🔧 Install system dependencies for Puppeteer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2
+          
+      - name: 🌐 Install Chrome for Puppeteer
+        run: |
+          npx puppeteer browsers install chrome
+          echo "Chrome installation complete"
           
       - name: 🏗️ Build React application
         run: pnpm run build
         
       - name: 📄 Generate PDF
         run: |
-          chmod +x scripts/generate-pdf.js
+          echo "Build directory contents:"
+          ls -la build/ || echo "Build directory not found"
+          echo "Chrome executable location:"
+          which google-chrome || which chromium-browser || echo "Chrome not found in PATH"
+          echo "Running PDF generation..."
           node scripts/generate-pdf.js
+        env:
+          CI: 'true'
           
       - name: 📊 List generated files
         run: |
@@ -70,6 +88,7 @@ jobs:
             - Generated from latest CV content
             - Version: ${{ steps.version.outputs.version }}
             - Build date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            - Commit: ${{ github.sha }}
             
             📥 Download the PDF below
           files: |
