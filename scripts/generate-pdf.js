@@ -31,10 +31,8 @@ async function generatePDF() {
         '--disable-renderer-backgrounding',
         '--window-size=1920,1080'
       ],
-      // Use installed Chrome in CI, auto-detect locally
-      executablePath: process.env.CI === 'true' ? 
-        process.env.PUPPETEER_EXECUTABLE_PATH || '/opt/hostedtoolcache/chromium/*/x64/chrome' :
-        undefined
+      // Let Puppeteer auto-detect Chrome (available in PATH)
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
     });
 
     const page = await browser.newPage();
