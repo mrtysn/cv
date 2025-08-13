@@ -95,3 +95,11 @@ Enhanced GitHub icon with outline/filled hover states using custom SVG files. Re
 
 Implemented complete PDF generation pipeline using GitHub Actions + Puppeteer to solve the core issue of non-working links in PDFs. Added smart download system: GitHub Releases API → local fallback. Created `/scripts/generate-pdf.js` with optimized Puppeteer settings for CI/CD. Added Puppeteer as dev dependency for local interactive PDF generation via `pnpm run generate-pdf`. System automatically creates versioned releases with working PDF links on every master push. Key insight: Puppeteer preserves HTML structure including clickable links, unlike html2canvas which creates static images.
 
+---
+
+## 2025-08-13 - GitHub Actions PNPM Configuration Fix
+**Type**: Config
+**Impact**: Medium
+
+Fixed GitHub Actions failure caused by setup-node@v4 expecting npm/yarn lock files when project uses pnpm. Added pnpm/action-setup@v2 step and updated all package manager commands from npm to pnpm. Removed npm cache configuration from setup-node step. Essential for CI/CD pipeline functionality.
+
