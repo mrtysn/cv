@@ -69,7 +69,7 @@ async function generatePDF() {
     });
 
     // Wait for any fonts or dynamic content to load
-    await page.waitForTimeout(2000);
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Hide print-excluded elements
     await page.addStyleTag({
