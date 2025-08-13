@@ -52,22 +52,20 @@ async function generatePDF() {
     
     console.log(`📋 Found version: ${version}`);
 
-    // Navigate to the built site
-    const htmlPath = path.join(__dirname, '..', 'build', 'index.html');
+    // Use GitHub Pages URL directly (already deployed and working)
+    const pageUrl = 'https://mrtysn.github.io/cv/';
     
-    // Verify build directory exists
-    if (!fs.existsSync(htmlPath)) {
-      throw new Error(`Build file not found: ${htmlPath}. Make sure to run 'pnpm run build' first.`);
-    }
-    
-    const fileUrl = `file://${htmlPath}`;
-    
-    console.log(`🌐 Loading page: ${fileUrl}`);
-    await page.goto(fileUrl, { 
+    console.log(`🌐 Loading page: ${pageUrl}`);
+    await page.goto(pageUrl, { 
       waitUntil: 'networkidle0',
       timeout: 30000 
     });
 
+    // Debug: Check if content loaded
+    const bodyContent = await page.evaluate(() => document.body.innerHTML);
+    console.log(`📋 Page content length: ${bodyContent.length} characters`);
+    console.log(`📋 Page title: ${await page.title()}`);
+    
     // Wait for fonts to load using modern Puppeteer approach
     await page.waitForFunction(() => document.fonts.ready, { timeout: 10000 });
 
