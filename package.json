@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "generate-pdf": "npm run build && node scripts/generate-pdf.js"
   },
   "browserslist": {
     "production": [
@@ -31,7 +32,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "puppeteer": "^24.16.1"
   },
   "homepage": "http://mrtysn.github.io/cv"
 }

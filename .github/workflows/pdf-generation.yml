@@ -1,0 +1,83 @@
+name: Generate CV PDF
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'README.md'
+      - 'PROGRESS.md'
+      - 'TODO.md'
+      - '.gitignore'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: 📦 Install dependencies
+        run: |
+          npm install
+          npm install puppeteer --no-save
+          
+      - name: 🏗️ Build React application
+        run: npm run build
+        
+      - name: 📄 Generate PDF
+        run: |
+          chmod +x scripts/generate-pdf.js
+          node scripts/generate-pdf.js
+          
+      - name: 📊 List generated files
+        run: |
+          echo "Generated PDF files:"
+          ls -la *.pdf || echo "No PDF files found"
+          
+      - name: 🏷️ Get version for tag
+        id: version
+        run: |
+          VERSION=$(node -e "
+            const fs = require('fs');
+            const content = fs.readFileSync('src/constants.js', 'utf8');
+            const match = content.match(/CV_VERSION\s*=\s*[\"']([^\"']+)[\"']/);
+            console.log(match ? match[1] : 'v1.0');
+          ")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=cv-$VERSION-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+          
+      - name: 🚀 Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: "CV PDF ${{ steps.version.outputs.version }}"
+          body: |
+            Automatically generated CV PDF from commit: ${{ github.sha }}
+            
+            **Changes in this version:**
+            - Generated from latest CV content
+            - Version: ${{ steps.version.outputs.version }}
+            - Build date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            
+            📥 Download the PDF below
+          files: |
+            Mert_Yasin_CV_*.pdf
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: ✅ Success notification
+        run: |
+          echo "🎉 PDF generation and release complete!"
+          echo "📁 Release tag: ${{ steps.version.outputs.tag }}"
+          echo "🔗 Check releases: ${{ github.server_url }}/${{ github.repository }}/releases"

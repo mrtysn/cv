@@ -87,3 +87,11 @@ Added GitHub button with scroll fade animation.
 
 Enhanced GitHub icon with outline/filled hover states using custom SVG files. Replaced traditional borders with `box-shadow` technique (0.5px inset shadow) for precise border control on PDF download button. Added dynamic PDF filename with version number (`Mert_Yasin_CV_v3_3.pdf`). Improved print styling with `!important` rules. Key learning: box-shadow borders bypass CSS cascading issues better than traditional borders.
 
+---
+
+## 2025-08-12 - GitHub Actions PDF Pipeline with Interactive Links
+**Type**: Architecture
+**Impact**: High
+
+Implemented complete PDF generation pipeline using GitHub Actions + Puppeteer to solve the core issue of non-working links in PDFs. Added smart download system: GitHub Releases API → local fallback. Created `/scripts/generate-pdf.js` with optimized Puppeteer settings for CI/CD. Added Puppeteer as dev dependency for local interactive PDF generation via `pnpm run generate-pdf`. System automatically creates versioned releases with working PDF links on every master push. Key insight: Puppeteer preserves HTML structure including clickable links, unlike html2canvas which creates static images.
+
