@@ -9,18 +9,32 @@ async function generatePDF() {
   
   try {
     console.log('🚀 Starting PDF generation...');
+    console.log('🔍 Environment:', {
+      CI: process.env.CI,
+      NODE_ENV: process.env.NODE_ENV,
+      PUPPETEER_EXECUTABLE_PATH: process.env.PUPPETEER_EXECUTABLE_PATH
+    });
     
     // Launch browser with GitHub Actions compatible options
     browser = await puppeteer.launch({
-      headless: 'new',
+      headless: process.env.CI === 'true' ? 'new' : false,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
         '--disable-accelerated-2d-canvas',
         '--disable-gpu',
+        '--disable-web-security',
+        '--disable-features=VizDisplayCompositor',
+        '--disable-background-timer-throttling',
+        '--disable-backgrounding-occluded-windows',
+        '--disable-renderer-backgrounding',
         '--window-size=1920,1080'
-      ]
+      ],
+      // Use installed Chrome in CI, auto-detect locally
+      executablePath: process.env.CI === 'true' ? 
+        process.env.PUPPETEER_EXECUTABLE_PATH || '/opt/hostedtoolcache/chromium/*/x64/chrome' :
+        undefined
     });
 
     const page = await browser.newPage();
@@ -42,6 +56,12 @@ async function generatePDF() {
 
     // Navigate to the built site
     const htmlPath = path.join(__dirname, '..', 'build', 'index.html');
+    
+    // Verify build directory exists
+    if (!fs.existsSync(htmlPath)) {
+      throw new Error(`Build file not found: ${htmlPath}. Make sure to run 'pnpm run build' first.`);
+    }
+    
     const fileUrl = `file://${htmlPath}`;
     
     console.log(`🌐 Loading page: ${fileUrl}`);

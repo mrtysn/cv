@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d build",
-    "generate-pdf": "npm run build && node scripts/generate-pdf.js"
+    "generate-pdf": "pnpm run build && node scripts/generate-pdf.js"
   },
   "browserslist": {
     "production": [

@@ -103,3 +103,11 @@ Implemented complete PDF generation pipeline using GitHub Actions + Puppeteer to
 
 Fixed GitHub Actions failure caused by setup-node@v4 expecting npm/yarn lock files when project uses pnpm. Added pnpm/action-setup@v2 step and updated all package manager commands from npm to pnpm. Removed npm cache configuration from setup-node step. Essential for CI/CD pipeline functionality.
 
+---
+
+## 2025-08-13 - GitHub Actions Puppeteer CI/CD Hardening
+**Type**: Architecture
+**Impact**: High
+
+Implemented comprehensive Puppeteer CI/CD best practices after research. Added Ubuntu system dependencies (libgbm1, libnss3, libatk-bridge2.0-0) essential for headless Chrome. Enhanced browser launch configuration with CI-specific arguments and environment detection. Added executable path fallback handling and PUPPETEER_SKIP_CHROMIUM_DOWNLOAD optimization. Implemented robust error handling, build verification, and debugging output. Key insight: libgbm1 is critical for Puppeteer 3+ on Ubuntu, and headless mode detection via CI environment variable ensures local development compatibility.
+
