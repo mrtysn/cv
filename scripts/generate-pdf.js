@@ -68,8 +68,8 @@ async function generatePDF() {
       timeout: 30000 
     });
 
-    // Wait for any fonts or dynamic content to load
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Wait for fonts to load using modern Puppeteer approach
+    await page.waitForFunction(() => document.fonts.ready, { timeout: 10000 });
 
     // Hide print-excluded elements
     await page.addStyleTag({
