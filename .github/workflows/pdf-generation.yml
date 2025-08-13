@@ -42,11 +42,14 @@ jobs:
           
       - name: 🌐 Install Chrome for Puppeteer
         run: |
-          npx puppeteer browsers install chrome
-          echo "Chrome installation complete"
+          CHROME_PATH=$(npx puppeteer browsers install chrome | grep chrome@ | awk '{print $2}')
+          echo "PUPPETEER_EXECUTABLE_PATH=$CHROME_PATH" >> $GITHUB_ENV
+          echo "Chrome installed at: $CHROME_PATH"
           
       - name: 🏗️ Build React application
-        run: pnpm run build
+        run: |
+          npx update-browserslist-db@latest
+          pnpm run build
         
       - name: 📄 Generate PDF
         run: |
