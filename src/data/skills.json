@@ -36,7 +36,7 @@
       "Angular",
       "Next.js",
       "MobX, Easy Peasy",
-      "Material UI, Semantic UI, Tailwind CSS"
+      "MUI, Semantic UI, Tailwind, DaisyUI"
     ]
   },
   {
@@ -47,21 +47,20 @@
       "TypeScript",
       "Python; Django, Flask",
       "Java; Spring",
-      "ASP.NET",
+      "C#, ASP.NET, SignalR",
       "MongoDB, PostgreSQL, MySQL",
       "Redis",
       "BullMQ, RabbitMQ",
-      "Jaeger, New Relic",
-      "Swagger"
+      "Prometheus, Jaeger, New Relic"
     ]
   },
   {
     "category": "dev-ops",
     "skills": [
-      "AWS; EC2, ECS, S3, Lambda, Step Functions, DynamoDB",
+      "AWS; EC2, ECS Fargate, ALB, S3, Lambda, DynamoDB",
       "Terraform, CDKTF",
       "Docker",
-      "Heroku"
+      "Grafana k6"
     ]
   },
   {
@@ -70,9 +69,7 @@
       "Prolog",
       "Perl",
       "LaTeX",
-      "Arch Linux",
-      "WSL 2",
-      "Git"
+      "Arch Linux"
     ]
   }
 ]
