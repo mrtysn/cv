@@ -9,8 +9,17 @@
     "startDate": "10/2024",
     "endDate": null,
     "responsibilities": [
-      "Leading the backend development of a new mobile match-3 game, architecting scalable systems designed to support 10M+ monthly active users using .NET, SignalR and MongoDB"
-    ]
+      "Architected and built the backend of {Match Squad}, a mobile match-3 game, from scratch using .NET, SignalR for real-time multiplayer & live chat, MongoDB, and Redis for horizontal scaling",
+      "Developed LiveOps event infrastructure with automatic scheduling, matchmaking, and real-time leaderboards",
+      "Implemented a LiveOps dashboard (React, TypeScript) for managing events, players, teams, and server configuration",
+      "Built and maintained production infrastructure with Terraform-managed AWS deployments (ECS Fargate, ALB), custom distributed job scheduler, automated load testing with k6 using TypeScript code generation from SignalR hub, OpenTelemetry observability (Prometheus, Jaeger), and zero-downtime deployments"
+    ],
+    "links": {
+      "Match Squad": {
+        "url": "https://apps.apple.com/app/match-squad/id6473704944",
+        "className": "colorHighlight"
+      }
+    }
   },
   {
     "company": {
