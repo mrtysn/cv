@@ -51,14 +51,19 @@ async function generatePDF(options = {}) {
       deviceScaleFactor: 2
     });
 
-    // Read version from constants.js
+    // Read version and scale from constants.js
     const constantsPath = path.join(__dirname, '..', 'src', 'constants.js');
     const constantsContent = fs.readFileSync(constantsPath, 'utf8');
     const versionMatch = constantsContent.match(/CV_VERSION\s*=\s*["']([^"']+)["']/);
     const version = versionMatch ? versionMatch[1] : 'v1.0';
 
+    // Use provided scale or read from constants.js
+    const scaleMatch = constantsContent.match(/PDF_SCALE\s*=\s*([\d.]+)/);
+    const configScale = scaleMatch ? parseFloat(scaleMatch[1]) : 1.0;
+    const finalScale = scale !== 1.0 ? scale : configScale; // CLI argument overrides config
+
     console.log(`📋 Found version: ${version}`);
-    console.log(`📐 Scale factor: ${scale}`);
+    console.log(`📐 Scale factor: ${finalScale}${scale !== 1.0 ? ' (from CLI)' : ' (from config)'}`);
 
     // Determine URL to use
     let url;
@@ -110,7 +115,13 @@ async function generatePDF(options = {}) {
     // Generate filename with version
     const versionForFilename = version.replace(/\./g, '_');
     const filename = `Mert_Yasin_CV_${versionForFilename}.pdf`;
-    const outputPath = path.join(__dirname, '..', filename);
+
+    // Output to pdfs/ directory for local versioned copies
+    const pdfsDir = path.join(__dirname, '..', 'pdfs');
+    if (!fs.existsSync(pdfsDir)) {
+      fs.mkdirSync(pdfsDir, { recursive: true });
+    }
+    const outputPath = path.join(pdfsDir, filename);
 
     console.log(`📄 Generating PDF: ${filename}`);
 
@@ -127,7 +138,7 @@ async function generatePDF(options = {}) {
       },
       preferCSSPageSize: false,
       displayHeaderFooter: false,
-      scale: scale  // Apply zoom/scale at PDF generation time
+      scale: finalScale  // Apply zoom/scale at PDF generation time
     });
 
     console.log(`✅ PDF generated successfully: ${filename}`);

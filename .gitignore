@@ -9,6 +9,9 @@
 # production
 /build
 
+# generated pdfs (versioned, kept locally)
+/pdfs
+
 # misc
 .DS_Store
 .env.local
