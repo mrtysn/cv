@@ -96,7 +96,7 @@ async function generatePDF(options = {}) {
           padding: 0 !important;
         }
         @page {
-          margin: 0;
+          margin: 10px 0 10px 0;
         }
         html {
           display: flex;
