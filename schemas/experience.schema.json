@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mrtysn/cv/schemas/experience.schema.json",
+  "title": "CV Experience Schema",
+  "description": "Schema for the experience section containing work history and professional positions",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["company", "location", "position", "startDate", "responsibilities"],
+    "properties": {
+      "company": {
+        "type": "object",
+        "description": "Company information",
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Company name",
+            "minLength": 1,
+            "examples": ["Acme Corporation"]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Company website URL",
+            "examples": ["https://www.acme.com/"]
+          }
+        }
+      },
+      "location": {
+        "type": "string",
+        "description": "Work location (city, state/country)",
+        "minLength": 1,
+        "examples": ["San Francisco, United States", "Istanbul, Turkey (Remote)"]
+      },
+      "position": {
+        "type": "string",
+        "description": "Job title or position held",
+        "minLength": 1,
+        "examples": ["Senior Software Engineer", "Lead Backend Engineer"]
+      },
+      "startDate": {
+        "type": "string",
+        "description": "Start date in MM/YYYY or YYYY format",
+        "pattern": "^([0-9]{2}/)?[0-9]{4}$",
+        "examples": ["01/2020", "2020"]
+      },
+      "endDate": {
+        "type": ["string", "null"],
+        "description": "End date in MM/YYYY or YYYY format, or null for current position",
+        "pattern": "^([0-9]{2}/)?[0-9]{4}$",
+        "examples": ["12/2022", "2022", null]
+      },
+      "responsibilities": {
+        "type": "array",
+        "description": "List of responsibilities, achievements, or job duties",
+        "minItems": 1,
+        "items": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Simple responsibility as a string. Can contain HTML tags (<i>, <b>) and link placeholders in curly braces {LinkText}",
+              "examples": [
+                "Developed backend APIs using Node.js and TypeScript",
+                "Led a team of {5 engineers} working on {Project X}"
+              ]
+            },
+            {
+              "type": "object",
+              "description": "Complex responsibility with sub-items",
+              "required": ["type", "content", "subItems"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "complex",
+                  "description": "Indicates a complex responsibility structure"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Main content or heading for the responsibility"
+                },
+                "subItems": {
+                  "type": "array",
+                  "description": "Sub-items or details for this responsibility",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "links": {
+        "type": "object",
+        "description": "Map of link text to link data. Keys match {placeholders} in responsibility text",
+        "additionalProperties": {
+          "type": "object",
+          "required": ["url", "className"],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Target URL for the link"
+            },
+            "className": {
+              "type": "string",
+              "description": "CSS class name for the link (e.g., 'colorHighlight' for accent color, or empty string)"
+            }
+          }
+        },
+        "examples": [
+          {
+            "Project X": {
+              "url": "https://example.com/project-x",
+              "className": "colorHighlight"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

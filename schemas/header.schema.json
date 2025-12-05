@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mrtysn/cv/schemas/header.schema.json",
+  "title": "CV Header Schema",
+  "description": "Schema for the header section containing personal information and contact details",
+  "type": "object",
+  "required": ["name", "title", "documentTitle", "contact"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name displayed in the header",
+      "minLength": 1,
+      "examples": ["John Doe"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Professional title or role",
+      "minLength": 1,
+      "examples": ["Senior Software Engineer", "Data Scientist"]
+    },
+    "documentTitle": {
+      "type": "string",
+      "description": "Browser tab/window title for the CV page",
+      "minLength": 1,
+      "examples": ["John Doe ▸ CV"]
+    },
+    "contact": {
+      "type": "object",
+      "description": "Contact information",
+      "required": ["phone", "email", "github", "linkedin"],
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "Phone number with country code",
+          "examples": ["+1 555 123 4567"]
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address",
+          "examples": ["john.doe@example.com"]
+        },
+        "github": {
+          "type": "object",
+          "description": "GitHub profile information",
+          "required": ["url", "label"],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "GitHub profile URL",
+              "examples": ["https://github.com/johndoe"]
+            },
+            "label": {
+              "type": "string",
+              "description": "Display text for GitHub link",
+              "examples": ["github/johndoe"]
+            }
+          }
+        },
+        "linkedin": {
+          "type": "object",
+          "description": "LinkedIn profile information",
+          "required": ["url", "label"],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "LinkedIn profile URL",
+              "examples": ["https://www.linkedin.com/in/johndoe/"]
+            },
+            "label": {
+              "type": "string",
+              "description": "Display text for LinkedIn link",
+              "examples": ["linkedin/johndoe"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
