@@ -36,6 +36,27 @@ jobs:
           time_per_frame: 100
           start_delay: 4000
 
+      - name: Compress GIF with gifsicle
+        if: env.CHANGED == 'true'
+        run: |
+          echo "📊 Original file size:"
+          du -h cv-preview.gif
+
+          echo "🔧 Installing gifsicle..."
+          sudo apt-get update && sudo apt-get install -y gifsicle
+
+          echo "🗜️ Compressing GIF..."
+          gifsicle -O3 --colors 256 --lossy=80 -o cv-preview-optimized.gif cv-preview.gif
+
+          echo "📊 Optimized file size:"
+          du -h cv-preview-optimized.gif
+
+          echo "♻️ Replacing original with optimized version..."
+          mv cv-preview-optimized.gif cv-preview.gif
+
+          echo "✅ Compression complete!"
+          du -h cv-preview.gif
+
       - name: Commit GIF to the Repository
         if: env.CHANGED == 'true'
         id: commit
