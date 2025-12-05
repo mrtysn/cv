@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mrtysn/cv/schemas/education.schema.json",
+  "title": "CV Education Schema",
+  "description": "Schema for the education section containing academic background and qualifications",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["institution", "location"],
+    "properties": {
+      "institution": {
+        "type": "object",
+        "description": "Educational institution information",
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the educational institution",
+            "minLength": 1,
+            "examples": ["Harvard University", "MIT"]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Institution website URL",
+            "examples": ["https://www.harvard.edu/"]
+          }
+        }
+      },
+      "location": {
+        "type": "string",
+        "description": "Institution location (city, state/country)",
+        "minLength": 1,
+        "examples": ["Cambridge, Massachusetts", "London, United Kingdom"]
+      },
+      "degree": {
+        "type": "string",
+        "description": "Degree obtained or program type (Bachelor, Master, PhD, etc.)",
+        "examples": ["Bachelor of Science, Computer Science", "PhD, Machine Learning"]
+      },
+      "program": {
+        "type": "object",
+        "description": "Specific program information (for workshops, summer schools, etc.)",
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Program name",
+            "examples": ["Summer Research Program"]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Program URL"
+          }
+        }
+      },
+      "startDate": {
+        "type": "string",
+        "description": "Start date in MM/YYYY or YYYY format",
+        "pattern": "^([0-9]{2}/)?[0-9]{4}$",
+        "examples": ["09/2018", "2018"]
+      },
+      "endDate": {
+        "type": "string",
+        "description": "End date in MM/YYYY or YYYY format",
+        "pattern": "^([0-9]{2}/)?[0-9]{4}$",
+        "examples": ["05/2022", "2022"]
+      },
+      "achievements": {
+        "type": "array",
+        "description": "Academic achievements, honors, research projects, or activities",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Simple achievement as a string. Can contain HTML tags (<i>, <b>, <sup>) and link placeholders in curly braces {LinkText}",
+              "examples": [
+                "Dean's Honor List - GPA: 3.9/4.0",
+                "Completed thesis on {Machine Learning Applications}"
+              ]
+            },
+            {
+              "type": "object",
+              "description": "Complex achievement with sub-items (e.g., research projects with multiple parts)",
+              "required": ["type", "content", "subItems"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "complex",
+                  "description": "Indicates a complex achievement structure"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Main content or heading for the achievement"
+                },
+                "subItems": {
+                  "type": "array",
+                  "description": "Sub-items or details for this achievement",
+                  "items": {
+                    "type": "object",
+                    "required": ["content"],
+                    "properties": {
+                      "content": {
+                        "type": "string",
+                        "description": "Content for the sub-item. Can contain HTML tags"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "relevantCourses": {
+        "type": "array",
+        "description": "List of relevant courses taken (displayed in smaller text)",
+        "items": {
+          "type": "string",
+          "examples": ["CS 101: Introduction to Computer Science"]
+        }
+      },
+      "links": {
+        "type": "object",
+        "description": "Map of link text to link data. Keys match {placeholders} in achievement text",
+        "additionalProperties": {
+          "type": "object",
+          "required": ["url", "className"],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Target URL for the link"
+            },
+            "className": {
+              "type": "string",
+              "description": "CSS class name for the link (e.g., 'colorHighlight' for accent color, or empty string)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
