@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mrtysn/cv/schemas/skills.schema.json",
+  "title": "CV Skills Schema",
+  "description": "Schema for the skills section containing technical skills grouped by categories",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["category", "skills"],
+    "properties": {
+      "category": {
+        "type": "string",
+        "description": "Skill category name (e.g., 'front-end', 'back-end', 'machine learning')",
+        "minLength": 1,
+        "examples": ["front-end", "back-end", "machine learning", "dev-ops"]
+      },
+      "skills": {
+        "type": "array",
+        "description": "List of skills within this category",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "description": "Skill name or technology. Can include multiple related items separated by semicolons or commas",
+          "examples": [
+            "React.js",
+            "Python; TensorFlow, Keras, PyTorch",
+            "AWS; EC2, ECS Fargate, S3"
+          ]
+        }
+      }
+    }
+  }
+}

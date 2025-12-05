@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/mrtysn/cv/schemas/achievements.schema.json",
+  "title": "CV Achievements/Extracurricular Schema",
+  "description": "Schema for the extracurricular/achievements section containing awards, interests, languages, and community activities",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["type", "content"],
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "Type of achievement entry",
+        "enum": ["achievement", "community", "interests", "languages"],
+        "examples": ["achievement", "community", "interests", "languages"]
+      },
+      "content": {
+        "type": "string",
+        "description": "Achievement content. Can contain HTML tags (<i>, <b>, <sup>) and link placeholders in curly braces {LinkText}",
+        "minLength": 1,
+        "examples": [
+          "Won 1st place in {Hackathon 2023}",
+          "Languages: English (Native), Spanish (Fluent)",
+          "Running, cooking, playing guitar"
+        ]
+      },
+      "links": {
+        "type": "object",
+        "description": "Map of link text to link data. Keys match {placeholders} in content text",
+        "additionalProperties": {
+          "type": "object",
+          "required": ["url", "className"],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Target URL for the link"
+            },
+            "className": {
+              "type": "string",
+              "description": "CSS class name for the link (e.g., 'colorHighlight' for accent color, or empty string)"
+            }
+          }
+        },
+        "examples": [
+          {
+            "Hackathon 2023": {
+              "url": "https://example.com/hackathon",
+              "className": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 - [🛠️ How to Deploy to GitHub Pages](#deploy)
 - [🖨️ How to Save as a PDF](#save)
 - [🎨 How to Customize the CV for yourself](#customize)
+- [📊 Data Schema Documentation](DATA_SCHEMA.md)
 - [🐌 Does a CV Need to be a Bloated Web Application?](#why)
 - [🙌 How to Contribute](#contribute)
 
@@ -82,41 +83,70 @@ On the root folder of the project, run:
 
 ### 🎨 How to Customize the CV for yourself
 
-- ⤴️ Fork the repository to your own account.
+#### Quick Start
 
-- 📖 _Read it_, seriously. Go to `App.js` and see the main structure in the React code:
+1. **Fork the repository** to your own account
+2. **Edit the JSON files** in `src/data/` with your own information:
+   - `header.json` - Your name, title, and contact info
+   - `experience.json` - Jobs, internships, contracts
+   - `education.json` - Schools, courses, degrees
+   - `skills.json` - Technical skills grouped by category
+   - `achievements.json` - Awards, interests, languages
 
-  - **Header** - name, title and contact info
-  - **Experience** - jobs, internships, contracts
-  - **Education** - schools, courses, theses
-  - **Skills** - optional, group your know-how by categories
-  - **Achievements** - extracurricular activities
-  - **Footer** - optional, author attribution and links. Keep it if you want to support me
+3. **Read the [Data Schema Documentation](DATA_SCHEMA.md)** for detailed structure and examples
 
-- ✂️ Start replacing the **in-line** content with your own. Learning what to put where might take some time as this project is not completely modular at the moment. There isn't a `json` file to edit to replace all the contents (yet).
-- ⌨️ With that said, there are only a few main React components you would be working with. They accept the following props:
-  - `SectionItem` (Used both in Education and Experience)
-    - Company Title
-    - Location
-    - Job Title
-    - Start Date
-    - End Date (optional)
-    - Description (optional, short paragraph)
-    - Items (optional, main bullet points, I prefer this over description)
-    - Relevant Items (optional, smaller bullet points mainly for listing classes)
-  - `SkillRow` (Used in Skills)
-    - Title (e.g. game development)
-    - Items (e.g. godot, unity3d, unreal)
-  - `Achievements` (Extracurricular)
-    - Items (e.g. hobbies, awards, certificates)
-- Once you are familiarized with the structure of the repository, copy pasting from your existing CV (probably a docx) and editing the code should be easier. The fastest way to edit would be searching throughout the code for the text you would like to replace.
+#### Understanding the Structure
 
-- You have complete control of the layout. I found text editors to be insufficient for my margin and padding needs, that's why I built this. ✨ Style as you wish ✨, or keep it as it is.
-- Most of the styling is handled by `Semantic UI` and `App.css`. However, you'll find custom in-line stylings and one-off CSS classes in the code. _CSS in code_ is not ideal, but it's sometimes the fastest to iterate with.
-- If your styling changes fail due to a conflict with `Semantic UI`, the `!important` flag is (sometimes) your friend.
-- Don't forget to update the `homepage` URL in `package.json` with your GitHub username if you want to deploy this web application to `GitHub Pages`.
-- Check the `constants.js` file if you are using the `Footer` component, to properly date and version your CV. Remember this will be an always-updating document throughout your career and it's very useful to keep everything in check.
-- _Tip:_ You can maintain multiple versions of your CV for different job titles through separate git branches. Versioning also helps keep track of your applications since you would know which variant you applied with.
+The CV is **fully data-driven**. All content lives in JSON files (`src/data/`), completely separated from the React components.
+
+**Main sections:**
+- **Header** - name, title and contact info
+- **Experience** - jobs, internships, contracts
+- **Education** - schools, courses, theses
+- **Skills** - technical skills grouped by categories
+- **Achievements** - extracurricular activities, awards, interests
+- **Footer** - optional, author attribution and links. Keep it if you want to support me
+
+#### Editing Content
+
+**All CV content is in JSON files** - no need to touch React code! Simply edit the files in `src/data/`:
+
+```
+src/data/
+├── header.json         # Personal info and contact
+├── experience.json     # Work history
+├── education.json      # Academic background
+├── skills.json         # Technical skills
+└── achievements.json   # Awards and interests
+```
+
+Each JSON file has a corresponding **schema file** in `schemas/` that defines its structure and validates your data. Many editors (like VS Code) will provide autocomplete and validation automatically.
+
+**See [DATA_SCHEMA.md](DATA_SCHEMA.md) for:**
+- Complete schema reference
+- Field descriptions and examples
+- Link placeholder system
+- HTML formatting support
+- Validation setup
+
+#### Customizing Layout & Styling
+
+- **Styling** is handled by `Semantic UI` and `App.css`
+- You'll find custom inline styles in component files for specific layout needs
+- If Semantic UI conflicts occur, the `!important` CSS flag can help
+- Check `constants.js` for CV version and date (used in Footer)
+
+#### Deployment Configuration
+
+- Update the `homepage` URL in `package.json` with your GitHub username
+- See [How to Deploy to GitHub Pages](#deploy) for deployment instructions
+
+#### Tips
+
+- **Version control:** Use git branches to maintain different CV versions for different roles
+- **Fast editing:** JSON format makes it easy to copy-paste from existing CVs
+- **Validation:** Set up JSON schema validation in your editor for real-time error checking
+- **Track changes:** Version your CV to remember which variant you used for each application
 
 ## <a name="why"></a>
 
