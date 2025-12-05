@@ -97,6 +97,6 @@ div#narrowSkillTitle {
 /* Mobile/Narrow screen adjustments */
 @media (max-width: 768px) {
   .ui.text.container {
-    padding-top: 80px !important; /* Space for fixed buttons at top */
+    padding-top: 40px !important; /* Space for fixed buttons at top */
   }
 }
