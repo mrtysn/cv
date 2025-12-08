@@ -10,11 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Required to access HEAD^ (previous commit)
 
       - name: Check for changes in src folder
         id: check_changes
         run: |
-          if git diff --quiet HEAD -- src/; then
+          if git diff --quiet HEAD^ HEAD -- src/; then
             echo "CHANGED=false" >> $GITHUB_ENV
           else
             echo "CHANGED=true" >> $GITHUB_ENV

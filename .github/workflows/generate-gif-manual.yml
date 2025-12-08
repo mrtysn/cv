@@ -9,17 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Check for changes in src folder
-        id: check_changes
-        run: |
-          if git diff --quiet HEAD -- src/; then
-            echo "CHANGED=false" >> $GITHUB_ENV
-          else
-            echo "CHANGED=true" >> $GITHUB_ENV
-          fi
-
       - name: Generate GIF from Website
-        if: env.CHANGED == 'true'
         uses: PabloLec/website-to-gif@2.1.1
         with:
           url: "https://mrtysn.github.io/cv/"
@@ -35,7 +25,6 @@ jobs:
           start_delay: 4000
 
       - name: Compress GIF with gifsicle
-        if: env.CHANGED == 'true'
         run: |
           echo "📊 Original file size:"
           du -h cv-preview.gif
@@ -56,7 +45,6 @@ jobs:
           du -h cv-preview.gif
 
       - name: Commit GIF to the Repository
-        if: env.CHANGED == 'true'
         id: commit
         run: |
           git config --global user.name "${{ github.actor }}"
