@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Need to fetch previous commit to compare
 
       - name: Check for changes in src folder
         id: check_changes
         run: |
-          if git diff --quiet HEAD -- src/; then
+          # Compare current commit with previous commit
+          if git diff --quiet HEAD^ HEAD -- src/; then
+            echo "No changes in src/ folder since last commit"
             echo "CHANGED=false" >> $GITHUB_ENV
           else
+            echo "Changes detected in src/ folder"
             echo "CHANGED=true" >> $GITHUB_ENV
           fi
 
@@ -63,11 +68,13 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          if git diff-index --quiet HEAD; then
+          git add cv-preview.gif
+
+          if git diff-index --quiet HEAD cv-preview.gif; then
+            echo "No changes to GIF, skipping commit"
             echo "CHANGED_COMMIT=false" >> $GITHUB_ENV
           else
-            git commit -m 'Automatically generate GIF of the CV website'
+            git commit -m 'Update compressed CV preview GIF [skip ci]'
             echo "CHANGED_COMMIT=true" >> $GITHUB_ENV
           fi
 
