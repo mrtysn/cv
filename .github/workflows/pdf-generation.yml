@@ -76,8 +76,10 @@ jobs:
             const match = content.match(/CV_VERSION\s*=\s*[\"']([^\"']+)[\"']/);
             console.log(match ? match[1] : 'v1.0');
           ")
+          BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "tag=cv-$VERSION-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+          echo "build_date=$BUILD_DATE" >> $GITHUB_OUTPUT
           
       - name: 🚀 Create Release
         uses: softprops/action-gh-release@v1
@@ -86,13 +88,13 @@ jobs:
           name: "CV PDF ${{ steps.version.outputs.version }}"
           body: |
             Automatically generated CV PDF from commit: ${{ github.sha }}
-            
+
             **Changes in this version:**
             - Generated from latest CV content
             - Version: ${{ steps.version.outputs.version }}
-            - Build date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            - Build date: ${{ steps.version.outputs.build_date }}
             - Commit: ${{ github.sha }}
-            
+
             📥 Download the PDF below
           files: |
             pdfs/Mert_Yasin_CV_*.pdf
