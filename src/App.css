@@ -90,8 +90,20 @@ div#narrowSkillTitle {
 
 /* PDF download button shadow border */
 .pdf-download-button {
-  border: none !important;
-  box-shadow: inset 0 0 0 0.5px #2185d0 !important;
+  border: 1px solid #2185d0 !important;
+  box-shadow: none !important;
+  /* Safari-specific font rendering fixes */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* High-DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .pdf-download-button {
+    /* Use slightly thinner border on high-DPI displays for visual consistency */
+    border-width: 0.5px !important;
+  }
 }
 
 /* Mobile/Narrow screen adjustments */

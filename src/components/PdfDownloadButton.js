@@ -150,7 +150,6 @@ const PdfDownloadButton = () => {
         zIndex: 1000,
         backgroundColor: "transparent",
         color: "#2185d0",
-        border: "1px solid #2185d0",
         borderRadius: "4px",
         padding: "10px 15px",
         cursor: "pointer",
@@ -159,6 +158,8 @@ const PdfDownloadButton = () => {
         fontWeight: "bold",
         transition: "all 0.2s ease",
         opacity: opacity,
+        lineHeight: "1.2",
+        whiteSpace: "nowrap",
       }}
       onMouseEnter={(e) => {
         e.target.style.backgroundColor = "#2185d0";
