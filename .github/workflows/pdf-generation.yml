@@ -65,7 +65,7 @@ jobs:
       - name: 📊 List generated files
         run: |
           echo "Generated PDF files:"
-          ls -la *.pdf || echo "No PDF files found"
+          ls -la pdfs/*.pdf || echo "No PDF files found in pdfs/"
           
       - name: 🏷️ Get version for tag
         id: version
@@ -95,7 +95,7 @@ jobs:
             
             📥 Download the PDF below
           files: |
-            Mert_Yasin_CV_*.pdf
+            pdfs/Mert_Yasin_CV_*.pdf
           draft: false
           prerelease: false
           generate_release_notes: false
