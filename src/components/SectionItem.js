@@ -86,7 +86,7 @@ const SectionItem = ({ companyTitle, location, jobTitle, startDate, endDate, des
                   >
                     {"•"}&nbsp;&nbsp;
                     {item}
-                    {ix + 1 < items.length ? (
+                    {ix + 1 < relevantItems.length ? (
                       <span>&nbsp;&nbsp;</span>
                     ) : (
                       ""
