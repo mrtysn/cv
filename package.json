@@ -38,5 +38,12 @@
     "puppeteer": "^24.16.1",
     "react-snap": "^1.23.0"
   },
-  "homepage": "https://mrtysn.github.io/cv"
+  "homepage": "https://mrtysn.github.io/cv",
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage"
+    ]
+  }
 }
