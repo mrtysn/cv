@@ -1,17 +1,26 @@
 import React from "react";
 import App from "./App";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
 
-// Render app with error boundary
-root.render(
-  <ErrorBoundary>
-    <App />
-  </ErrorBoundary>
-);
+// Use hydrate if pre-rendered by react-snap, otherwise render normally
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(
+    rootElement,
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  );
+} else {
+  const root = createRoot(rootElement);
+  root.render(
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  );
+}
 
 // Hide loading indicator once app is rendered
 setTimeout(() => {
