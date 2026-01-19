@@ -24,3 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode/settings.json
+
+# claude - share skills/rules/commands, but not personal settings
+.claude/settings.local.json
