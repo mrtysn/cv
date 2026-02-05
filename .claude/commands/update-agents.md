@@ -1,0 +1,1 @@
+../../.agents/claude/commands/update-agents.md
