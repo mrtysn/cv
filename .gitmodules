@@ -1,3 +1,3 @@
 [submodule ".agents"]
 	path = .agents
-	url = git@github-personal:mrtysn/agents-shared.git
+	url = git@github.com:mrtysn/agents-shared.git
