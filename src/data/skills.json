@@ -1,15 +1,24 @@
 [
   {
     "category": "game-dev & mobile",
+    "tags": ["gamedev"],
     "skills": [
       "Unity3D; C#",
       "Godot; GDScript",
       "Android; Java",
       "React Native"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "Unity3D; C#",
+        "Godot; GDScript",
+        "Android; Java"
+      ]
+    }
   },
   {
     "category": "machine learning",
+    "tags": ["ml", "academic"],
     "skills": [
       "Deep Learning",
       "Computer Vision",
@@ -19,28 +28,51 @@
       "Reinforcement Learning",
       "Bioinformatics",
       "Digital Signal Processing"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "Deep Learning",
+        "Computer Vision",
+        "NLP",
+        "Bioinformatics"
+      ]
+    }
   },
   {
     "category": "data science",
+    "tags": ["ml", "academic"],
     "skills": [
       "Python; TensorFlow, Keras, PyTorch, NumPy, Pandas",
       "MATLAB",
       "R"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "Python; TensorFlow, PyTorch, NumPy, Pandas"
+      ]
+    }
   },
   {
     "category": "front-end",
+    "tags": ["frontend"],
     "skills": [
       "React.js",
       "Angular",
       "Next.js",
       "MobX, Easy Peasy",
       "MUI, Semantic UI, Tailwind, DaisyUI"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "React.js",
+        "Next.js",
+        "MUI, Tailwind"
+      ]
+    }
   },
   {
     "category": "back-end",
+    "tags": ["backend"],
     "skills": [
       "NestJS",
       "Node.js",
@@ -52,19 +84,36 @@
       "Redis",
       "BullMQ, RabbitMQ",
       "Prometheus, Jaeger, New Relic"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "NestJS, Node.js, TypeScript",
+        "C#, ASP.NET, SignalR",
+        "MongoDB, PostgreSQL, Redis",
+        "Prometheus, Jaeger"
+      ]
+    }
   },
   {
     "category": "dev-ops",
+    "tags": ["devops"],
     "skills": [
       "AWS; EC2, ECS Fargate, ALB, S3, Lambda, DynamoDB",
       "Terraform, CDKTF",
       "Docker",
       "Grafana k6"
-    ]
+    ],
+    "short": {
+      "skills": [
+        "AWS (ECS, Lambda, S3)",
+        "Terraform",
+        "Docker"
+      ]
+    }
   },
   {
     "category": "others",
+    "tags": ["personal"],
     "skills": [
       "Prolog",
       "Perl",

@@ -8,6 +8,7 @@
     "degree": "PhD ABD, Computer Science",
     "startDate": "2018",
     "endDate": "2021",
+    "tags": ["academic", "research"],
     "achievements": [
       "Successfully passed Ph.D. Qualifying Exam – 2020",
       {
@@ -23,6 +24,12 @@
         ]
       }
     ],
+    "short": {
+      "achievements": [
+        "Passed Ph.D. Qualifying Exam; research in seizure detection (EEG/deep learning) and disease subtyping (bioinformatics/ML)"
+      ],
+      "relevantCourses": null
+    },
     "relevantCourses": [
       "MGG 7010: Molecular Biology and Genetics",
       "PSY 5040: Cognitive Neuroscience",
@@ -47,12 +54,19 @@
     "degree": "Master of Science, Computer Engineering – Incomplete",
     "startDate": "2016",
     "endDate": "2018",
+    "tags": ["academic", "research"],
     "achievements": [
       "Co-founded the reading group {Deep Learning Boun}",
       "Prepared and graded homework as a Student Assistant for {CmpE 300: Analysis of Algorithms}",
       "Attended the Convex Optimization reading group of the {Perceptual Intelligence Laboratory}",
       "Spoke at the {Ask Me Anything #machinelearning} event and the {Learning to Learn} panel"
     ],
+    "short": {
+      "achievements": [
+        "Co-founded {Deep Learning Boun} reading group; spoke at {Ask Me Anything #machinelearning} and {Learning to Learn} panel"
+      ],
+      "relevantCourses": null
+    },
     "links": {
       "Deep Learning Boun": {
         "url": "https://deepboun.github.io/",
@@ -95,9 +109,15 @@
       "url": "http://cmp.felk.cvut.cz/summerschool2016/"
     },
     "endDate": "08/2016",
+    "tags": ["academic", "ml"],
     "achievements": [
       "Attended a summer school focused on state-of-the-art Computer Vision applications in the industry and recent literature, with team-building activities such as ultimate frisbee, orienteering, climbing, archery, and unihockey"
-    ]
+    ],
+    "short": {
+      "achievements": [
+        "Summer school on state-of-the-art Computer Vision applications"
+      ]
+    }
   },
   {
     "institution": {
@@ -108,12 +128,19 @@
     "degree": "Bachelor of Science, Computer Engineering",
     "startDate": "2012",
     "endDate": "2016",
+    "tags": ["academic"],
     "achievements": [
       "Honors: Dean's Honor List; GPA: 3.28 / 4.00",
       "Implemented recurrent neural networks (RNNs and LSTMs) in Python from scratch and generated new poems, plays in the style of William Shakespeare and Nazım Hikmet for my {Bachelor Thesis}",
       "Ranked 1<sup>st</sup> in the case study competition {All-Rounder} by designing a puzzle game – 2016",
       "Ranked 1<sup>st</sup> in Yıldız Technical University {5<sup>th</sup> Finance and Software Days} Code Contest – 2014"
     ],
+    "short": {
+      "achievements": [
+        "Dean's Honor List; GPA: 3.28 / 4.00. Built RNN/LSTM text generator for {Bachelor Thesis}. Ranked 1<sup>st</sup> in {All-Rounder} competition"
+      ],
+      "relevantCourses": null
+    },
     "links": {
       "Bachelor Thesis": {
         "url": "https://github.com/mrtysn/lstm",
@@ -146,12 +173,18 @@
     "degree": "High School",
     "startDate": "2008",
     "endDate": "2012",
+    "tags": ["highschool"],
     "achievements": [
       "Represented Slovenia in the SOCHUM Committee of {Harvard National Model United Nations (HNMUN)} – 2011",
       "Led the winning team at İzmir Gelişim College's Mathematics League – 2011 & 2012",
       "Won two medals at University of Waterloo's {math contests} – 2011 & 2012",
       "Participated in {American Mathematics Competition} and {National Antalya Mathematics Olympics} – 2010 & 2011"
     ],
+    "short": {
+      "achievements": [
+        "Harvard Model UN delegate; Waterloo math contest medalist; İzmir Mathematics League winner"
+      ]
+    },
     "links": {
       "Harvard National Model United Nations (HNMUN)": {
         "url": "https://www.hnmun.org/",

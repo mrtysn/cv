@@ -8,12 +8,18 @@
     "position": "Lead Backend Engineer",
     "startDate": "10/2024",
     "endDate": null,
+    "tags": ["professional", "backend", "gamedev"],
     "responsibilities": [
       "Architected and built the backend of {Match Squad}, a mobile match-3 game, from scratch using .NET, SignalR for real-time multiplayer & live chat, MongoDB, and Redis for horizontal scaling",
       "Developed LiveOps event infrastructure with automatic scheduling, matchmaking, and real-time leaderboards",
       "Implemented a LiveOps dashboard (React, TypeScript) for managing events, players, teams, and server configuration",
       "Built and maintained production infrastructure with Terraform-managed AWS deployments (ECS Fargate, ALB), custom distributed job scheduler, automated load testing with k6 using TypeScript code generation from SignalR hub, OpenTelemetry observability (Prometheus, Jaeger), and zero-downtime deployments"
     ],
+    "short": {
+      "responsibilities": [
+        "Architected the backend of {Match Squad}, a mobile match-3 game, from scratch (.NET, SignalR, MongoDB, Redis) with LiveOps infrastructure, real-time leaderboards, Terraform-managed AWS deployments, and OpenTelemetry observability"
+      ]
+    },
     "links": {
       "Match Squad": {
         "url": "https://apps.apple.com/app/match-squad/id6473704944",
@@ -30,6 +36,7 @@
     "position": "Software Consultant, Contract",
     "startDate": "08/2024",
     "endDate": "10/2024",
+    "tags": ["professional", "freelance"],
     "responsibilities": [
       "Modeled factory production pipelines for steel manufacturing using {DELMIA Quintiq} Scheduler, collaborating with business consultants to deliver scheduling plans and supply chain optimization recommendations"
     ],
@@ -49,6 +56,7 @@
     "position": "Senior Software Engineer",
     "startDate": "11/2021",
     "endDate": "12/2023",
+    "tags": ["professional", "backend", "frontend"],
     "responsibilities": [
       "Designed and maintained ETL pipelines (using AWS Lambda, S3) to consume store, product, and stock data from retail merchants. Developed a data feed diff tool using hashing and reduced the feed ingestion workload by over 80%",
       "Implemented robust data validation steps for the pipelines that continuously push processed retail merchant data to third-party APIs (Google Business Profile, Google Content API) in order to guarantee accurate and up-to-date product and location information on map and location providers (Google Maps, Google Merchant Center, Google Shopping)",
@@ -56,6 +64,12 @@
       "Maintained and troubleshooted the Terraform-deployed infrastructure stack (EC2, ECS) and MongoDB database layer. Set up custom alerts (SNS) and notifications (to Slack) for early detection of infrastructure and database anomalies",
       "Authored the successful proposal of a <i>{TEYDEB 1501 Grant} for Industrial R&D projects</i> from TÜBİTAK. This project focuses on using the state-of-the-art Computer Vision (CV) and Large Language Model (LLM) techniques to batch process merchant data and store location review data (from Google Maps) to generate insights for the merchants"
     ],
+    "short": {
+      "responsibilities": [
+        "Built ETL pipelines (AWS Lambda, S3) for retail merchant data with an 80% ingestion reduction via hashing-based diff tool. Developed backend APIs (NestJS, TypeScript) and dashboards (React, MUI)",
+        "Managed Terraform-deployed infrastructure (EC2, ECS, MongoDB) and authored a successful {TEYDEB 1501 Grant} proposal for CV/LLM-based merchant data processing"
+      ]
+    },
     "links": {
       "TEYDEB 1501 Grant": {
         "url": "https://tubitak.gov.tr/en/funds/industrial/national-support-programs/1501-industrial-rd-projects-grant-programme",
@@ -72,6 +86,7 @@
     "position": "Senior Software Engineer, Part-Time",
     "startDate": "04/2022",
     "endDate": "06/2022",
+    "tags": ["professional", "ml"],
     "responsibilities": [
       "Investigated methodologies from machine learning literature to improve Olympos' propriety AI-powered tech talent matching algorithms. Worked on talent profiling, company profiling, and clustering problems"
     ]
@@ -85,10 +100,16 @@
     "position": "Instructor, Graduate Teaching Assistant",
     "startDate": "08/2018",
     "endDate": "05/2021",
+    "tags": ["academic", "teaching"],
     "responsibilities": [
       "Instructor for <i>Problem Solving and Programming Laboratory</i> (C++)",
       "Teaching Assistant for <i>Introduction to Deep Learning</i> (Tensorflow), <i>Data Mining: Algorithms and Applications</i> (Python, R), <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka), <i>Python Programming</i> (Python), <i>Introduction to Programming and Computation for Engineers</i> (MATLAB)"
-    ]
+    ],
+    "short": {
+      "responsibilities": [
+        "Instructor for C++ lab; Teaching Assistant for 5 courses including Deep Learning, Data Mining, and Intelligent Systems"
+      ]
+    }
   },
   {
     "company": {
@@ -99,6 +120,7 @@
     "position": "CTO",
     "startDate": "06/2017",
     "endDate": "01/2018",
+    "tags": ["professional", "ml", "frontend"],
     "responsibilities": [
       "Led the technical team of a newly founded startup at the accelerator {Garanti BBVA Partners}, coordinating core product development with the team, interns, and freelance developers",
       "Scaled the B2B data analytics and artificial intelligence solution platform appliedAI to 2700+ monthly active users",
@@ -108,6 +130,11 @@
       "Mentored junior developers in front-end development and web crawling",
       "Talked about <i>Quantifiable AI</i> at the {AI With The Best} online conference"
     ],
+    "short": {
+      "responsibilities": [
+        "Led the technical team at {Garanti BBVA Partners} accelerator, scaling the B2B AI platform to 2700+ MAU. Full-stack (React, Django, PostgreSQL) with a curated database of 3000+ AI companies"
+      ]
+    },
     "links": {
       "Garanti BBVA Partners": {
         "url": "https://www.garantibbvapartners.com/",
@@ -132,6 +159,7 @@
     "position": "Machine Learning Consultant",
     "startDate": "12/2016",
     "endDate": "01/2017",
+    "tags": ["professional", "ml"],
     "responsibilities": [
       {
         "type": "complex",
@@ -142,7 +170,12 @@
           "Net promoter score (NPS) prediction of customers"
         ]
       }
-    ]
+    ],
+    "short": {
+      "responsibilities": [
+        "Planned ML project roadmaps for ATM predictive maintenance, credit limit prediction, and NPS prediction"
+      ]
+    }
   },
   {
     "company": {
@@ -153,10 +186,16 @@
     "position": "Software Engineer, Freelance",
     "startDate": "2015",
     "endDate": "2021",
+    "tags": ["professional", "freelance"],
     "responsibilities": [
       "Developed an e-Invoice Adaptor middleware to help companies transition accounting systems for compliance with the Turkish Revenue Administration's e-Invoice mandate. Novafortis is used as a <i>private integrator</i> to issue e-Archive invoices and to prepare e-Ledgers as a part of the e-Transformation process",
       "Conducted surveys on evolving government regulations, designed projects, and implemented software solutions"
-    ]
+    ],
+    "short": {
+      "responsibilities": [
+        "Developed e-Invoice middleware for Turkish Revenue Administration compliance; designed and implemented regulatory software solutions"
+      ]
+    }
   },
   {
     "company": {
@@ -167,10 +206,16 @@
     "position": "Android Developer, Freelance",
     "startDate": "03/2014",
     "endDate": "07/2017",
+    "tags": ["professional", "freelance"],
     "responsibilities": [
       "Developed 12+ Android (Java) applications to enhance shoppers' mall experiences, including CMS support for promoting mall events and campaigns, sending push notifications, and managing brand loyalty programs",
       "Implemented indoor location detection and navigation using Bluetooth Low Energy (BLE) beacons in shopping malls"
-    ]
+    ],
+    "short": {
+      "responsibilities": [
+        "Developed 12+ Android apps for shopping malls with CMS, push notifications, loyalty programs, and BLE beacon indoor navigation"
+      ]
+    }
   },
   {
     "company": {
@@ -181,11 +226,17 @@
     "position": "Game Developer, Intern",
     "startDate": "06/2015",
     "endDate": "09/2015",
+    "tags": ["professional", "internship", "gamedev"],
     "responsibilities": [
       "Designed and implemented four 2D & 3D hypercasual games (Color Rush, Paper Dreams, Car Crossing, Tap to Aim) using open-source assets, and creating new models from scratch in Unity3D",
       "Built and monetized the gamification infrastructure for {Peak Box} with interstitial video ads",
       "Added localization support and multiple translations to Peak Box"
     ],
+    "short": {
+      "responsibilities": [
+        "Designed 4 hypercasual games in Unity3D and built gamification infrastructure for {Peak Box}"
+      ]
+    },
     "links": {
       "Peak Box": {
         "url": "https://apkpure.com/peak-box-game-arcade-machine/net.peakgames.peakbox.android",
@@ -202,9 +253,15 @@
     "position": "Software Engineer, Intern",
     "startDate": "06/2014",
     "endDate": "07/2014",
+    "tags": ["professional", "internship"],
     "responsibilities": [
       "Interned at the Financial Transaction Applications department and developed a CRUD report portal integrated with Microsoft Reporting Services (SSRS) for an international bank using ASP.NET MVC 5",
       "Automated report generation for 30+ report types using Perl scripts and ASP.NET Razor (C# and HTML)"
-    ]
+    ],
+    "short": {
+      "responsibilities": [
+        "Built a report portal (ASP.NET MVC 5, SSRS) and automated 30+ report types for an international bank"
+      ]
+    }
   }
 ]
