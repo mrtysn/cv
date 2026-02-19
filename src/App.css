@@ -106,6 +106,15 @@ div#narrowSkillTitle {
   }
 }
 
+/* Toggle controls */
+.modeToggleOption:hover {
+  opacity: 0.7;
+}
+
+.sectionToggle:hover {
+  opacity: 0.7;
+}
+
 /* Mobile/Narrow screen adjustments */
 @media (max-width: 768px) {
   .ui.text.container {
