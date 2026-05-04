@@ -1,0 +1,1 @@
+../../.agents/claude/commands/stg-msg-cmt.md
