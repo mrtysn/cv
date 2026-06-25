@@ -66,7 +66,7 @@ jobs:
           echo "Generated PDF files:"
           ls -la pdfs/*.pdf || echo "No PDF files found in pdfs/"
           
-      - name: 🏷️ Get version for tag
+      - name: 🏷️ Get version
         id: version
         run: |
           VERSION=$(node -e "
@@ -75,43 +75,35 @@ jobs:
             const match = content.match(/CV_VERSION\s*=\s*[\"']([^\"']+)[\"']/);
             console.log(match ? match[1] : 'v1.0');
           ")
-          BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "tag=cv-latest" >> $GITHUB_OUTPUT
-          echo "build_date=$BUILD_DATE" >> $GITHUB_OUTPUT
 
-      - name: 🧹 Remove previous rolling release
-        # Delete the existing cv-latest release+tag so the PDF asset never
-        # accumulates stale versioned copies. No-ops on the first run.
-        run: gh release delete cv-latest --cleanup-tag --yes || true
+      - name: 🚀 Update rolling cv-latest release
+        # cv-latest always holds the current PDF (delete + recreate so no stale
+        # versioned assets accumulate). This is what the site download button uses.
+        run: |
+          gh release delete cv-latest --cleanup-tag --yes || true
+          gh release create cv-latest pdfs/Mert_Yasin_CV_*.pdf \
+            --title "CV PDF (latest)" \
+            --notes "Current CV PDF — version ${{ steps.version.outputs.version }}, commit ${{ github.sha }}."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🚀 Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          name: "CV PDF ${{ steps.version.outputs.version }}"
-          body: |
-            Automatically generated CV PDF from commit: ${{ github.sha }}
-
-            **Changes in this version:**
-            - Generated from latest CV content
-            - Version: ${{ steps.version.outputs.version }}
-            - Build date: ${{ steps.version.outputs.build_date }}
-            - Commit: ${{ github.sha }}
-
-            📥 Download the PDF below
-          files: |
-            pdfs/Mert_Yasin_CV_*.pdf
-          draft: false
-          prerelease: false
-          generate_release_notes: false
+      - name: 📦 Archive this version (cv-<version>, create if absent)
+        # One permanent, clean-named release per CV_VERSION. Created the first
+        # time a version is built; left untouched on later builds of that version.
+        run: |
+          TAG="cv-${{ steps.version.outputs.version }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "$TAG already archived; skipping"
+          else
+            gh release create "$TAG" pdfs/Mert_Yasin_CV_*.pdf \
+              --title "CV PDF ${{ steps.version.outputs.version }}" \
+              --notes "Archived CV PDF for ${{ steps.version.outputs.version }} (commit ${{ github.sha }})."
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: ✅ Success notification
         run: |
           echo "🎉 PDF generation and release complete!"
-          echo "📁 Release tag: ${{ steps.version.outputs.tag }}"
-          echo "🔗 Check releases: ${{ github.server_url }}/${{ github.repository }}/releases"
+          echo "🔗 Releases: ${{ github.server_url }}/${{ github.repository }}/releases"

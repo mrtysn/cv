@@ -39,6 +39,13 @@
     "react-snap": "^1.23.0"
   },
   "homepage": "https://mrtysn.github.io/cv",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "puppeteer"
+    ]
+  },
   "reactSnap": {
     "puppeteerArgs": [
       "--no-sandbox",
