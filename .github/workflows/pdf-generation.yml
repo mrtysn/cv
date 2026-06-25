@@ -25,12 +25,10 @@ jobs:
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
-          
+          version: 10.27.0  # pinned: pnpm 11 (latest) errors on ignored build scripts
+
       - name: 📦 Install dependencies
-        run: |
-          pnpm install
-          pnpm add puppeteer --save-dev
+        run: pnpm install  # puppeteer is already a devDependency; no extra add needed
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
           
