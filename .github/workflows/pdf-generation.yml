@@ -86,18 +86,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📦 Archive this version (cv-<version>, create if absent)
-        # One permanent, clean-named release per CV_VERSION. Created the first
-        # time a version is built; left untouched on later builds of that version.
+      - name: 📦 Update version release (cv-<version> tracks the version's latest commit)
+        # While CV_VERSION is unchanged, advance cv-<version> to the current commit
+        # (delete + recreate, like cv-latest) so it always points to that version's
+        # last commit. When the version bumps, this tag stops moving and is left
+        # sitting on the final commit of the previous version.
         run: |
           TAG="cv-${{ steps.version.outputs.version }}"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "$TAG already archived; skipping"
-          else
-            gh release create "$TAG" pdfs/Mert_Yasin_CV_*.pdf \
-              --title "CV PDF ${{ steps.version.outputs.version }}" \
-              --notes "Archived CV PDF for ${{ steps.version.outputs.version }} (commit ${{ github.sha }})."
-          fi
+          gh release delete "$TAG" --cleanup-tag --yes || true
+          gh release create "$TAG" pdfs/Mert_Yasin_CV_*.pdf \
+            --title "CV PDF ${{ steps.version.outputs.version }}" \
+            --notes "CV PDF for ${{ steps.version.outputs.version }} (commit ${{ github.sha }})."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
