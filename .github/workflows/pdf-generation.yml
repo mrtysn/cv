@@ -3,11 +3,10 @@ name: Generate CV PDF
 on:
   push:
     branches: [master]
-    paths-ignore:
-      - 'README.md'
-      - 'PROGRESS.md'
-      - 'TODO.md'
-      - '.gitignore'
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
@@ -78,9 +77,16 @@ jobs:
           ")
           BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "tag=cv-$VERSION-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+          echo "tag=cv-latest" >> $GITHUB_OUTPUT
           echo "build_date=$BUILD_DATE" >> $GITHUB_OUTPUT
-          
+
+      - name: 🧹 Remove previous rolling release
+        # Delete the existing cv-latest release+tag so the PDF asset never
+        # accumulates stale versioned copies. No-ops on the first run.
+        run: gh release delete cv-latest --cleanup-tag --yes || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: 🚀 Create Release
         uses: softprops/action-gh-release@v1
         with:
