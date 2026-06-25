@@ -3,8 +3,8 @@ import { MODES } from "../constants/tags";
 export function encodeStateToURL(state) {
   const params = new URLSearchParams();
 
-  if (state.mode === MODES.LONG) {
-    params.set("verbose", "true");
+  if (state.mode === MODES.SHORT) {
+    params.set("verbose", "false");
   }
   if (state.hiddenTags.length > 0) {
     params.set("hide", state.hiddenTags.join(","));
@@ -27,7 +27,7 @@ export function decodeStateFromURL() {
     return null;
   }
 
-  const mode = params.get("verbose") === "true" ? MODES.LONG : MODES.SHORT;
+  const mode = params.get("verbose") === "false" ? MODES.SHORT : MODES.LONG;
   const hide = params.get("hide");
   const hiddenTags = hide ? hide.split(",").filter(Boolean) : [];
   const preset = params.get("preset") || null;

@@ -3,7 +3,7 @@ import { MODES, ACTIONS } from "../constants/tags";
 import { decodeStateFromURL, encodeStateToURL } from "../utils/urlState";
 
 const initialState = {
-  mode: MODES.SHORT,
+  mode: MODES.LONG,
   hiddenTags: [],
   preset: null,
 };
