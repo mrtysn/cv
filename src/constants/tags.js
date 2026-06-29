@@ -40,4 +40,16 @@ export const PRESETS = {
     mode: MODES.LONG,
     hiddenTags: [],
   },
+  // Backend / gamedev-focused view, reused across backend, real-time, and
+  // games applications (e.g. SYBO). Short mode for scannability; hides
+  // high-school trivia, coursework lists, and the alumni-community item while
+  // keeping every professional role and degree. Note: the `academic` tag is
+  // shared by the Wayne State teaching job AND the degree entries, so it is
+  // deliberately NOT hidden here (the teaching of Deep Learning / Data Mining
+  // is an asset for backend roles, and hiding `academic` would drop degrees).
+  backend: {
+    name: "backend",
+    mode: MODES.SHORT,
+    hiddenTags: [TAGS.COURSEWORK, TAGS.HIGHSCHOOL, TAGS.COMMUNITY],
+  },
 };
