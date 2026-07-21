@@ -27,3 +27,5 @@ yarn-error.log*
 
 # claude - share skills/rules/commands, but not personal settings
 .claude/settings.local.json
+# machine-local: skills this repo opts out of (see .agents/scripts/init.sh)
+.agents-ignore
