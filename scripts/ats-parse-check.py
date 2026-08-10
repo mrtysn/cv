@@ -156,9 +156,11 @@ class Report:
         return any(r.status == FAIL for r in self.results)
 
 
-# A run of single capitals separated by spaces. This is the signature of CSS
-# letter-spacing surviving into the extracted text as real space characters.
-LETTERSPACED = re.compile(r"^\s*(?:[A-Z]\s){3,}[A-Z]\s*$", re.M)
+# An all-caps line carrying spaces. Tracking wide enough to survive extraction
+# breaks a heading either into single letters ("E X P E R I E N C E") or into
+# ragged chunks ("EXTR ACURRICUL AR"), depending on where glyph positions round,
+# so both shapes have to be caught.
+CAPS_WITH_SPACES = re.compile(r"^\s*([A-Z]{1,}(?:\s+[A-Z]+)+)\s*$", re.M)
 DATE_RANGE = re.compile(r"(\d{2}/\d{4})\s*[–—-]\s*(\d{2}/\d{4}|Present)")
 LONE_BULLET = re.compile(r"^\s*[•●▪-]\s*$", re.M)
 
@@ -231,13 +233,19 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
             "links painted as styled text but not annotated are lost on extraction",
         )
 
-    spaced = {n: LETTERSPACED.findall(t) for n, t in texts.items()}
-    offenders = {n: v for n, v in spaced.items() if v}
+    # A heading has split if some extractor reports an all-caps line with spaces
+    # whose despaced form another extractor reports as one word.
+    words = {w for t in texts.values() for w in re.findall(r"\b[A-Z]{4,}\b", t)}
+    offenders = {}
+    for label, text in texts.items():
+        for line in CAPS_WITH_SPACES.findall(text):
+            if line.replace(" ", "") in words:
+                offenders.setdefault(label, line.strip())
     report.add(
         "section headers are contiguous words",
         FAIL if offenders else PASS,
-        "; ".join(f"{n} reads {v[0].strip()!r}" for n, v in offenders.items())
-        if offenders else "no letter-spaced headings",
+        "; ".join(f"{n} reads {v!r}" for n, v in offenders.items())
+        if offenders else "no split headings",
         "CSS letter-spacing becomes real spaces on extraction, so an ATS that "
         "cannot match the heading cannot scope the section under it. Source: "
         "src/App.css .fontSectionHeader",
@@ -290,7 +298,7 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
 
     # Words fused across a line break show up in one extractor and not the other.
     # Collapse letter-spaced headings first, or every heading reads as fused.
-    despaced = LETTERSPACED.sub(lambda m: m.group(0).replace(" ", ""), layout)
+    despaced = CAPS_WITH_SPACES.sub(lambda m: m.group(0).replace(" ", ""), layout)
     layout_tokens = set(re.findall(r"[A-Za-z]{4,}", despaced.lower()))
     fused = sorted({t for t in re.findall(r"[a-z]{11,}", naive.lower())
                     if t not in layout_tokens})

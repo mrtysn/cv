@@ -29,6 +29,55 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - Fixed Both ATS Extraction Failures
+**Type**: [Discovery/Config]
+**Impact**: High
+
+`scripts/check-cv-pdf` now reports 7 passed, 0 failed. Both defects it found were
+real and had separate causes.
+
+**Turkish diacritics.** Not font subsetting in the print path, which is what the
+first TODO entry guessed. The Google Fonts css2 stylesheet splits Ubuntu into
+`latin` and `latin-ext` `@font-face` rules by `unicode-range`, so Chrome embedded
+two font resources per weight. The split falls exactly on U+0100: Ö, ç, Ü and
+dotless ı sit in `latin`, while ğ (U+011F), İ (U+0130) and ş (U+015F) sit in
+`latin-ext`. Every Turkish word became three text-showing operations with a font
+switch mid-word, and stream-order extractors read the name as "Mert Ya ş in".
+
+Ubuntu is now self-hosted at `public/fonts/ubuntu-{300,400,500,700}.woff2`, one
+file per weight, 570 glyphs, no `unicode-range`, declared in `public/index.html`.
+The PDF embeds 3 Ubuntu resources instead of 6, and `Mert Yaşin`, `İstanbul` and
+`TÜBİTAK` all extract intact. Two render-blocking third-party requests are gone
+and the PDF build no longer depends on Google being reachable from CI.
+
+Files were produced by requesting the merged subsets with a woff2-incapable user
+agent, then converting with fontTools:
+
+```
+curl -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.50 \
+  (KHTML, like Gecko) Version/5.1 Safari/534.50" \
+  "https://fonts.googleapis.com/css?family=Ubuntu:400&subset=latin,latin-ext"
+# then, per weight: TTFont(src).flavor = "woff2"; save()
+```
+
+**Heading tracking.** `letter-spacing: 4px` at 18px is 0.22em. pdfminer inserts a
+space once the gap between glyphs passes `word_margin`, which defaults to 0.1 of
+the font size, and nothing in PDF marks tracking as distinct from a word space.
+Measured at 18px: 0 through 1.5px extract clean, 2px and above split. pypdf never
+split any of them, since it reads the TJ array without doing geometry.
+
+First attempt at 20px / 1.5px was not enough headroom. `EXPERIENCE` came through
+but the longest heading still broke into `EXTR ACURRICUL AR` on position
+rounding. Settled at 20px / weight 400 / 1px, matching `.fontHeader`. Size and
+weight now carry the presence the wide tracking used to.
+
+That partial split also exposed a hole in the checker: its detector only matched
+runs of single capitals, so it passed a PDF whose heading was still broken. It
+now flags any all-caps line containing spaces whose despaced form appears as one
+word elsewhere, which catches both shapes.
+
+---
+
 ## 2026-08-10 - ATS Parse Check and Pre-Commit Hook
 **Type**: [Discovery/Dependency/Config]
 **Impact**: High

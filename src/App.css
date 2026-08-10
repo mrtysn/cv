@@ -12,10 +12,21 @@
   margin-bottom: "10px";
 }
 
+/*
+  Tracking must stay under 0.1em or a layout-aware PDF extractor reads this as
+  "E X P E R I E N C E". pdfminer inserts a space once the gap between glyphs
+  passes word_margin, which defaults to 0.1 of the font size, and nothing in
+  PDF marks tracking as distinct from a word space. Measured at 18px Ubuntu:
+  1.5px extracts clean, 2px splits. 1.5px at 20px left too little headroom, and
+  Chrome's position rounding still broke the longest heading into
+  "EXTR ACURRICUL AR", so this sits at 1px to match .fontHeader. Size and weight
+  carry the presence the wider tracking used to.
+  scripts/check-cv-pdf catches a regression here.
+*/
 .fontSectionHeader {
-  font-size: 18px !important;
-  letter-spacing: 4px;
-  font-weight: 300 !important;
+  font-size: 20px !important;
+  letter-spacing: 1px;
+  font-weight: 400 !important;
 }
 
 /* disabled setting a color for all the links for now */
