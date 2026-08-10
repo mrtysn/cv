@@ -43,8 +43,8 @@ failed on `Failed to decode response from marionette`.
 
 `scripts/record-preview.js` serves `build/`, drives the same Chrome the PDF
 generator uses, scrolls on an ease-in-out curve so the motion reads as a gesture,
-and hands the frames to ffmpeg, which is preinstalled on GitHub's ubuntu
-runners. Two passes: generate a palette from the frames, then apply it. On this
+and hands the frames to ffmpeg, which the workflow installs via apt — the
+ubuntu-latest image no longer ships it. Two passes: generate a palette from the frames, then apply it. On this
 page that is roughly a third the size of a single-pass encode, and the page is
 flat text on white so it loses nothing visible.
 

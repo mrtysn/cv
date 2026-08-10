@@ -57,10 +57,14 @@ jobs:
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
 
-      - name: 🔧 Install system dependencies for Puppeteer
+      # ffmpeg is not on the ubuntu-latest image; the runners dropped it. It has
+      # to be installed explicitly or record-preview.js dies at the encode step
+      # having already captured every frame.
+      - name: 🔧 Install system dependencies for Puppeteer and ffmpeg
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
+          sudo apt-get install -y ffmpeg libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
+          ffmpeg -version | head -1
 
       - name: 🌐 Install Chrome for Puppeteer
         run: |
