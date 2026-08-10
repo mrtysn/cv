@@ -21,11 +21,15 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <!-- Use explicit HTTPS for CDN resources to avoid issues with redirects -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"
-      crossorigin="anonymous"
-    />
+    <!--
+      Semantic UI is self-hosted from public/vendor rather than loaded from a
+      CDN. The upstream stylesheet @imports Lato from Google Fonts, and App.css
+      forces Ubuntu on every element, so that was a third-party request for a
+      font that never rendered. Self-hosting also means the page and the PDF
+      build render identically with no network dependency.
+      Regenerate with scripts/vendor-semantic after bumping semantic-ui-css.
+    -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/semantic.min.css" />
     <title>Mert Yaşin CV</title>
     <style>
       /*

@@ -1,0 +1,45 @@
+#!/bin/sh
+# DESC: Re-vendor Semantic UI into public/vendor from the installed semantic-ui-css
+
+# Run this after bumping the semantic-ui-css dependency. It copies the
+# stylesheet and its icon fonts into public/vendor and strips the upstream
+# @import of Lato from Google Fonts, which is a request for a font that never
+# renders (App.css forces Ubuntu on every element).
+#
+# POSIX sh for the same reason as check-cv-pdf: this may run in CI.
+
+set -eu
+
+root=$(cd "$(dirname "$0")/.." && pwd)
+src="$root/node_modules/semantic-ui-css"
+dest="$root/public/vendor"
+
+[ -f "$src/semantic.min.css" ] || {
+  echo "vendor-semantic: $src not found; run 'pnpm install' first" >&2
+  exit 1
+}
+
+version=$(node -p "require('$src/package.json').version")
+mkdir -p "$dest/themes/default/assets/fonts"
+
+{
+  printf '/* Semantic UI %s, self-hosted. The upstream file @imports Lato from\n' "$version"
+  printf '   Google Fonts; that import is stripped here because App.css forces Ubuntu\n'
+  printf '   on every element, so Lato never renders and the request is pure cost.\n'
+  printf '   Regenerate with scripts/vendor-semantic after bumping semantic-ui-css. */\n'
+  sed 's|@import url(https://fonts\.googleapis\.com[^)]*);\{0,1\}||g' "$src/semantic.min.css"
+} > "$dest/semantic.min.css"
+
+# woff2 and woff only: every browser that matters picks one of them, and the
+# eot/svg/ttf/otf variants triple the payload for no one.
+for f in "$src"/themes/default/assets/fonts/*.woff2 "$src"/themes/default/assets/fonts/*.woff; do
+  [ -f "$f" ] && cp "$f" "$dest/themes/default/assets/fonts/"
+done
+
+remaining=$(grep -c 'fonts\.googleapis\.com' "$dest/semantic.min.css" || true)
+if [ "$remaining" != "0" ]; then
+  echo "vendor-semantic: $remaining Google Fonts reference(s) still present" >&2
+  exit 1
+fi
+
+echo "vendor-semantic: wrote Semantic UI $version to public/vendor (Lato import stripped)"

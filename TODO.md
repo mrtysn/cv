@@ -28,8 +28,9 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Rework the PDF production path (serve the local build instead of the deployed site, unify the repo artifact, prerender wrapper, ATS check in CI)
 - [x] Make contact profile links readable as text, not only as link annotations (header.json labels are now the bare domain path)
 - [x] Write the PDF author/subject metadata Chrome leaves empty (pdf-lib step in scripts/pdf-generator.js)
-- [ ] Self-host Semantic UI CSS and drop its Lato @import (the last two runtime third-party requests)
-- [ ] Replace or remove react-snap (unmaintained, drags puppeteer 1.20; currently worked around by scripts/prerender.js)
+- [x] Self-host Semantic UI CSS and drop its Lato @import (public/vendor, regenerate with scripts/vendor-semantic; 0-pixel render diff)
+- [x] Replace react-snap (scripts/prerender.js now prerenders directly with the project's own puppeteer; clean installs build again)
+- [ ] Remove the vestigial #loading CSS and app-loaded class (public/index.html styles an element that does not exist)
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
 ## Backlog

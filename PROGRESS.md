@@ -29,6 +29,53 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - Removed the Last Third-Party Runtime Dependencies
+**Type**: [Architecture/Dependency]
+**Impact**: Medium
+
+The page now loads nothing from a third party, and the build no longer carries a
+2019 browser.
+
+**Semantic UI is self-hosted.** It was loaded from cdnjs at version 2.2.12 while
+package.json declared semantic-ui-css 2.5.0 as a dependency that was never
+imported, so the pinned CDN version and the declared one had silently diverged.
+Its stylesheet also `@import`s Lato from Google Fonts, a request for a font that
+never renders because App.css forces Ubuntu on every element. `scripts/vendor-semantic`
+copies the installed stylesheet and its icon fonts into public/vendor with that
+import stripped, and fails loudly if any Google Fonts reference survives. Re-run
+it after bumping the dependency.
+
+The 2.2.12 to 2.5.0 jump was verified rather than assumed: rendering the PDF
+before and after and diffing the pages gives **0 differing pixels out of
+573,300**.
+
+**react-snap is gone.** It was unmaintained and bundled puppeteer 1.20, whose
+Chromium download is disabled, so `pnpm build` died at postbuild on any clean
+install. `scripts/prerender.js` now does the prerender directly: it serves
+build/ through `serve-build.js`, loads it in the project's own puppeteer, waits
+for fonts and for the `app-loaded` class, and writes the rendered DOM back over
+build/index.html. `src/index.js` still branches on `rootElement.hasChildNodes()`,
+so the output is hydrated exactly as before. It refuses to overwrite the build
+if `#root` came back empty, and reports page errors instead of silently shipping
+a blank shell.
+
+Output compared against react-snap's: identical body class, identical script and
+stylesheet counts, identical set of 35 external content hosts, identical
+rendered content. 2.7 KB larger because HTML minification is not reproduced (one
+file, served gzipped, not worth a minifier dependency). 200.html is also not
+reproduced, as GitHub Pages uses 404.html and there is none.
+
+With the 2019 Chromium gone, puppeteer was removed from
+`pnpm.ignoredBuiltDependencies` so a clean install provisions its browser again.
+CI already sets `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD` on the install step and
+installs Chrome explicitly, so nothing downloads twice there.
+
+Vestigial and left alone: the `#loading` CSS in public/index.html styles an
+element that does not exist, and the `app-loaded` class it keys off is set by
+two components but matched by nothing else.
+
+---
+
 ## 2026-08-10 - Reading Order, Production Path, and Contact Fields
 **Type**: [Architecture/Discovery/Config]
 **Impact**: High

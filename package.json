@@ -38,22 +38,13 @@
   "devDependencies": {
     "gh-pages": "^6.1.1",
     "pdf-lib": "^1.17.1",
-    "puppeteer": "^24.16.1",
-    "react-snap": "^1.23.0"
+    "puppeteer": "^24.16.1"
   },
   "homepage": "https://mrtysn.github.io/cv",
   "pnpm": {
     "ignoredBuiltDependencies": [
       "core-js",
-      "core-js-pure",
-      "puppeteer"
-    ]
-  },
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage"
+      "core-js-pure"
     ]
   }
 }
