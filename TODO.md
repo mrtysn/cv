@@ -35,7 +35,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Fix the failed hydration (scripts/prerender.js renders with renderToString instead of capturing browser DOM; 18 React errors on load became zero, and the hydrated page is pixel-identical to a pure client render)
 - [x] Stop deploying source maps (.env.production sets GENERATE_SOURCEMAP=false; the deploy went from 4.7 MB to 1.3 MB)
 - [x] Narrow the Content Security Policy to this origin (it was written for the cdnjs and Google Fonts loads, both since removed; verified against desktop, an Instagram in-app user agent, and the jsPDF fallback path)
-- [ ] Confirm the narrowed CSP on a real mobile in-app browser (Instagram via mertyas.in is the case that motivated the original policy; revert commit e67a9f0 if it white-screens)
+- [🔄] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
 - [ ] Remove the vestigial #loading CSS and app-loaded class (public/index.html styles an element that does not exist)
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
