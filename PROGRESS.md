@@ -29,6 +29,35 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-11 - Recording the Preview GIF Ourselves
+**Type**: [Architecture/Dependency]
+**Impact**: Medium
+
+`PabloLec/website-to-gif` is gone. It had two faults. It fetched
+`https://mrtysn.github.io/cv/` rather than the build in hand, and since deploys
+are manual, a push-triggered recording captured whatever gh-pages happened to be
+serving — usually the previous version. This is the same defect the PDF pipeline
+had before it was reworked to serve the local build. And it drove Firefox
+through Selenium inside Docker; the action's last commit was May 2024, and it
+failed on `Failed to decode response from marionette`.
+
+`scripts/record-preview.js` serves `build/`, drives the same Chrome the PDF
+generator uses, scrolls on an ease-in-out curve so the motion reads as a gesture,
+and hands the frames to ffmpeg, which is preinstalled on GitHub's ubuntu
+runners. Two passes: generate a palette from the frames, then apply it. On this
+page that is roughly a third the size of a single-pass encode, and the page is
+flat text on white so it loses nothing visible.
+
+Measured against the action's output: **6,360,875 bytes to 1,979,466**, 3.2x
+smaller, in 5.5 seconds against about 90 for the Docker and Firefox boot. The
+knobs are environment variables — `PREVIEW_FRAMES`, `PREVIEW_FPS`,
+`PREVIEW_COLORS`, `PREVIEW_WIDTH`, `PREVIEW_OUT` — and dropping to 32 colours at
+8 fps reaches 1.35 MB if the README ever needs it.
+
+`pnpm run record-preview` builds and records locally; it needs ffmpeg on PATH.
+
+---
+
 ## 2026-08-10 - Prerendering With renderToString
 **Type**: [Architecture]
 **Impact**: High

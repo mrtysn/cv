@@ -1,16 +1,22 @@
-# The preview GIF is published as a release asset, not committed to the repo.
+# The preview GIF is recorded from the build in hand and published as a release
+# asset, never committed.
 #
 # It used to be recorded and pushed back to master on every src/ change. The
-# recording is not deterministic, so every run produced a different ~6 MB
-# binary and the "did anything change?" guard never fired. Twenty-one revisions
-# put .git at 98 MB for a repo that is otherwise a few hundred KB, and the bot's
-# push raced every human push to master.
+# recording is not deterministic, so every run produced a different ~6 MB binary
+# and the "did anything change?" guard never fired. Twenty-one revisions put
+# .git at 98 MB for a repo that is otherwise a few hundred KB, and the bot's
+# push raced every human push to master. Releases hold binaries without touching
+# history, and the download URL is stable across delete + recreate, so README.md
+# can point at one address forever. The tag must stay dedicated: pdf-generation.yml
+# runs `gh release delete cv-latest --cleanup-tag`, so an asset parked there
+# would be destroyed on the next PDF build.
 #
-# Releases hold binaries without touching history, and the download URL is
-# stable across delete + recreate, so README.md can point at one address
-# forever. The tag must stay dedicated: pdf-generation.yml runs
-# `gh release delete cv-latest --cleanup-tag`, so an asset parked there would be
-# destroyed on the next PDF build.
+# The recording itself used to come from PabloLec/website-to-gif, which fetched
+# the deployed site rather than this commit — and since deploys are manual, it
+# usually captured the previous version. It also drove Firefox under Selenium in
+# Docker, unmaintained since May 2024, and died on a marionette crash.
+# scripts/record-preview.js does the job in the Chrome that already generates
+# the PDF, against the build produced here, in about six seconds.
 name: Generate demo gif
 
 on:
@@ -21,8 +27,7 @@ on:
       - 'public/**'
   workflow_dispatch: # record on demand, e.g. after a styling-only change
 
-# Concurrency, because the recording fetches the live GitHub Pages site: two
-# overlapping runs would race the deploy and one would capture the old page.
+# Two overlapping runs would publish to the same release and race each other.
 concurrency:
   group: cv-preview-gif
   cancel-in-progress: true
@@ -34,22 +39,40 @@ jobs:
   generate-gif:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v4
 
-      - name: 🎬 Record the deployed site
-        uses: PabloLec/website-to-gif@2.1.1
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          url: "https://mrtysn.github.io/cv/"
-          save_path: "/"
-          file_format: "GIF"
-          file_name: "cv-preview"
-          window_width: 960
-          window_height: 720
-          final_width: 640
-          final_height: 480
-          scroll_step: 15
-          time_per_frame: 100
-          start_delay: 4000
+          node-version: '22' # pnpm latest requires Node >= 22.13
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.27.0 # pinned: pnpm 11 (latest) errors on ignored build scripts
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+
+      - name: 🔧 Install system dependencies for Puppeteer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
+
+      - name: 🌐 Install Chrome for Puppeteer
+        run: |
+          CHROME_PATH=$(npx puppeteer browsers install chrome | grep chrome@ | awk '{print $2}')
+          echo "PUPPETEER_EXECUTABLE_PATH=$CHROME_PATH" >> $GITHUB_ENV
+          echo "Chrome installed at: $CHROME_PATH"
+
+      - name: 🏗️ Build React application
+        run: pnpm run build
+
+      - name: 🎬 Record the preview
+        run: node scripts/record-preview.js
 
       - name: 🚀 Publish to the cv-preview release
         run: |
@@ -58,6 +81,6 @@ jobs:
           gh release delete cv-preview --cleanup-tag --yes || true
           gh release create cv-preview cv-preview.gif \
             --title "CV preview GIF" \
-            --notes "Preview recording of https://mrtysn.github.io/cv/ (commit ${{ github.sha }}). Referenced by README.md."
+            --notes "Preview recording of the site at commit ${{ github.sha }}. Referenced by README.md."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

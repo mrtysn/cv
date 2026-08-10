@@ -27,6 +27,7 @@ pnpm only, not npm, not yarn.
 | `pnpm build` | Production build, then `scripts/prerender.js` |
 | `pnpm generate-pdf` | Build, then render the PDF via Puppeteer |
 | `pnpm generate-pdf-local` | Render the PDF against a running dev server |
+| `pnpm record-preview` | Build, then record the README preview GIF (needs `ffmpeg`) |
 | `pnpm deploy` | Build and publish to the `gh-pages` branch |
 | `scripts/check-cv-pdf` | Check the PDF the way an ATS reads it (below) |
 
@@ -96,9 +97,12 @@ unstyled.
 
 `.github/workflows/pdf-generation.yml` regenerates `Mert_Yasin_CV.pdf` and
 publishes the `cv-latest` and `cv-<version>` releases. `generate-gif.yml`
-records the preview README GIF and publishes it to the `cv-preview` release; it
-is a separate tag on purpose, because the PDF workflow deletes and recreates its
-own tags and would take an asset parked there with it.
+records the preview README GIF via `scripts/record-preview.js` and publishes it
+to the `cv-preview` release; it is a separate tag on purpose, because the PDF
+workflow deletes and recreates its own tags and would take an asset parked there
+with it. Both workflows record the build they just produced, never the deployed
+site — deploys are manual, so fetching the live URL captures the previous
+version.
 
 An ATS does not see the rendered page. It runs the PDF through a text extractor
 and parses fields out of the resulting string, so what matters is what the
