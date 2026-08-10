@@ -1,40 +1,75 @@
 #!/bin/sh
-# DESC: Re-vendor Semantic UI into public/vendor from the installed semantic-ui-css
+# DESC: Vendor only the Semantic UI components this app uses into public/vendor
 
-# Run this after bumping the semantic-ui-css dependency. It copies the
-# stylesheet and its icon fonts into public/vendor and strips the upstream
-# @import of Lato from Google Fonts, which is a request for a font that never
-# renders (App.css forces Ubuntu on every element).
+# Semantic UI's full stylesheet is ~100 KB gzipped and this app renders a
+# handful of components from it. This builds a subset from
+# semantic-ui-css/components/ and strips the upstream @import of Lato from
+# Google Fonts, which is a request for a font that never renders (App.css forces
+# Ubuntu on every element).
+#
+# COMPONENTS must list every Semantic UI React component imported anywhere in
+# src/. Adding an import without adding it here means that component renders
+# unstyled. `reset` and `site` are the base layer and are not optional.
+#
+# `icon` is deliberately absent. It is half the gzipped subset on its own plus
+# 240 KB of icon fonts, and nothing renders an icon; ErrorBoundary uses a
+# literal '⚠'. Importing <Icon> anywhere means adding it back here.
+#
+# Run after bumping semantic-ui-css, or after importing a new component. Verify
+# by regenerating the PDF and diffing the render; a missing component shows up
+# as a layout change.
 #
 # POSIX sh for the same reason as check-cv-pdf: this may run in CI.
 
 set -eu
 
+COMPONENTS="reset site container divider grid header list message"
+
 root=$(cd "$(dirname "$0")/.." && pwd)
 src="$root/node_modules/semantic-ui-css"
 dest="$root/public/vendor"
 
-[ -f "$src/semantic.min.css" ] || {
+[ -f "$src/package.json" ] || {
   echo "vendor-semantic: $src not found; run 'pnpm install' first" >&2
   exit 1
 }
 
 version=$(node -p "require('$src/package.json').version")
+
+# Fail before writing anything if a listed component does not exist.
+for c in $COMPONENTS; do
+  [ -f "$src/components/$c.min.css" ] || {
+    echo "vendor-semantic: no such component '$c'" >&2
+    exit 1
+  }
+done
+
+rm -rf "$dest"
 mkdir -p "$dest/themes/default/assets/fonts"
 
 {
-  printf '/* Semantic UI %s, self-hosted. The upstream file @imports Lato from\n' "$version"
-  printf '   Google Fonts; that import is stripped here because App.css forces Ubuntu\n'
-  printf '   on every element, so Lato never renders and the request is pure cost.\n'
-  printf '   Regenerate with scripts/vendor-semantic after bumping semantic-ui-css. */\n'
-  sed 's|@import url(https://fonts\.googleapis\.com[^)]*);\{0,1\}||g' "$src/semantic.min.css"
+  printf '/* Semantic UI %s, self-hosted subset: %s.\n' "$version" "$COMPONENTS"
+  printf '   Built by scripts/vendor-semantic — do not edit by hand.\n'
+  printf '   The upstream stylesheet @imports Lato from Google Fonts; that import is\n'
+  printf '   stripped because App.css forces Ubuntu on every element, so Lato never\n'
+  printf '   renders and the request is pure cost. */\n'
+  for c in $COMPONENTS; do
+    printf '\n/* --- %s --- */\n' "$c"
+    sed 's|@import url(https://fonts\.googleapis\.com[^)]*);\{0,1\}||g' "$src/components/$c.min.css"
+  done
 } > "$dest/semantic.min.css"
 
 # woff2 and woff only: every browser that matters picks one of them, and the
-# eot/svg/ttf/otf variants triple the payload for no one.
-for f in "$src"/themes/default/assets/fonts/*.woff2 "$src"/themes/default/assets/fonts/*.woff; do
-  [ -f "$f" ] && cp "$f" "$dest/themes/default/assets/fonts/"
-done
+# eot/svg/ttf/otf variants triple the payload for no one. Only icon.min.css
+# references these, so skip them entirely when icons are not in the subset.
+case " $COMPONENTS " in
+  *" icon "*)
+    for f in "$src"/themes/default/assets/fonts/*.woff2 "$src"/themes/default/assets/fonts/*.woff; do
+      [ -f "$f" ] && cp "$f" "$dest/themes/default/assets/fonts/"
+    done
+    ;;
+  *) rmdir -p "$dest/themes/default/assets/fonts" 2>/dev/null || true ;;
+esac
 
 remaining=$(grep -c 'fonts\.googleapis\.com' "$dest/semantic.min.css" || true)
 if [ "$remaining" != "0" ]; then
@@ -42,4 +77,7 @@ if [ "$remaining" != "0" ]; then
   exit 1
 fi
 
-echo "vendor-semantic: wrote Semantic UI $version to public/vendor (Lato import stripped)"
+full=$(wc -c < "$src/semantic.min.css" | tr -d ' ')
+subset=$(wc -c < "$dest/semantic.min.css" | tr -d ' ')
+echo "vendor-semantic: Semantic UI $version subset -> public/vendor"
+echo "  $subset bytes vs $full for the full stylesheet ($(( 100 - subset * 100 / full ))% smaller)"

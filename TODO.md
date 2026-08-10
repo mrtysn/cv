@@ -30,6 +30,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Write the PDF author/subject metadata Chrome leaves empty (pdf-lib step in scripts/pdf-generator.js)
 - [x] Self-host Semantic UI CSS and drop its Lato @import (public/vendor, regenerate with scripts/vendor-semantic; 0-pixel render diff)
 - [x] Replace react-snap (scripts/prerender.js now prerenders directly with the project's own puppeteer; clean installs build again)
+- [x] Cut the vendored Semantic UI down to the components actually rendered (subset build; dropping `icon` halved it again and removed 240 KB of icon fonts)
 - [ ] Remove the vestigial #loading CSS and app-loaded class (public/index.html styles an element that does not exist)
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 

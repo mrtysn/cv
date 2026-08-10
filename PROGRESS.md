@@ -52,6 +52,26 @@ needs a history rewrite and has not been done.
 
 ---
 
+## 2026-08-10 - Semantic UI Cut to the Components the App Renders
+**Type**: [Performance]
+**Impact**: Medium
+
+`scripts/vendor-semantic`
+concatenates only the components the app imports out of
+`node_modules/semantic-ui-css/components/` rather than copying the whole
+stylesheet. That alone took it from 563,887 bytes to 164,805. Dropping `icon`
+took it to 98,285 raw and 13,750 gzipped, half of what the subset cost with
+icons in it, and removed `public/vendor/themes/` and its 240 KB of icon fonts.
+`icon` was there for one glyph, the warning sign in ErrorBoundary, on a screen
+that only appears after the app has already crashed; it is a literal `⚠` now.
+
+Verified rather than assumed. Rendering the same build twice, once with the
+icon-less stylesheet and once with the previous one swapped back into `build/`,
+gives identical pages 1, 2 and 3 at 110 dpi and an identical full-page screen
+capture at 1280 wide.
+
+---
+
 ## 2026-08-10 - Removed the Last Third-Party Runtime Dependencies
 **Type**: [Architecture/Dependency]
 **Impact**: Medium

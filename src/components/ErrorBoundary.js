@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Message, Header, Icon } from "semantic-ui-react";
+import { Container, Message, Header } from "semantic-ui-react";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -22,8 +22,16 @@ class ErrorBoundary extends React.Component {
       return (
         <Container text style={{ marginTop: "2em" }}>
           <Message negative>
+            {/*
+              A literal character rather than <Icon>. Semantic UI's icon
+              component is half the vendored stylesheet plus 240 KB of icon
+              fonts, and this was the only icon on the site, on a screen that
+              renders only when the app has already crashed.
+            */}
             <Message.Header>
-              <Icon name="warning sign" />
+              <span aria-hidden="true" style={{ marginRight: "0.4em" }}>
+                ⚠
+              </span>
               Oops! Something went wrong
             </Message.Header>
             <p>

@@ -24,7 +24,7 @@ pnpm only, not npm, not yarn.
 | Command | Does |
 |---|---|
 | `pnpm start` | Dev server on :3000 (`BROWSER=none`) |
-| `pnpm build` | Production build, then `react-snap` prerender |
+| `pnpm build` | Production build, then `scripts/prerender.js` |
 | `pnpm generate-pdf` | Build, then render the PDF via Puppeteer |
 | `pnpm generate-pdf-local` | Render the PDF against a running dev server |
 | `pnpm deploy` | Build and publish to the `gh-pages` branch |
@@ -77,7 +77,11 @@ src/App.css             print styles: .hideFromPrint, .noPageBreak
 src/constants.js        CV_VERSION and DATE, bump on content changes
 ```
 
-Styling is Semantic UI React plus `App.css` plus inline styles for layout.
+Styling is Semantic UI React plus `App.css` plus inline styles for layout. The
+CSS is self-hosted in `public/vendor`, built by `scripts/vendor-semantic` as a
+subset of the components the app imports. Importing a new Semantic UI component
+means adding it to `COMPONENTS` in that script and re-running it, or it renders
+unstyled.
 
 ## PDF and the ATS check
 
