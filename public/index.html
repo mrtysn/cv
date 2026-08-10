@@ -12,8 +12,18 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!-- Content Security Policy to allow external resources -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:;" />
+    <!--
+      Everything this page loads is served from its own origin: the bundle, the
+      Ubuntu fonts, the Semantic UI subset. The one outbound call is the
+      Releases lookup the PDF button makes, hence connect-src.
+
+      'unsafe-inline' stays on style-src only, and is not removable: the font
+      declarations below are an inline <style> block, and React writes inline
+      style attributes throughout the app. script-src needs no such exception
+      because the build emits no inline script. data: and blob: images are for
+      the html2canvas fallback, which draws the page to a canvas.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'none'" />
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
