@@ -1,37 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { CV_VERSION } from "../constants";
 
+// Positioning and the scroll fade belong to ControlStrip; this is only the button.
 const PdfDownloadButton = () => {
   const buttonRef = useRef(null);
-  const [opacity, setOpacity] = useState(1);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const maxScroll = documentHeight - windowHeight;
-      const scrollPercent = maxScroll > 0 ? scrollY / maxScroll : 0;
-      
-      // Create 100-0-100 pattern: visible at top, disappear in middle, visible at bottom
-      let newOpacity;
-      if (scrollPercent <= 0.15) {
-        // Top 15%: fade from 1 to 0
-        newOpacity = 1 - (scrollPercent / 0.15);
-      } else if (scrollPercent >= 0.85) {
-        // Bottom 15%: fade from 0 to 1
-        newOpacity = (scrollPercent - 0.85) / 0.15;
-      } else {
-        // Middle 70%: completely hidden
-        newOpacity = 0;
-      }
-      
-      setOpacity(Math.max(0, Math.min(1, newOpacity)));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const downloadFromGitHubReleases = async () => {
     try {
@@ -125,9 +97,11 @@ const PdfDownloadButton = () => {
   };
 
   const downloadPDF = async () => {
-    // Hide the button during processing
+    // Hide the button during processing so the local html2canvas fallback does
+    // not paint it into the PDF. `visibility` rather than `display` so the
+    // strip beside it does not reflow while the capture runs.
     if (buttonRef.current) {
-      buttonRef.current.style.display = "none";
+      buttonRef.current.style.visibility = "hidden";
     }
 
     try {
@@ -141,7 +115,7 @@ const PdfDownloadButton = () => {
     } finally {
       // Show the button again
       if (buttonRef.current) {
-        buttonRef.current.style.display = "block";
+        buttonRef.current.style.visibility = "visible";
       }
     }
   };
@@ -149,36 +123,13 @@ const PdfDownloadButton = () => {
   return (
     <button
       ref={buttonRef}
+      type="button"
       onClick={downloadPDF}
-      className="hideFromPrint pdf-download-button"
-      style={{
-        position: "fixed",
-        top: "20px",
-        right: "20px",
-        zIndex: 1000,
-        backgroundColor: "transparent",
-        color: "#2185d0",
-        borderRadius: "4px",
-        padding: "10px 15px",
-        cursor: "pointer",
-        fontFamily: "inherit",
-        fontSize: "12px",
-        fontWeight: "bold",
-        transition: "all 0.2s ease",
-        opacity: opacity,
-        lineHeight: "1.2",
-        whiteSpace: "nowrap",
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.backgroundColor = "#2185d0";
-        e.target.style.color = "white";
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.backgroundColor = "transparent";
-        e.target.style.color = "#2185d0";
-      }}
+      className="stripButton pdf-download-button"
+      title="Download the CV as a PDF"
     >
-      Download as PDF
+      <span className="stripFull">Download as PDF</span>
+      <span className="stripShort">PDF</span>
     </button>
   );
 };

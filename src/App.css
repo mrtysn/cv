@@ -126,6 +126,66 @@ div#narrowSkillTitle {
   size: A4;
 }
 
+/* Page controls: one fixed anchor, flex row.
+   Anchored to the corner with padding rather than a per-button offset, so no
+   control depends on the pixel width of its neighbour's label. */
+.controlStrip {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  transition: opacity 0.2s ease;
+}
+
+.stripButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #2185d0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.stripButton:hover {
+  background-color: #2185d0;
+  color: #ffffff;
+}
+
+/* Icon-only button: square padding so the hover fill reads as a chip rather
+   than a wide bar, and the glyph sits on the same baseline as the text buttons. */
+.stripButtonIcon {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+}
+
+.stripIconLink {
+  display: flex;
+  color: #2185d0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.stripIconLink:hover {
+  color: #1678c2;
+}
+
+/* Long label by default, short one only on narrow screens. A media query
+   rather than a JS width check, so no re-render and no layout thrash. */
+.stripShort {
+  display: none;
+}
+
 /* PDF download button shadow border */
 .pdf-download-button {
   border: 1px solid #2185d0 !important;
@@ -145,10 +205,6 @@ div#narrowSkillTitle {
 }
 
 /* Toggle controls */
-.modeToggleOption:hover {
-  opacity: 0.7;
-}
-
 .sectionToggle:hover {
   opacity: 0.7;
 }
@@ -157,5 +213,37 @@ div#narrowSkillTitle {
 @media (max-width: 768px) {
   .ui.text.container {
     padding-top: 40px !important; /* Space for fixed buttons at top */
+  }
+}
+
+/* Three controls do not fit beside the header on a phone, so the labels drop to
+   their short forms and the row tightens. Nothing is hidden — the strip stays a
+   single row down to the narrowest common viewport. */
+@media (max-width: 560px) {
+  .controlStrip {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .stripButton {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  /* After .stripButton, or the narrow padding above would un-square the icon. */
+  .stripButtonIcon {
+    padding: 8px;
+  }
+
+  .stripFull {
+    display: none;
+  }
+
+  .stripShort {
+    display: inline;
+  }
+
+  .ui.text.container {
+    padding-top: 48px !important; /* Space for the fixed control strip */
   }
 }
