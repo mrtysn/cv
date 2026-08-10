@@ -1,11 +1,11 @@
 # TODO.md
 
-Task tracking for CV repository. Rules: Mark tasks in progress before starting, only one task in progress at a time, mark completed immediately when finished. Delete entries once done; PROGRESS.md is where finished work is recorded.
+Task tracking for CV repository. Rules: mark tasks completed immediately when finished.
 
-**Legend**: [ ] = pending, [🔄] = in progress
+**Legend**: [ ] = pending, [x] = completed
 
 ## Next
-- [🔄] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
+- [ ] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
 - [ ] Convert Experience class component to functional component (maintain same functionality)
 - [ ] Convert Education class component to functional component (modernize to functional style)
 - [ ] Add responsive breakpoints for tablet view (improve 451px-768px breakpoint)
