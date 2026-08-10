@@ -31,14 +31,16 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Self-host Semantic UI CSS and drop its Lato @import (public/vendor, regenerate with scripts/vendor-semantic; 0-pixel render diff)
 - [x] Replace react-snap (scripts/prerender.js now prerenders directly with the project's own puppeteer; clean installs build again)
 - [x] Cut the vendored Semantic UI down to the components actually rendered (subset build; dropping `icon` halved it again and removed 240 KB of icon fonts)
-- [ ] Load jspdf and html2canvas only when the fallback runs (dynamic import in PdfDownloadButton.generatePDFLocally; they are 68% of main.js for a path that only fires when the GitHub Releases fetch fails)
+- [x] Load jspdf and html2canvas only when the fallback runs (dynamic import in PdfDownloadButton.generatePDFLocally; main.js went from 233 kB to 80 kB gzipped)
 - [ ] Fix the failed hydration on the live site (scripts/prerender.js captures the browser's serialization, which rewrites all 265 inline style attributes, so React discards the prerendered DOM and client-renders the whole root)
-- [ ] Stop deploying source maps, or decide to keep them deliberately (3.4 MB of the 4.7 MB deploy; main.js.map alone is 3.15 MB and is public)
+- [x] Stop deploying source maps (.env.production sets GENERATE_SOURCEMAP=false; the deploy went from 4.7 MB to 1.3 MB)
+- [x] Narrow the Content Security Policy to this origin (it was written for the cdnjs and Google Fonts loads, both since removed; verified against desktop, an Instagram in-app user agent, and the jsPDF fallback path)
+- [ ] Confirm the narrowed CSP on a real mobile in-app browser (Instagram via mertyas.in is the case that motivated the original policy; revert commit e67a9f0 if it white-screens)
 - [ ] Remove the vestigial #loading CSS and app-loaded class (public/index.html styles an element that does not exist)
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
 ## Backlog
-- [🔄] Update Cypher section in CV (in progress)
+- [x] Update Cypher section in CV (rewritten with both titles, growth numbers, and store ranks)
 - [ ] Add SEO indexing to Google Search Console (improve discoverability)
 - [ ] Deploy mertyas.in domain for CV project (custom domain setup)
 - [ ] Remove high school education section (not relevant for senior positions)
