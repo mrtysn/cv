@@ -1,29 +1,42 @@
+# The preview GIF is published as a release asset, not committed to the repo.
+#
+# It used to be recorded and pushed back to master on every src/ change. The
+# recording is not deterministic, so every run produced a different ~6 MB
+# binary and the "did anything change?" guard never fired. Twenty-one revisions
+# put .git at 98 MB for a repo that is otherwise a few hundred KB, and the bot's
+# push raced every human push to master.
+#
+# Releases hold binaries without touching history, and the download URL is
+# stable across delete + recreate, so README.md can point at one address
+# forever. The tag must stay dedicated: pdf-generation.yml runs
+# `gh release delete cv-latest --cleanup-tag`, so an asset parked there would be
+# destroyed on the next PDF build.
 name: Generate demo gif
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'public/**'
+  workflow_dispatch: # record on demand, e.g. after a styling-only change
+
+# Concurrency, because the recording fetches the live GitHub Pages site: two
+# overlapping runs would race the deploy and one would capture the old page.
+concurrency:
+  group: cv-preview-gif
+  cancel-in-progress: true
+
+permissions:
+  contents: write # gh release create
 
 jobs:
   generate-gif:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2  # Required to access HEAD^ (previous commit)
+      - uses: actions/checkout@v4
 
-      - name: Check for changes in src folder
-        id: check_changes
-        run: |
-          if git diff --quiet HEAD^ HEAD -- src/; then
-            echo "CHANGED=false" >> $GITHUB_ENV
-          else
-            echo "CHANGED=true" >> $GITHUB_ENV
-          fi
-
-      - name: Generate GIF from Website
-        if: env.CHANGED == 'true'
+      - name: 🎬 Record the deployed site
         uses: PabloLec/website-to-gif@2.1.1
         with:
           url: "https://mrtysn.github.io/cv/"
@@ -38,20 +51,13 @@ jobs:
           time_per_frame: 100
           start_delay: 4000
 
-      - name: Commit GIF to the Repository
-        if: env.CHANGED == 'true'
-        id: commit
+      - name: 🚀 Publish to the cv-preview release
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          if git diff-index --quiet HEAD; then
-            echo "CHANGED_COMMIT=false" >> $GITHUB_ENV
-          else
-            git commit -m 'Automatically generate GIF of the CV website'
-            echo "CHANGED_COMMIT=true" >> $GITHUB_ENV
-          fi
-
-      - name: Push changes
-        if: env.CHANGED_COMMIT == 'true'
-        run: git push
+          test -s cv-preview.gif || { echo "no GIF was produced"; exit 1; }
+          ls -la cv-preview.gif
+          gh release delete cv-preview --cleanup-tag --yes || true
+          gh release create cv-preview cv-preview.gif \
+            --title "CV preview GIF" \
+            --notes "Preview recording of https://mrtysn.github.io/cv/ (commit ${{ github.sha }}). Referenced by README.md."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

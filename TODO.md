@@ -16,7 +16,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Convert Achievements class component to functional component (modernize to functional style)
 - [x] Convert SectionItem class component to functional component (most used component, test carefully)
 - [ ] Add responsive breakpoints for tablet view (improve 451px-768px breakpoint)
-- [ ] Fix GIF generation failure in CV repo (debug GitHub Actions workflow)
+- [x] Fix GIF generation failure in CV repo (generate-gif.yml now publishes to the cv-preview release instead of committing a 6 MB binary to master on every push)
 - [ ] Add PropTypes validation to components (SectionItem, SkillRow, SectionTitle)
 - [ ] Fix CSS class naming inconsistencies (standardize camelCase vs kebab-case)
 - [ ] Add basic error boundaries (graceful error handling with fallback UI)

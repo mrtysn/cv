@@ -8,7 +8,7 @@ A minimalistic CV / Resume template for academic and professional use, designed 
 
 Visit [mrtysn.github.io/cv](https://mrtysn.github.io/cv/)
 
-[![CV Preview](cv-preview.gif)](https://mrtysn.github.io/cv/)
+[![CV Preview](https://github.com/mrtysn/cv/releases/download/cv-preview/cv-preview.gif)](https://mrtysn.github.io/cv/)
 
 ##
 

@@ -29,6 +29,29 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - The Preview GIF Left git
+**Type**: [Config]
+**Impact**: Medium
+
+`generate-gif.yml` used to record the deployed site and push the result back to
+master. The recording is not deterministic, so its `git diff-index --quiet HEAD`
+guard never fired and every qualifying push produced a fresh ~6 MB blob:
+twenty-one revisions, `.git` at 98 MB for a repo otherwise a few hundred KB, and
+a bot push racing every human push to master.
+
+The workflow now publishes the GIF as an asset on a dedicated `cv-preview`
+release and README.md points at the download URL, which is stable across the
+delete-and-recreate. The tag has to stay dedicated because `pdf-generation.yml`
+runs `gh release delete cv-latest --cleanup-tag` and would take an asset parked
+there with it. The `HEAD^` diff gate was replaced with a native `paths:` filter,
+the manual duplicate workflow folded into a `workflow_dispatch` trigger, and a
+concurrency group added so two runs cannot race the Pages deploy.
+
+Existing history still carries the 65 MB of old GIF revisions. Removing that
+needs a history rewrite and has not been done.
+
+---
+
 ## 2026-08-10 - Removed the Last Third-Party Runtime Dependencies
 **Type**: [Architecture/Dependency]
 **Impact**: Medium

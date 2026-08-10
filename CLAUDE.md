@@ -82,14 +82,19 @@ Styling is Semantic UI React plus `App.css` plus inline styles for layout.
 ## PDF and the ATS check
 
 `.github/workflows/pdf-generation.yml` regenerates `Mert_Yasin_CV.pdf` and
-publishes a release. `generate-gif.yml` records the preview GIF.
+publishes the `cv-latest` and `cv-<version>` releases. `generate-gif.yml`
+records the preview README GIF and publishes it to the `cv-preview` release; it
+is a separate tag on purpose, because the PDF workflow deletes and recreates its
+own tags and would take an asset parked there with it.
 
 An ATS does not see the rendered page. It runs the PDF through a text extractor
 and parses fields out of the resulting string, so what matters is what the
-extractor recovers. `scripts/check-cv-pdf` runs two extractors with different
-strategies (pdfminer.six, pypdf) and reports what each one gets: name,
-employers, date ranges, hyperlink annotations, section headings. Expected values
-come from `src/data/*.json`, so the check stays correct as the CV changes.
+extractor recovers. `scripts/check-cv-pdf` runs three extractors with different
+strategies (pdfminer.six is layout-aware, pypdf follows content-stream order
+like PDFBox and Tika, pymupdf uses the MuPDF engine) and reports what each one
+gets: name, employers, date ranges, hyperlink annotations, section headings.
+Expected values come from `src/data/*.json`, so the check stays correct as the
+CV changes.
 
 ```
 scripts/check-cv-pdf                 # newest *_CV.pdf at the repo root
@@ -104,10 +109,16 @@ Dependencies live in `.venv-ats/`, created on first run and gitignored. Set
 so a fresh clone needs `git config core.hooksPath .githooks` once. `--no-verify`
 bypasses it.
 
-Known FAIL: `.fontSectionHeader` in `App.css` sets `letter-spacing: 4px`, so a
-layout-aware extractor reads the headings as `E X P E R I E N C E`. Section
-headings are how an ATS scopes the block beneath them. Fixing it means finding
-tracking that survives extraction, or accepting tighter headings.
+Two warnings are known and accepted: bullet glyphs sit in their own text run, so
+list-item detection is unreliable though the text is intact, and pypdf fuses a
+few words across line breaks where the other two do not.
+
+Three App.css rules exist only to keep the check passing, and each carries a
+comment saying so. Tracking on `.fontSectionHeader` must stay at or under 1px or
+the headings extract as `E X P E R I E N C E`; the `position: static` override
+on bulleted list items keeps responsibilities next to the job they belong to;
+and the self-hosted `@font-face` blocks in `public/index.html` must carry no
+`unicode-range` or Turkish characters split their words apart.
 
 ## GitHub Pages
 

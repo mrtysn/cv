@@ -32,3 +32,7 @@ yarn-error.log*
 
 # python venv for scripts/check-cv-pdf
 /.venv-ats
+
+# preview recording; published as a release asset by generate-gif.yml, never
+# committed (it is ~6 MB and the recording differs on every run)
+/cv-preview.gif
