@@ -45,7 +45,7 @@ const VIEWPORT = { width: 960, height: 720, deviceScaleFactor: 1 };
 function ffmpeg(args, label) {
   const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', ...args], { stdio: 'inherit' });
   if (r.error && r.error.code === 'ENOENT') {
-    throw new Error('ffmpeg not found. CI installs it via apt in generate-gif.yml; locally, "brew install ffmpeg".');
+    throw new Error('ffmpeg not found. CI installs it via apt in build-and-publish.yml; locally, "brew install ffmpeg".');
   }
   if (r.status !== 0) throw new Error(`ffmpeg failed during ${label} (exit ${r.status})`);
 }

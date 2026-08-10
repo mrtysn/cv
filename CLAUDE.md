@@ -95,14 +95,17 @@ unstyled.
 
 ## PDF and the ATS check
 
-`.github/workflows/pdf-generation.yml` regenerates `Mert_Yasin_CV.pdf` and
-publishes the `cv-latest` and `cv-<version>` releases. `generate-gif.yml`
-records the preview README GIF via `scripts/record-preview.js` and publishes it
-to the `cv-preview` release; it is a separate tag on purpose, because the PDF
-workflow deletes and recreates its own tags and would take an asset parked there
-with it. Both workflows record the build they just produced, never the deployed
-site — deploys are manual, so fetching the live URL captures the previous
-version.
+`.github/workflows/build-and-publish.yml` is the only workflow. It builds once,
+then generates `Mert_Yasin_CV.pdf` and publishes the `cv-latest` and
+`cv-<version>` releases, and records the preview README GIF via
+`scripts/record-preview.js` onto the `cv-preview` release. That last tag is
+separate on purpose: the PDF releases are deleted and recreated on every run and
+would take an asset parked there with them.
+
+Both artifacts come from the build the workflow just produced, never from the
+deployed site — deploys are manual, so fetching the live URL captures the
+previous version. The PDF runs first because it is the artifact people download;
+the GIF is cosmetic and goes last, where a failure cannot cost a PDF release.
 
 An ATS does not see the rendered page. It runs the PDF through a text extractor
 and parses fields out of the resulting string, so what matters is what the

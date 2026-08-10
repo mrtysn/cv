@@ -29,6 +29,30 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-11 - One Workflow, One Build
+**Type**: [Config]
+**Impact**: Medium
+
+`pdf-generation.yml` and `generate-gif.yml` are gone, replaced by
+`build-and-publish.yml`. They fired on nearly identical triggers and each spent
+about ninety seconds on the same checkout, pnpm install, apt install and Chrome
+download before building the same app a second time — measured at 92s and 87s on
+the last green runs of each. One job now builds once and produces both artifacts.
+
+Two faults fixed on the way. The PDF workflow had **no concurrency group**, so
+two pushes in quick succession could interleave its `gh release delete` and
+`gh release create` and leave a release without its assets; the merged workflow
+has one. And the paths filter now includes `scripts/**`, because the generators
+live there and a change to `record-preview.js` or `generate-pdf.js` previously
+never triggered the workflow that exercises it — both of tonight's recorder runs
+had to be dispatched by hand.
+
+Ordering is deliberate: build, PDF, ATS check, PDF releases, then the GIF. The
+PDF is the artifact people download, so it is published before the cosmetic step
+that could fail. `pnpm/action-setup` also went from v2 to v4.
+
+---
+
 ## 2026-08-11 - Recording the Preview GIF Ourselves
 **Type**: [Architecture/Dependency]
 **Impact**: Medium

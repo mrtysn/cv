@@ -1,4 +1,22 @@
-name: Generate CV PDF
+# One build, both artifacts.
+#
+# This replaces pdf-generation.yml and generate-gif.yml, which fired on almost
+# the same triggers and each spent about ninety seconds doing an identical
+# checkout, pnpm install, apt install and Chrome download before building the
+# same app twice. Doing it once halves that.
+#
+# Both artifacts are recorded from the build produced here, never from the
+# deployed site. Deploys are manual (`pnpm run deploy`), so anything that
+# fetches https://mrtysn.github.io/cv/ captures the previous version.
+#
+# Order matters: the PDF is what people download, so it is generated, checked
+# and released first. The preview GIF is cosmetic and goes last, where a failure
+# cannot cost us a PDF release.
+#
+# Release tags are deliberately separate. cv-latest and cv-<version> are deleted
+# and recreated on every run, so the preview GIF has to live on its own tag or
+# it would be destroyed here.
+name: Build and publish
 
 on:
   push:
@@ -6,70 +24,72 @@ on:
     paths:
       - 'src/**'
       - 'public/**'
+      - 'scripts/**' # the generators live here; a change to them should be exercised
       - 'package.json'
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch: # re-cut both artifacts on demand
+
+# Without this, two pushes in quick succession interleave the release delete and
+# create below, and one of them loses its assets.
+concurrency:
+  group: build-and-publish
+  cancel-in-progress: true
+
+permissions:
+  contents: write # gh release create
 
 jobs:
-  generate-pdf:
+  build-and-publish:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'  # pnpm latest requires Node >= 22.13
-          
+          node-version: '22' # pnpm latest requires Node >= 22.13
+
       - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.27.0  # pinned: pnpm 11 (latest) errors on ignored build scripts
+          version: 10.27.0 # pinned: pnpm 11 (latest) errors on ignored build scripts
 
       - name: 📦 Install dependencies
-        run: pnpm install  # puppeteer is already a devDependency; no extra add needed
+        run: pnpm install # puppeteer is already a devDependency; no extra add needed
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-          
-      - name: 🔧 Install system dependencies for Puppeteer
+
+      # ffmpeg is not on the ubuntu-latest image any more; without it
+      # record-preview.js captures every frame and then dies at the encode.
+      - name: 🔧 Install system dependencies for Puppeteer and ffmpeg
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
-          
+          sudo apt-get install -y ffmpeg libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libxss1 libasound2t64
+          ffmpeg -version | head -1
+
       - name: 🌐 Install Chrome for Puppeteer
         run: |
           CHROME_PATH=$(npx puppeteer browsers install chrome | grep chrome@ | awk '{print $2}')
           echo "PUPPETEER_EXECUTABLE_PATH=$CHROME_PATH" >> $GITHUB_ENV
           echo "Chrome installed at: $CHROME_PATH"
-          
+
       - name: 🏗️ Build React application
         run: |
           npx update-browserslist-db@latest
           pnpm run build
-        
+
       - name: 📄 Generate PDF
-        run: |
-          echo "Build directory contents:"
-          ls -la build/ || echo "Build directory not found"
-          echo "Chrome executable location:"
-          which google-chrome || which chromium-browser || echo "Chrome not found in PATH"
-          echo "Running PDF generation..."
-          node scripts/generate-pdf.js
+        run: node scripts/generate-pdf.js
         env:
           CI: 'true'
-          
-      - name: 📊 List generated files
-        run: |
-          echo "Generated PDF files:"
-          ls -la pdfs/*.pdf || echo "No PDF files found in pdfs/"
 
       # The released PDF is what people download, so the extraction check runs
       # here and not only in the local pre-commit hook. Fails the workflow
       # before anything is published.
       - name: 🔎 Check how an ATS reads the PDF
         run: ./scripts/check-cv-pdf
-          
+
       - name: 🏷️ Get version
         id: version
         run: |
@@ -106,7 +126,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: ✅ Success notification
+      - name: 🎬 Record the preview GIF
+        run: node scripts/record-preview.js
+
+      - name: 🖼️ Publish to the cv-preview release
         run: |
-          echo "🎉 PDF generation and release complete!"
-          echo "🔗 Releases: ${{ github.server_url }}/${{ github.repository }}/releases"
+          test -s cv-preview.gif || { echo "no GIF was produced"; exit 1; }
+          ls -la cv-preview.gif
+          gh release delete cv-preview --cleanup-tag --yes || true
+          gh release create cv-preview cv-preview.gif \
+            --title "CV preview GIF" \
+            --notes "Preview recording of the site at commit ${{ github.sha }}. Referenced by README.md."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ✅ Summary
+        run: |
+          echo "PDF releases: cv-latest, cv-${{ steps.version.outputs.version }}"
+          echo "Preview GIF:  cv-preview"
+          echo "🔗 ${{ github.server_url }}/${{ github.repository }}/releases"
