@@ -5,7 +5,7 @@ Task tracking for CV repository. Rules: mark tasks completed immediately when fi
 **Legend**: [ ] = pending, [x] = completed
 
 ## Next
-- [ ] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
+- [x] Confirm the narrowed CSP on a real mobile in-app browser (checked on Android and iPhone 2026-08-10, both fine; the in-app browser was the case that motivated the original broad policy)
 - [ ] Convert Experience class component to functional component (maintain same functionality)
 - [ ] Convert Education class component to functional component (modernize to functional style)
 - [ ] Add responsive breakpoints for tablet view (improve 451px-768px breakpoint)
