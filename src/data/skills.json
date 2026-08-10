@@ -3,15 +3,15 @@
     "category": "game-dev & mobile",
     "tags": ["gamedev"],
     "skills": [
-      "Unity3D; C#",
       "Godot; GDScript",
+      "Unity3D; C#",
       "Android; Java",
       "React Native"
     ],
     "short": {
       "skills": [
-        "Unity3D; C#",
         "Godot; GDScript",
+        "Unity3D; C#",
         "Android; Java"
       ]
     }
