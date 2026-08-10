@@ -9,8 +9,8 @@ comes from `~/.claude/rules/`. This file is only what is specific to this repo.
 ## Workflow
 
 1. Read TODO.md before starting.
-2. Mark the task `[🔄]` before working, `[x]` immediately when done.
-3. One task in progress at a time. Tasks must be completable in one session.
+2. Mark the task `[x]` immediately when done.
+3. Tasks must be completable in one session.
 4. Log substantial changes in PROGRESS.md: architecture, discoveries, breaking
    changes, new dependencies. Follow the dated entry format at the top of that
    file.
