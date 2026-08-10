@@ -21,6 +21,9 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [ ] Fix CSS class naming inconsistencies (standardize camelCase vs kebab-case)
 - [ ] Add basic error boundaries (graceful error handling with fallback UI)
 - [ ] Optimize bundle size analysis (add webpack-bundle-analyzer script)
+- [x] Add ATS parse check for the generated PDF (scripts/check-cv-pdf, two extractors, pre-commit hook)
+- [ ] Fix letter-spaced section headings (App.css .fontSectionHeader letter-spacing:4px extracts as "E X P E R I E N C E", so an ATS that cannot match the heading cannot scope the section under it)
+- [ ] Fix Turkish diacritics splitting in PDF extraction (name reads "Mert Ya ş in" to naive extractors; font subsetting in the Puppeteer print path)
 
 ## Backlog
 - [ ] Update Cypher section in CV (update job description and details in Experience)

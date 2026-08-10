@@ -29,3 +29,6 @@ yarn-error.log*
 .claude/settings.local.json
 # machine-local: skills this repo opts out of (see .agents/scripts/init.sh)
 .agents-ignore
+
+# python venv for scripts/check-cv-pdf
+/.venv-ats

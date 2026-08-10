@@ -1,0 +1,46 @@
+#!/bin/zsh
+# DESC: Check the generated CV PDF the way an applicant tracking system reads it
+
+set -euo pipefail
+
+# Locate the repo from this script, never from the caller's cwd.
+script_dir="${0:A:h}"
+root="$(git -C "$script_dir" rev-parse --show-toplevel 2>/dev/null || print -r -- "${script_dir:h}")"
+
+checker="$script_dir/ats-parse-check.py"
+venv="$root/.venv-ats"
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  cat <<'USAGE'
+check-cv-pdf [PDF] [--json] [--quiet]
+
+Runs the generated CV PDF through two text extractors with different
+strategies (pdfminer.six, pypdf) and reports what each recovers: the
+candidate name, employer names, date ranges, hyperlink annotations and
+section headings. Expected values come from src/data/*.json.
+
+  PDF        file to check (default: newest *_CV.pdf at the repo root)
+  --json     machine-readable output
+  --quiet    only warnings and failures
+
+Exit 0 clean (warnings allowed) · 1 a check failed · 2 could not run.
+
+The Python dependencies live in a repo-local venv at .venv-ats, created on
+first run. Set CV_ATS_PYTHON to use your own interpreter instead.
+USAGE
+  exit 0
+fi
+
+if [[ -n "${CV_ATS_PYTHON:-}" ]]; then
+  python="$CV_ATS_PYTHON"
+elif [[ -x "$venv/bin/python" ]]; then
+  python="$venv/bin/python"
+else
+  print -u2 -- "check-cv-pdf: creating $venv (first run)"
+  python3 -m venv "$venv" || { print -u2 -- "check-cv-pdf: could not create venv"; exit 2; }
+  "$venv/bin/pip" install --quiet --disable-pip-version-check pypdf pdfminer.six \
+    || { print -u2 -- "check-cv-pdf: could not install pypdf / pdfminer.six"; exit 2; }
+  python="$venv/bin/python"
+fi
+
+exec "$python" "$checker" "$@"

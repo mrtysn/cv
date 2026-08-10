@@ -1,110 +1,115 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+A React CV that renders from JSON, deploys to GitHub Pages, and exports a PDF
+with live hyperlinks. Also published as a template others clone.
 
-## Quick Start - Essential Workflow
+Standing behaviour (communication style, question handling, shell conventions)
+comes from `~/.claude/rules/`. This file is only what is specific to this repo.
 
-**ALWAYS START HERE** when beginning work on this repository:
+## Workflow
 
-1. **Read TODO.md** - Check current tasks and their status
-2. **Mark task IN PROGRESS** - Update chosen task status before starting work
-3. **Work atomically** - Focus on single, well-defined tasks only
-4. **Document substantial changes** - Update PROGRESS.md for significant findings
-5. **Mark COMPLETED** - Update task status immediately when finished
+1. Read TODO.md before starting.
+2. Mark the task `[🔄]` before working, `[x]` immediately when done.
+3. One task in progress at a time. Tasks must be completable in one session.
+4. Log substantial changes in PROGRESS.md: architecture, discoveries, breaking
+   changes, new dependencies. Follow the dated entry format at the top of that
+   file.
 
-**Key Rules**:
-- ✅ Only ONE task IN PROGRESS at a time
-- ✅ Tasks must be atomic (single-session completable)
-- ✅ Always update TODO.md status before and after work
-- ✅ Use PROGRESS.md for architectural decisions and discoveries
-- ❌ No time estimates - focus on granular task breakdown instead
+No time estimates. Break work down finer instead.
 
-**Essential Files**: TODO.md (task tracking) | PROGRESS.md (substantial updates) | This file (guidance)
+## Commands
 
-## Common Development Commands
+pnpm only, not npm, not yarn.
 
-### Local Development
-- `pnpm install` - Install dependencies
-- `pnpm run start` - Start development server at localhost:3000
-- `pnpm run build` - Build production version
+| Command | Does |
+|---|---|
+| `pnpm start` | Dev server on :3000 (`BROWSER=none`) |
+| `pnpm build` | Production build, then `react-snap` prerender |
+| `pnpm generate-pdf` | Build, then render the PDF via Puppeteer |
+| `pnpm generate-pdf-local` | Render the PDF against a running dev server |
+| `pnpm deploy` | Build and publish to the `gh-pages` branch |
+| `scripts/check-cv-pdf` | Check the PDF the way an ATS reads it (below) |
 
-### Deployment
-- `pnpm run predeploy` - Build before deployment (runs `pnpm run build`)
-- `pnpm run deploy` - Deploy to GitHub Pages using gh-pages
+## Content lives in JSON, not in components
 
-### Package Manager
-This project uses **pnpm** (not npm or yarn). Always use `pnpm` for package management.
+Do not edit text in `src/containers/`. Every string on the CV comes from
+`src/data/*.json`:
 
-## Development Tracking
+```
+src/data/header.json         name, title, contact
+src/data/experience.json     jobs, in display order
+src/data/education.json
+src/data/skills.json
+src/data/achievements.json
+schemas/*.schema.json        the shape each file must hold
+DATA_SCHEMA.md               field reference, read this before changing shape
+```
 
-This repository uses structured task and progress tracking:
+Containers read their JSON, pass it through `utils/filterData.js`, and hand the
+result to `SectionItem` or `SkillRow`. Adding a job means adding an object to
+`experience.json` and touching no JS.
 
-### TODO.md - Task Management
-- **Primary task tracking** - Use this for all development work
-- **Task lifecycle**: PENDING → IN PROGRESS → COMPLETED
-- **Important**: Always mark tasks as IN PROGRESS before starting work
-- **Rule**: Only work on ONE task at a time (single IN PROGRESS task)
-- Each task includes priority, effort estimation, and acceptance criteria
+Three conventions in the data are easy to miss. Links inside a bullet are
+`{Placeholder}` tokens, resolved against the entry's `links` object by
+`utils/experienceRenderer.js`; the renderer iterates that object generically, so
+an entry may carry several links. The `short` object holds overrides applied in
+short mode, and a field set to `null` there is removed entirely, so a bullet
+edited in `responsibilities` usually needs the matching edit in
+`short.responsibilities` or the two will contradict each other. Finally, `tags`
+drive the filter toggles: an item is hidden only when all of its tags are
+hidden, untagged items always show, and the tags themselves live in
+`src/constants/tags.js`.
 
-### PROGRESS.md - Substantial Updates
-- **Document significant changes** - Architecture decisions, important discoveries
-- **Track breaking changes** - Performance improvements, new dependencies
-- **Current task notes** - Use for complex tasks requiring detailed notes
-- **Maintain context** - Helps future instances understand project evolution
+Rendered HTML in bullets goes through `dangerouslySetInnerHTML`, so keep the
+data files hand-authored.
 
-### Workflow
-1. Check TODO.md for current tasks
-2. Mark chosen task as IN PROGRESS
-3. Work on the task
-4. Document substantial findings in PROGRESS.md
-5. Mark task as COMPLETED when finished
-6. Update TODO.md with any new tasks discovered
+## Structure
 
-## Code Architecture
+```
+src/App.js              section order, wrapped in CVProvider
+src/context/            CVContext, holds filter mode and hidden tags
+src/containers/         one per section; reads JSON, renders
+src/components/         SectionItem, SkillRow, SectionTitle, ErrorBoundary,
+                        PdfDownloadButton, GitHubLinkButton, Mode/SectionToggle
+src/utils/              filterData, experienceRenderer, educationRenderer,
+                        urlState, useWindowSize
+src/App.css             print styles: .hideFromPrint, .noPageBreak
+src/constants.js        CV_VERSION and DATE, bump on content changes
+```
 
-This is a React-based CV/resume template using Semantic UI React for styling. The application follows a simple container-component pattern:
+Styling is Semantic UI React plus `App.css` plus inline styles for layout.
 
-### Main Structure (`src/App.js`)
-The app renders sections in this order:
-1. **Header** - Name, title, contact information
-2. **Experience** - Work history and positions  
-3. **Education** - Academic background
-4. **Skills** - Technical skills grouped by category
-5. **Achievements** - Extracurricular activities and awards
-6. **Footer** - Version info and attribution
+## PDF and the ATS check
 
-### Key Components (`src/components/`)
-- `SectionItem` - Used for Experience and Education entries
-  - Props: companyTitle, location, jobTitle, startDate, endDate, description, items, relevantItems
-- `SkillRow` - Used for Skills section
-  - Props: title, items, titleColumnWidth, dataColumnWidth, isNarrow
-- `SectionTitle` - Section headers with consistent styling
+`.github/workflows/pdf-generation.yml` regenerates `Mert_Yasin_CV.pdf` and
+publishes a release. `generate-gif.yml` records the preview GIF.
 
-### Container Components (`src/containers/`)
-Each section (Header, Experience, Education, Skills, Achievements, Footer) has its own container component with hardcoded content.
+An ATS does not see the rendered page. It runs the PDF through a text extractor
+and parses fields out of the resulting string, so what matters is what the
+extractor recovers. `scripts/check-cv-pdf` runs two extractors with different
+strategies (pdfminer.six, pypdf) and reports what each one gets: name,
+employers, date ranges, hyperlink annotations, section headings. Expected values
+come from `src/data/*.json`, so the check stays correct as the CV changes.
 
-### Styling
-- Primary styling via Semantic UI React components
-- Custom styles in `src/App.css` with print-optimized CSS classes
-- Inline styles used throughout for specific layout needs
-- Print-friendly styles with `.hideFromPrint` and `.noPageBreak` classes
+```
+scripts/check-cv-pdf                 # newest *_CV.pdf at the repo root
+scripts/check-cv-pdf path.pdf --json
+```
 
-### Configuration
-- `src/constants.js` - Contains CV_VERSION and DATE for versioning
-- `package.json` - Update `homepage` field for GitHub Pages deployment
+Dependencies live in `.venv-ats/`, created on first run and gitignored. Set
+`CV_ATS_PYTHON` to use a different interpreter.
 
-## Content Customization
+`.githooks/pre-commit` runs the check against the staged blob whenever a
+`*_CV.pdf` is staged, and blocks on a FAIL. It is enabled via `core.hooksPath`,
+so a fresh clone needs `git config core.hooksPath .githooks` once. `--no-verify`
+bypasses it.
 
-Content is **hardcoded** in the container components (not configuration-driven). To customize:
-1. Edit container files in `src/containers/` directly
-2. Replace inline content with your own information
-3. Use existing component props structure for consistency
-4. Update `constants.js` for version tracking
+Known FAIL: `.fontSectionHeader` in `App.css` sets `letter-spacing: 4px`, so a
+layout-aware extractor reads the headings as `E X P E R I E N C E`. Section
+headings are how an ATS scopes the block beneath them. Fixing it means finding
+tracking that survives extraction, or accepting tighter headings.
 
-## GitHub Pages Setup
+## GitHub Pages
 
-Ensure repository is configured for GitHub Pages:
-- Source: "deploy from branch"
-- Branch: "gh-pages" 
-- Folder: "/ (root)"
-- Update `homepage` URL in `package.json` with your GitHub username
+Source: deploy from branch. Branch: `gh-pages`. Folder: `/`. The `homepage`
+field in `package.json` must match the deployed URL.

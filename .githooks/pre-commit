@@ -1,0 +1,42 @@
+#!/bin/sh
+# Block a commit that would ship a CV PDF an ATS cannot read.
+#
+# Runs only when a *_CV.pdf is staged, and checks the *staged* blob rather than
+# the working tree, so it reflects what the commit would actually contain.
+#
+# POSIX sh, not zsh: git invokes hooks with a fixed interpreter.
+
+set -eu
+
+root=$(git rev-parse --show-toplevel)
+staged=$(git diff --cached --name-only --diff-filter=ACM -- '*_CV.pdf')
+
+[ -z "$staged" ] && exit 0
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+status=0
+for pdf in $staged; do
+    blob="$tmp/$(basename "$pdf")"
+    git show ":$pdf" > "$blob"
+
+    set +e
+    "$root/scripts/check-cv-pdf" "$blob" --quiet
+    rc=$?
+    set -e
+
+    case $rc in
+        0) ;;
+        2)
+            echo "pre-commit: skipping ATS check for $pdf (dependencies unavailable)" >&2
+            ;;
+        *)
+            echo "pre-commit: $pdf fails the ATS parse check." >&2
+            echo "            Fix the failures above, or commit with --no-verify." >&2
+            status=1
+            ;;
+    esac
+done
+
+exit $status

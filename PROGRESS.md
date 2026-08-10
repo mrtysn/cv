@@ -29,6 +29,50 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - ATS Parse Check and Pre-Commit Hook
+**Type**: [Discovery/Dependency/Config]
+**Impact**: High
+
+An ATS does not see the rendered CV. It runs the PDF through a text extractor
+and parses fields out of the resulting string. Added `scripts/check-cv-pdf`,
+which runs the generated PDF through two extractors with different strategies
+(pdfminer.six reconstructs reading order from glyph positions, pypdf follows
+content-stream order) and asserts what each recovers against `src/data/*.json`.
+Nothing about the CV's content is hardcoded in the checker.
+
+The two extractors disagree substantially on the same file, so the outcome
+depends on which library the ATS happens to use:
+
+| | pdfminer.six | pypdf |
+|---|---|---|
+| Name line | `Mert Yaşin` | `Mert Ya ş in` |
+| `İstanbul` occurrences | 10 | 0 (all `İ stanbul`) |
+| Bullets attached to their employer | yes | no, all 11 job headers emit first, then every bullet in one block |
+| Literal `EXPERIENCE` present | no, reads `E X P E R I E N C E` | yes |
+| Date ranges found | 10/10 | 10/10 |
+| URI annotations | 45 | 45 |
+
+Dates and hyperlinks come through clean in both, which is lucky, since those are
+the fields that usually break. Two defects are real and independent of content:
+
+1. `.fontSectionHeader` sets `letter-spacing: 4px`, which becomes literal spaces
+   on extraction. Section headings are how an ATS scopes the block beneath them.
+   This is the one hard FAIL.
+2. Non-ASCII letters are emitted as separate text runs, so naive extractors
+   mangle the name field, which is the first thing an ATS parses.
+
+Dependencies live in a gitignored `.venv-ats/`, bootstrapped on first run, so
+this adds no Node dependencies. `.githooks/pre-commit` runs the check against
+the staged blob whenever a `*_CV.pdf` is staged and blocks on a FAIL. It is
+enabled with `core.hooksPath`, so a fresh clone needs
+`git config core.hooksPath .githooks` once.
+
+Also corrected CLAUDE.md, which still claimed content was hardcoded in
+`src/containers/`. It has been data driven since the JSON extraction, and the
+stale instruction was pointing future work at the wrong files.
+
+---
+
 ## 2025-08-12 - Link Preview Implementation Removed
 **Type**: Breaking Change
 **Impact**: Low
