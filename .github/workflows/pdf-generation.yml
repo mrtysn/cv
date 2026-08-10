@@ -63,6 +63,12 @@ jobs:
         run: |
           echo "Generated PDF files:"
           ls -la pdfs/*.pdf || echo "No PDF files found in pdfs/"
+
+      # The released PDF is what people download, so the extraction check runs
+      # here and not only in the local pre-commit hook. Fails the workflow
+      # before anything is published.
+      - name: 🔎 Check how an ATS reads the PDF
+        run: ./scripts/check-cv-pdf
           
       - name: 🏷️ Get version
         id: version

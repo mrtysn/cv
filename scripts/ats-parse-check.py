@@ -62,6 +62,14 @@ def load_expectations(root: Path) -> dict:
     header = read("header.json") or {}
     experience = read("experience.json") or []
 
+    # Contact details, as an ATS would look for them: the literal strings, not
+    # the display text wrapped around them.
+    contact_blob = json.dumps(header.get("contact", {}), ensure_ascii=False)
+    emails = set(re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", contact_blob))
+    phones = {re.sub(r"[^\d+]", "", p) for p in re.findall(r"\+[\d ()/-]{7,}", contact_blob)}
+    profiles = set(re.findall(r"https?://(?:www\.)?(?:linkedin\.com|github\.com)/[\w./-]+",
+                              contact_blob))
+
     urls: set[str] = set()
 
     def harvest(node) -> None:
@@ -100,6 +108,9 @@ def load_expectations(root: Path) -> dict:
         "companies": companies,
         "month_ranges": month_ranges,
         "urls": urls,
+        "emails": emails,
+        "phones": phones,
+        "profiles": profiles,
     }
 
 
@@ -108,17 +119,32 @@ def load_expectations(root: Path) -> dict:
 
 
 def extract(pdf: Path) -> tuple[dict[str, str], list[str]]:
-    """Return {extractor_name: text} plus every URI annotation in the file."""
+    """Return {extractor_name: text} plus every URI annotation in the file.
+
+    Three engines with three different codebases, because real applicant
+    tracking systems do not agree on one. pdfminer.six reconstructs reading
+    order from glyph geometry. pypdf follows the content stream, which is the
+    behaviour of the PDFBox and Tika family that sits under a lot of commercial
+    parsers. PyMuPDF wraps MuPDF, a third implementation again. A document that
+    reads correctly under all three is not guaranteed to read correctly
+    everywhere, but a document that fails one of them has a real problem.
+    """
     from pdfminer.high_level import extract_text
     from pypdf import PdfReader
+    import pymupdf
 
     import logging
     logging.getLogger("pdfminer").setLevel(logging.ERROR)
+    pymupdf.TOOLS.mupdf_display_errors(False)
 
     reader = PdfReader(str(pdf))
+    with pymupdf.open(str(pdf)) as doc:
+        mupdf_text = "\n".join(page.get_text() for page in doc)
+
     texts = {
         "pdfminer.six": extract_text(str(pdf)),
         "pypdf": "\n".join(page.extract_text() or "" for page in reader.pages),
+        "pymupdf": mupdf_text,
     }
 
     links = []
@@ -221,6 +247,49 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
         " · ".join(f"{n}: {c}/{want}" for n, c in counts.items()),
         "employment dates drive the experience calculation on most ATS",
     )
+
+    # Contact fields, checked against the text layer specifically. A parser
+    # that reads link annotations recovers a URL that is only a hyperlink, but
+    # plenty do not, so anything an ATS puts in a contact field has to survive
+    # as plain text too.
+    if expected["emails"]:
+        lost = [e for e in expected["emails"] if not all(e in t for t in texts.values())]
+        report.add(
+            "email address in the text layer",
+            FAIL if lost else PASS,
+            f"missing: {', '.join(lost)}" if lost
+            else f"{', '.join(sorted(expected['emails']))} found by every extractor",
+            "the email is the primary contact field on nearly every ATS",
+        )
+
+    if expected["phones"]:
+        digits = {n: re.sub(r"[^\d+]", "", t) for n, t in texts.items()}
+        lost = [p for p in expected["phones"] if not all(p in d for d in digits.values())]
+        report.add(
+            "phone number in the text layer",
+            FAIL if lost else PASS,
+            f"missing: {', '.join(lost)}" if lost
+            else f"{len(expected['phones'])} found by every extractor",
+            "compared digits-only, so spacing and punctuation do not matter",
+        )
+
+    if expected["profiles"]:
+        annotated = set(links)
+        text_only = []
+        for url in expected["profiles"]:
+            bare = re.sub(r"^https?://(www\.)?", "", url).rstrip("/")
+            if not any(bare in t for t in texts.values()):
+                text_only.append(bare)
+        report.add(
+            "profile URLs readable as text",
+            WARN if text_only else PASS,
+            f"{', '.join(sorted(text_only))} exist only as link annotations"
+            if text_only else "all present in the text layer",
+            "a parser that ignores annotations gets no profile link; rendering "
+            "the display text as the bare domain path fixes it. Source: "
+            "src/data/header.json"
+            + ("" if not annotated else f" ({len(annotated)} annotations present)"),
+        )
 
     if expected["urls"]:
         annotated = set(links)

@@ -29,6 +29,46 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - Reading Order, Production Path, and Contact Fields
+**Type**: [Architecture/Discovery/Config]
+**Impact**: High
+
+`scripts/check-cv-pdf` now runs three extraction engines and reports 10 passed,
+2 warnings, 0 failed.
+
+**Reading order was the real parsing bug.** Semantic UI sets `position: relative`
+on every bulleted list item so it can hang the bullet off an absolutely
+positioned `::before`. Positioned elements paint in the last phase of a stacking
+context, so Chrome emitted all eleven job headers first and every bullet
+afterwards. An extractor following content-stream order (PDFBox and Tika, which
+sit under many applicant tracking systems) saw eleven employers with no
+responsibilities and then an orphaned block of bullets. Putting the item and its
+marker back in normal flow restored document order; the render is unchanged.
+
+**Production path.** `generate-pdf.js` built the app and then fetched the
+*deployed* site, so the released PDF always described the previous deploy. It now
+serves `build/` over HTTP via `scripts/serve-build.js` (zero dependencies; the
+built app cannot load over file:// because `homepage` makes asset paths
+absolute). The repo-root artifact is written by `pdf-generator.js` itself, so
+every entry point produces it identically. `scripts/prerender.js` gives react-snap
+the Chrome the project already has, fixing a clean-install failure where
+`pnpm build` died at postbuild. The ATS check runs in the workflow before
+anything is released, and `check-cv-pdf` is POSIX sh so it works on ubuntu-latest.
+
+**Contact fields.** The profile links rendered as `github/mrtysn` and
+`linkedin/mert-yasin`, which no URL regex matches. They existed only as link
+annotations, so a parser ignoring annotations got no profile link at all. Labels
+are now the bare domain path. Chrome also leaves `/Author` and `/Subject` empty;
+`pdf-generator.js` writes them from `header.json` via pdf-lib. That round-trip
+also recompressed the file from 166 KB to 78 KB with fonts, tagging (the PDF is
+tagged: `/StructTreeRoot`, `/Marked`, `/Lang`), and all 45 URI annotations intact.
+
+Remaining warnings are both extractor-specific and low impact: bullet glyphs sit
+in their own text run, and pypdf fuses six words across line breaks where
+pdfminer and pymupdf do not.
+
+---
+
 ## 2026-08-10 - Fixed Both ATS Extraction Failures
 **Type**: [Discovery/Config]
 **Impact**: High

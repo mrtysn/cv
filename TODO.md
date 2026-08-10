@@ -24,6 +24,13 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Add ATS parse check for the generated PDF (scripts/check-cv-pdf, two extractors, pre-commit hook)
 - [x] Reduce section heading tracking to under 0.1em (App.css .fontSectionHeader now 20px / weight 400 / 1px; all four headings extract contiguously)
 - [x] Self-host Ubuntu with latin and latin-ext in one file (public/fonts/ubuntu-{300,400,500,700}.woff2, no unicode-range; PDF now embeds 3 Ubuntu resources instead of 6 and the name extracts intact)
+- [x] Fix reading order so bullets stay with their employer (App.css: Semantic UI's position:relative on list items made them paint after every job header)
+- [x] Rework the PDF production path (serve the local build instead of the deployed site, unify the repo artifact, prerender wrapper, ATS check in CI)
+- [x] Make contact profile links readable as text, not only as link annotations (header.json labels are now the bare domain path)
+- [x] Write the PDF author/subject metadata Chrome leaves empty (pdf-lib step in scripts/pdf-generator.js)
+- [ ] Self-host Semantic UI CSS and drop its Lato @import (the last two runtime third-party requests)
+- [ ] Replace or remove react-snap (unmaintained, drags puppeteer 1.20; currently worked around by scripts/prerender.js)
+- [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
 ## Backlog
 - [ ] Update Cypher section in CV (update job description and details in Experience)

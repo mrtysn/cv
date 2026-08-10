@@ -104,11 +104,8 @@ if (require.main === module) {
       console.log(`\n🎉 PDF Generation Complete!`);
       console.log(`📁 Versioned file: ${result.filename} (in pdfs/)`);
       console.log(`🏷️  Version: ${result.version}`);
-
-      // Copy versioned PDF to fixed-name in root for committing
-      const fixedPdfPath = path.join(__dirname, '..', 'Mert_Yasin_CV.pdf');
-      fs.copyFileSync(result.outputPath, fixedPdfPath);
-      console.log(`📋 Copied to: Mert_Yasin_CV.pdf (for git)`);
+      // The repo-root copy is written by pdf-generator.js, so every entry point
+      // refreshes it identically.
 
       // Clean exit
       if (serverStartedByUs && serverProcess) {

@@ -29,6 +29,33 @@
   font-weight: 400 !important;
 }
 
+/*
+  Keep responsibilities next to the job they belong to in the PDF text layer.
+
+  Semantic UI sets `position: relative` on every bulleted list item so it can
+  hang the '•' off an absolutely positioned ::before. That makes each item a
+  positioned element, and positioned elements paint in the last phase of a
+  stacking context, after all in-flow content. Chrome therefore emits every job
+  header first and every bullet afterwards, so an extractor that follows
+  content-stream order (PDFBox and Tika, which sit under a lot of applicant
+  tracking systems) sees eleven employers with no responsibilities, then an
+  orphaned block of bullets.
+
+  Putting the item and its marker back in normal flow restores document order.
+  scripts/check-cv-pdf watches for a regression.
+*/
+.ui.bulleted.list > .item,
+ul.ui.list li {
+  position: static !important;
+}
+.ui.bulleted.list > .item::before,
+ul.ui.list li::before {
+  position: static !important;
+  display: inline-block;
+  width: 1.25rem;
+  margin-left: -1.25rem;
+}
+
 /* disabled setting a color for all the links for now */
 /* a { */
 /* color: red !important; */

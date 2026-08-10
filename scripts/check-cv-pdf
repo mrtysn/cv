@@ -1,17 +1,20 @@
-#!/bin/zsh
+#!/bin/sh
 # DESC: Check the generated CV PDF the way an applicant tracking system reads it
 
-set -euo pipefail
+# POSIX sh rather than zsh: this runs in the GitHub Actions workflow and in the
+# pre-commit hook, and ubuntu-latest has no zsh.
 
-# Locate the repo from this script, never from the caller's cwd.
-script_dir="${0:A:h}"
-root="$(git -C "$script_dir" rev-parse --show-toplevel 2>/dev/null || print -r -- "${script_dir:h}")"
+set -eu
+
+script_dir=$(cd "$(dirname "$0")" && pwd)
+root=$(git -C "$script_dir" rev-parse --show-toplevel 2>/dev/null || dirname "$script_dir")
 
 checker="$script_dir/ats-parse-check.py"
 venv="$root/.venv-ats"
 
-if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
-  cat <<'USAGE'
+case "${1:-}" in
+  -h|--help)
+    cat <<'USAGE'
 check-cv-pdf [PDF] [--json] [--quiet]
 
 Runs the generated CV PDF through two text extractors with different
@@ -28,18 +31,19 @@ Exit 0 clean (warnings allowed) · 1 a check failed · 2 could not run.
 The Python dependencies live in a repo-local venv at .venv-ats, created on
 first run. Set CV_ATS_PYTHON to use your own interpreter instead.
 USAGE
-  exit 0
-fi
+    exit 0
+    ;;
+esac
 
-if [[ -n "${CV_ATS_PYTHON:-}" ]]; then
+if [ -n "${CV_ATS_PYTHON:-}" ]; then
   python="$CV_ATS_PYTHON"
-elif [[ -x "$venv/bin/python" ]]; then
+elif [ -x "$venv/bin/python" ]; then
   python="$venv/bin/python"
 else
-  print -u2 -- "check-cv-pdf: creating $venv (first run)"
-  python3 -m venv "$venv" || { print -u2 -- "check-cv-pdf: could not create venv"; exit 2; }
-  "$venv/bin/pip" install --quiet --disable-pip-version-check pypdf pdfminer.six \
-    || { print -u2 -- "check-cv-pdf: could not install pypdf / pdfminer.six"; exit 2; }
+  echo "check-cv-pdf: creating $venv (first run)" >&2
+  python3 -m venv "$venv" || { echo "check-cv-pdf: could not create venv" >&2; exit 2; }
+  "$venv/bin/pip" install --quiet --disable-pip-version-check pypdf pdfminer.six pymupdf \
+    || { echo "check-cv-pdf: could not install pypdf / pdfminer.six / pymupdf" >&2; exit 2; }
   python="$venv/bin/python"
 fi
 
