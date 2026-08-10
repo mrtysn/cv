@@ -11,12 +11,14 @@
     "tags": ["professional", "backend", "gamedev"],
     "responsibilities": [
       "Architected and built the backends of {Match Squad} and {Royal Smash} from scratch as the sole backend engineer, using .NET, SignalR for real-time multiplayer & live chat, MongoDB, and Redis for horizontal scaling",
+      "Designed Royal Smash's backend to host multiple games from one codebase, with each title's data and live traffic isolated and a second game already onboarded",
+      "Scaled Royal Smash to 4.4M+ players and 1M+ daily active users within five weeks of launch, hitting #1 Top Free Casual on Google Play in the US, Japan, Mexico, and Turkey and top 20 on the US App Store",
       "Developed the LiveOps event engine with automated event scheduling, season passes, team events, and real-time leaderboards, plus an admin dashboard (React, TypeScript) spanning events, players, teams, monetization, and live server configuration",
       "Built and ran production on Terraform-managed AWS (ECS Fargate, ALB) with zero-downtime rolling deployments, a custom distributed job scheduler, automated load testing with k6 using TypeScript code generation from SignalR hub, and OpenTelemetry observability with Prometheus and Jaeger"
     ],
     "short": {
       "responsibilities": [
-        "Architected the backends of {Match Squad} and {Royal Smash} from scratch as the sole backend engineer (.NET, SignalR, MongoDB, Redis) with LiveOps event infrastructure, real-time leaderboards, Terraform-managed AWS deployments, and OpenTelemetry observability"
+        "Architected the backends of {Match Squad} and {Royal Smash} from scratch as the sole backend engineer (.NET, SignalR, MongoDB, Redis), scaling Royal Smash to 4.4M+ players and 1M+ daily active users in five weeks, with LiveOps event infrastructure, Terraform-managed AWS deployments, and OpenTelemetry observability"
       ]
     },
     "links": {
