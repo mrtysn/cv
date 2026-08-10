@@ -1,54 +1,29 @@
 # TODO.md
 
-Task tracking for CV repository. Rules: Mark tasks in progress before starting, only one task in progress at a time, mark completed immediately when finished.
+Task tracking for CV repository. Rules: Mark tasks in progress before starting, only one task in progress at a time, mark completed immediately when finished. Delete entries once done; PROGRESS.md is where finished work is recorded.
 
-**Legend**: [ ] = pending, [🔄] = in progress, [x] = completed
+**Legend**: [ ] = pending, [🔄] = in progress
 
 ## Next
-- [x] Add "download as PDF" button (implemented with jsPDF + html2canvas)
-- [x] Convert all text input to load from JSON file (extract hardcoded content to JSON)
-- [x] Extract hardcoded content to data files (create JSON files for all CV content)
-- [x] Modify PDF and GitHub button scroll behavior (100-0-100 pattern: visible at top, hidden in middle, reappear at bottom)
-- [x] Add hover previews to links for web version (removed - user preference)
-- [x] Implement GitHub Actions PDF pipeline with working links (Puppeteer-based, auto-releases)
+- [🔄] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
 - [ ] Convert Experience class component to functional component (maintain same functionality)
 - [ ] Convert Education class component to functional component (modernize to functional style)
-- [x] Convert Achievements class component to functional component (modernize to functional style)
-- [x] Convert SectionItem class component to functional component (most used component, test carefully)
 - [ ] Add responsive breakpoints for tablet view (improve 451px-768px breakpoint)
-- [x] Fix GIF generation failure in CV repo (generate-gif.yml now publishes to the cv-preview release instead of committing a 6 MB binary to master on every push)
 - [ ] Add PropTypes validation to components (SectionItem, SkillRow, SectionTitle)
 - [ ] Fix CSS class naming inconsistencies (standardize camelCase vs kebab-case)
-- [ ] Add basic error boundaries (graceful error handling with fallback UI)
-- [ ] Optimize bundle size analysis (add webpack-bundle-analyzer script)
-- [x] Add ATS parse check for the generated PDF (scripts/check-cv-pdf, two extractors, pre-commit hook)
-- [x] Reduce section heading tracking to under 0.1em (App.css .fontSectionHeader now 20px / weight 400 / 1px; all four headings extract contiguously)
-- [x] Self-host Ubuntu with latin and latin-ext in one file (public/fonts/ubuntu-{300,400,500,700}.woff2, no unicode-range; PDF now embeds 3 Ubuntu resources instead of 6 and the name extracts intact)
-- [x] Fix reading order so bullets stay with their employer (App.css: Semantic UI's position:relative on list items made them paint after every job header)
-- [x] Rework the PDF production path (serve the local build instead of the deployed site, unify the repo artifact, prerender wrapper, ATS check in CI)
-- [x] Make contact profile links readable as text, not only as link annotations (header.json labels are now the bare domain path)
-- [x] Write the PDF author/subject metadata Chrome leaves empty (pdf-lib step in scripts/pdf-generator.js)
-- [x] Self-host Semantic UI CSS and drop its Lato @import (public/vendor, regenerate with scripts/vendor-semantic; 0-pixel render diff)
-- [x] Replace react-snap (scripts/prerender.js now prerenders directly with the project's own puppeteer; clean installs build again)
-- [x] Cut the vendored Semantic UI down to the components actually rendered (subset build; dropping `icon` halved it again and removed 240 KB of icon fonts)
-- [x] Load jspdf and html2canvas only when the fallback runs (dynamic import in PdfDownloadButton.generatePDFLocally; main.js went from 233 kB to 80 kB gzipped)
-- [x] Fix the failed hydration (scripts/prerender.js renders with renderToString instead of capturing browser DOM; 18 React errors on load became zero, and the hydrated page is pixel-identical to a pure client render)
-- [x] Stop deploying source maps (.env.production sets GENERATE_SOURCEMAP=false; the deploy went from 4.7 MB to 1.3 MB)
-- [x] Narrow the Content Security Policy to this origin (it was written for the cdnjs and Google Fonts loads, both since removed; verified against desktop, an Instagram in-app user agent, and the jsPDF fallback path)
-- [🔄] Confirm the narrowed CSP on a real mobile in-app browser (Android checked 2026-08-10 and fine; iOS still to do. Instagram via mertyas.in is the case that motivated the original policy; revert the CSP commit if it white-screens)
 - [ ] Remove the vestigial #loading CSS and app-loaded class (public/index.html styles an element that does not exist)
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
 ## Backlog
-- [x] Update Cypher section in CV (rewritten with both titles, growth numbers, and store ranks)
-- [ ] Add SEO indexing to Google Search Console (improve discoverability)
-- [ ] Deploy mertyas.in domain for CV project (custom domain setup)
+- [ ] Get the CV back under 4 pages (it crossed over when the Cypher entry grew; the four trims below are the levers)
+- [ ] Reduce VenueX bullet points (currently 10 points, reduce to 3-4 max)
 - [ ] Remove high school education section (not relevant for senior positions)
 - [ ] Remove relevant courses from education entries (course listings don't add value)
-- [ ] Reduce VenueX bullet points (currently 10 points, reduce to 3-4 max)
 - [ ] Remove 2nd and 3rd extracurricular items (streamline achievements section)
 - [ ] Remove GTA reference (not professional for senior roles)
 - [ ] Shrink skills section based on job target (focus on full-stack vs ML roles)
+- [ ] Add SEO indexing to Google Search Console (improve discoverability)
+- [ ] Deploy mertyas.in domain for CV project (custom domain setup)
 
 ## IRL Tasks
 - [ ] Share CV template on LinkedIn (marketing/promotion post)
