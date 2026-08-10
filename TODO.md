@@ -34,7 +34,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [ ] Run the PDF through an open-source ATS simulator (github.com/sunnypatell/ats-screener) to check the three extraction engines aren't missing something
 
 ## Backlog
-- [ ] Update Cypher section in CV (update job description and details in Experience)
+- [🔄] Update Cypher section in CV (bullets 1/4/5, end date, links applied 2026-08-10; outstanding: platform and growth bullets — see ~/dev/notebook/2026-08-10-cv-variants.html)
 - [ ] Add SEO indexing to Google Search Console (improve discoverability)
 - [ ] Deploy mertyas.in domain for CV project (custom domain setup)
 - [ ] Remove high school education section (not relevant for senior positions)
