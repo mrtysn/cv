@@ -1,1 +1,0 @@
-../../.agents/claude/commands/setup-agents.md

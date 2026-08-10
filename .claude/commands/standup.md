@@ -1,1 +1,0 @@
-../../.agents/claude/commands/standup.md

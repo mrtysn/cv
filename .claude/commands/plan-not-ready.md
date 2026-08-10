@@ -1,1 +1,0 @@
-../../.agents/claude/commands/plan-not-ready.md

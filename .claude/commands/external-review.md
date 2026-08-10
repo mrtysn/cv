@@ -1,1 +1,0 @@
-../../.agents/claude/commands/external-review.md
