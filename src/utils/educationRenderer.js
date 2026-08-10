@@ -22,8 +22,12 @@ export const renderEducationItems = (education) => {
     education.achievements.forEach((achievement, index) => {
       // Handle complex achievement structure (for PhD research projects)
       if (typeof achievement === 'object' && achievement.type === 'complex') {
+        // A fragment, not a wrapper div. App.css keeps list markers in normal
+        // flow so the PDF text layer stays in document order, and an in-flow
+        // marker followed by a block-level child gets pushed onto its own line.
+        // Leading with the text keeps the bullet beside it.
         const complexContent = (
-          <div key={index}>
+          <React.Fragment key={index}>
             {achievement.content}
             {achievement.subItems.map((subItem, subIndex) => (
               <div key={subIndex} style={{ marginTop: "5px" }}>
@@ -32,7 +36,7 @@ export const renderEducationItems = (education) => {
               </div>
             ))}
             <div style={{ marginBottom: "10px" }} />
-          </div>
+          </React.Fragment>
         );
         items.push(complexContent);
       } 
@@ -40,7 +44,8 @@ export const renderEducationItems = (education) => {
       else if (typeof achievement === 'string') {
         // If no links, just parse HTML tags
         if (!education.links || Object.keys(education.links).length === 0) {
-          items.push(<div key={index} dangerouslySetInnerHTML={{ __html: achievement }} />);
+          // span, not div, for the same reason as the fragment above.
+          items.push(<span key={index} dangerouslySetInnerHTML={{ __html: achievement }} />);
         } else {
           // Replace {linkText} placeholders with actual links
           let content = achievement;

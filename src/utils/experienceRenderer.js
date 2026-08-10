@@ -16,15 +16,19 @@ export const renderCompanyTitle = (company) => {
 export const renderResponsibility = (responsibility, experienceLinks = {}) => {
   // Handle complex responsibility structure (for ING Bank)
   if (typeof responsibility === 'object' && responsibility.type === 'complex') {
+    // A fragment, not a wrapper div. App.css keeps list markers in normal flow
+    // so the PDF text layer stays in document order, and an in-flow marker
+    // followed by a block-level child gets pushed onto its own line. Leading
+    // with the text keeps the bullet beside it.
     return (
-      <div>
+      <React.Fragment>
         {responsibility.content}
         {responsibility.subItems.map((subItem, index) => (
           <div key={index} style={{ marginTop: "5px" }}>
             {"◦"}&nbsp;&nbsp;{subItem}
           </div>
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 
