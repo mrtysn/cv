@@ -29,6 +29,39 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-10 - Prerendering With renderToString
+**Type**: [Architecture]
+**Impact**: High
+
+The hydration failure described in the audit entry below is fixed, and the fix
+had to be a rewrite rather than a patch. `scripts/prerender.js` no longer drives
+a browser and captures `outerHTML`; it bundles `scripts/prerender-entry.js` for
+node with esbuild and renders the tree with `renderToString`. Markup produced by
+React is markup React accepts, including the `<!-- -->` markers that separate
+adjacent text nodes, of which the captured DOM had none and the string has 178.
+
+The price is that the app must import cleanly outside a browser. Only one thing
+did not: `decodeStateFromURL` read `window.location.search` from a `useState`
+initializer, so it now returns null when `window` is undefined, which is the
+same answer it gives for a URL with no parameters. Everything else, semantic-ui-react
+included, bundled and rendered without complaint. `useWindowSize` was already
+correct, reading the window only inside an effect.
+
+Verified three ways: zero React errors on load where there were 18; the
+prerendered-and-hydrated page pixel-identical to a pure client render of the
+same build; and a clean `pnpm install --frozen-lockfile` followed by a clean
+build, PDF generation and ATS check all passing.
+
+esbuild is a new devDependency and is listed in `pnpm.ignoredBuiltDependencies`.
+Its install script is not needed: the platform binary arrives through
+optionalDependencies, and `require('esbuild')` resolves without it.
+
+The script also lost the puppeteer launch, the local HTTP server, and the waits
+on `document.fonts.ready` and `body.app-loaded`, none of which a string render
+needs. `serve-build.js` stays, because PDF generation still uses it.
+
+---
+
 ## 2026-08-10 - Auditing the Live Site
 **Type**: [Performance/Discovery]
 **Impact**: High

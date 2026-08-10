@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
     "gh-pages": "^6.1.1",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.16.1"
@@ -44,7 +45,8 @@
   "pnpm": {
     "ignoredBuiltDependencies": [
       "core-js",
-      "core-js-pure"
+      "core-js-pure",
+      "esbuild"
     ]
   }
 }

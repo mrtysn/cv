@@ -21,6 +21,11 @@ export function encodeStateToURL(state) {
 }
 
 export function decodeStateFromURL() {
+  // scripts/prerender.js renders the app in node, where there is no URL to
+  // read. Returning null gives the same answer as a URL carrying no
+  // parameters, which is the only thing a single prerendered file can assume.
+  if (typeof window === "undefined") return null;
+
   const params = new URLSearchParams(window.location.search);
 
   if (!params.has("verbose") && !params.has("hide") && !params.has("preset")) {

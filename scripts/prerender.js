@@ -2,15 +2,26 @@
 // DESC: Prerender the built app to static HTML so crawlers get content, not an empty div
 
 /**
- * Runs as `postbuild`. Serves build/ over HTTP, loads it in the same Chrome the
- * PDF generator uses, and writes the rendered DOM back over build/index.html.
- * src/index.js branches on `rootElement.hasChildNodes()`, so the prerendered
- * markup is hydrated rather than thrown away.
+ * Runs as `postbuild`. Bundles the app for node, renders it with
+ * `renderToString`, and writes the result into build/index.html's #root.
+ * `src/index.js` branches on `rootElement.hasChildNodes()`, so the browser
+ * hydrates that markup instead of rendering from scratch.
  *
- * This replaces react-snap, which is unmaintained and bundles puppeteer 1.20 —
- * a 2019 Chromium whose download is disabled (see pnpm.ignoredBuiltDependencies),
- * so `pnpm build` died at postbuild on any clean install. Reusing the project's
- * own puppeteer removes both the second browser and the dead dependency.
+ * Why not drive a browser and capture the DOM, which is what this script and
+ * react-snap before it used to do: by the time you can read `outerHTML` the
+ * browser has already rewritten every inline style. `color:#2185d0` comes back
+ * as `color: rgb(33, 133, 208)`, `transition: all 0.2s ease` as
+ * `transition: 0.2s`, and a trailing semicolon appears. React compares the
+ * markup against its own serialization, finds a difference on the first of the
+ * 265 inline styles in this app, and discards the entire prerendered tree to
+ * client-render instead. The captured DOM also lacks the `<!-- -->` markers
+ * React uses to separate adjacent text nodes. Neither is recoverable after the
+ * fact, so the markup has to come from React rather than from a DOM.
+ *
+ * The trade is that the app must survive being imported in node.
+ * scripts/prerender-entry.js is the entry, and anything it reaches may only
+ * touch `window` or `document` inside an effect, which renderToString does not
+ * run. `decodeStateFromURL` carries the one guard this needed.
  *
  * Deliberately not reproducing two react-snap behaviours: HTML minification
  * (one file, served gzipped, not worth a minifier dependency) and 200.html
@@ -19,61 +30,59 @@
  */
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const puppeteer = require('puppeteer');
-const { serveBuild } = require('./serve-build');
+const esbuild = require('esbuild');
+
+const ROOT = path.join(__dirname, '..');
+const EMPTY_ROOT = '<div id="root"></div>';
+
+/** Bundle the app for node and hand back its render(). */
+async function loadRenderer() {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cv-prerender-'));
+  const outfile = path.join(dir, 'app.cjs');
+
+  await esbuild.build({
+    entryPoints: [path.join(__dirname, 'prerender-entry.js')],
+    outfile,
+    bundle: true,
+    platform: 'node',
+    format: 'cjs',
+    // CRA allows JSX in .js files; stylesheets have nothing to contribute to a
+    // string of markup, so they resolve to nothing rather than being parsed.
+    loader: { '.js': 'jsx', '.css': 'empty' },
+    define: { 'process.env.NODE_ENV': '"production"' },
+    absWorkingDir: ROOT,
+    logLevel: 'warning',
+  });
+
+  const { render } = require(outfile);
+  return { render, cleanup: () => fs.rmSync(dir, { recursive: true, force: true }) };
+}
 
 async function prerender() {
-  const buildIndex = path.join(__dirname, '..', 'build', 'index.html');
-  let server;
-  let browser;
+  const buildIndex = path.join(ROOT, 'build', 'index.html');
+  if (!fs.existsSync(buildIndex)) {
+    throw new Error(`no build at ${buildIndex}; run "pnpm run build" first`);
+  }
 
+  const html = fs.readFileSync(buildIndex, 'utf8');
+  if (!html.includes(EMPTY_ROOT)) {
+    throw new Error(`${EMPTY_ROOT} not found in build/index.html; already prerendered?`);
+  }
+
+  const { render, cleanup } = await loadRenderer();
   try {
-    server = await serveBuild();
-    console.log(`🖨️  Prerendering ${server.url}`);
-
-    browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-    });
-
-    const page = await browser.newPage();
-
-    // Surface app errors instead of silently writing a broken shell.
-    const failures = [];
-    page.on('pageerror', (err) => failures.push(err.message));
-    page.on('requestfailed', (req) => failures.push(`${req.url()} ${req.failure()?.errorText}`));
-
-    await page.goto(server.url, { waitUntil: 'networkidle0', timeout: 30000 });
-    await page.waitForFunction(() => document.fonts.ready, { timeout: 10000 });
-    // src/index.js sets this ~100ms after render; waiting for it means the
-    // captured DOM matches what a real visitor ends up with.
-    await page
-      .waitForSelector('body.app-loaded', { timeout: 5000 })
-      .catch(() => console.warn('⚠️  body.app-loaded never appeared; capturing anyway'));
-
-    const rendered = await page.evaluate(
-      () => `<!DOCTYPE html>${document.documentElement.outerHTML}`
-    );
-
-    // An empty #root means the app never mounted — writing that over the build
-    // would ship a blank page that still returns 200.
-    const rootContent = /<div id="root">([\s\S]*?)<\/div>\s*<script/.exec(rendered);
-    if (!rendered.includes('id="root"') || (rootContent && rootContent[1].trim() === '')) {
-      throw new Error('app did not render into #root; refusing to overwrite build/index.html');
+    const markup = render();
+    // An empty render would ship a blank page that still returns 200.
+    if (!markup || !markup.trim()) {
+      throw new Error('the app rendered nothing; refusing to overwrite build/index.html');
     }
 
-    if (failures.length) {
-      console.warn(`⚠️  ${failures.length} page error(s) during prerender:`);
-      failures.slice(0, 5).forEach((f) => console.warn(`     ${f}`));
-    }
-
-    fs.writeFileSync(buildIndex, rendered);
-    console.log(`✅ Prerendered ${(rendered.length / 1024).toFixed(1)} KB to build/index.html`);
+    fs.writeFileSync(buildIndex, html.replace(EMPTY_ROOT, `<div id="root">${markup}</div>`));
+    console.log(`✅ Prerendered ${(markup.length / 1024).toFixed(1)} KB into build/index.html`);
   } finally {
-    if (browser) await browser.close();
-    if (server) await server.close();
+    cleanup();
   }
 }
 

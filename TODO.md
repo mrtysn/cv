@@ -32,7 +32,7 @@ Task tracking for CV repository. Rules: Mark tasks in progress before starting, 
 - [x] Replace react-snap (scripts/prerender.js now prerenders directly with the project's own puppeteer; clean installs build again)
 - [x] Cut the vendored Semantic UI down to the components actually rendered (subset build; dropping `icon` halved it again and removed 240 KB of icon fonts)
 - [x] Load jspdf and html2canvas only when the fallback runs (dynamic import in PdfDownloadButton.generatePDFLocally; main.js went from 233 kB to 80 kB gzipped)
-- [ ] Fix the failed hydration on the live site (scripts/prerender.js captures the browser's serialization, which rewrites all 265 inline style attributes, so React discards the prerendered DOM and client-renders the whole root)
+- [x] Fix the failed hydration (scripts/prerender.js renders with renderToString instead of capturing browser DOM; 18 React errors on load became zero, and the hydrated page is pixel-identical to a pure client render)
 - [x] Stop deploying source maps (.env.production sets GENERATE_SOURCEMAP=false; the deploy went from 4.7 MB to 1.3 MB)
 - [x] Narrow the Content Security Policy to this origin (it was written for the cdnjs and Google Fonts loads, both since removed; verified against desktop, an Instagram in-app user agent, and the jsPDF fallback path)
 - [ ] Confirm the narrowed CSP on a real mobile in-app browser (Instagram via mertyas.in is the case that motivated the original policy; revert commit e67a9f0 if it white-screens)

@@ -77,6 +77,15 @@ src/App.css             print styles: .hideFromPrint, .noPageBreak
 src/constants.js        CV_VERSION and DATE, bump on content changes
 ```
 
+`postbuild` prerenders the app into `build/index.html` so crawlers get content.
+`scripts/prerender.js` bundles `scripts/prerender-entry.js` for node with
+esbuild and renders it with `renderToString`, which means **the component tree
+has to survive being imported outside a browser**. Touch `window` or `document`
+only inside an effect, never during render; `decodeStateFromURL` carries the one
+guard this needed. A wrapper added to `src/index.js` must be added to
+`prerender-entry.js` as well, or the two trees disagree and React throws the
+prerendered markup away.
+
 Styling is Semantic UI React plus `App.css` plus inline styles for layout. The
 CSS is self-hosted in `public/vendor`, built by `scripts/vendor-semantic` as a
 subset of the components the app imports. Importing a new Semantic UI component
