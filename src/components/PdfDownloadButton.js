@@ -1,6 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import { CV_VERSION } from "../constants";
 
 const PdfDownloadButton = () => {
@@ -70,8 +68,18 @@ const PdfDownloadButton = () => {
     }
   };
 
+  // jsPDF and html2canvas are imported here rather than at the top of the file
+  // because they are 68% of the main bundle and this is the fallback path: it
+  // runs only when the GitHub Releases fetch fails, and the PDF it produces is
+  // a rasterised image with no working links. Loading them lazily means the
+  // ordinary visitor, who never reaches this function, does not download them.
   const generatePDFLocally = async () => {
     try {
+      const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
+        import("jspdf"),
+        import("html2canvas"),
+      ]);
+
       // Show development info
       if (process.env.NODE_ENV === 'development') {
         console.log('🔧 Development fallback: Using image-based PDF generation');
