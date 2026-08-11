@@ -12,13 +12,14 @@ import ControlStrip from "./components/ControlStrip";
 import PdfDownloadButton from "./components/PdfDownloadButton";
 import GitHubLinkButton from "./components/GitHubLinkButton";
 import ModeToggle from "./components/ModeToggle";
+import { SHOW_DEV_CONTROLS } from "./constants";
 
 function App() {
   return (
     <CVProvider>
       <Container text>
         <ControlStrip>
-          <ModeToggle />
+          {SHOW_DEV_CONTROLS && <ModeToggle />}
           <GitHubLinkButton />
           <PdfDownloadButton />
         </ControlStrip>

@@ -29,6 +29,29 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-11 - Toggles Off By Default
+**Type**: [Breaking Change]
+**Impact**: Medium
+
+The mode toggle and the coursework toggle no longer render on the deployed CV,
+and no longer render on the dev server either unless `?toggles` is passed. A
+visitor gets one CV rather than a page inviting them to assemble their own, and
+what you edit against is what they see.
+
+Both are gated on `SHOW_DEV_CONTROLS` in `src/constants.js`, which tests
+NODE_ENV before it reads the URL. That ordering matters: in a production build
+the whole expression folds to `false`, so terser strips `ModeToggle` and
+`SectionToggle` from the bundle entirely, and no query parameter can put them
+back and desync the tree from the prerendered markup. Gating on the hostname
+instead would have broken prerendering outright, which is the trap
+`decodeStateFromURL` already carries a guard for.
+
+Nothing was removed. `?verbose=false` and `?hide=` still drive the same state
+on the deployed site, so a short or filtered link can still be handed out
+deliberately.
+
+---
+
 ## 2026-08-11 - Social and Search Metadata
 **Type**: [Architecture]
 **Impact**: Medium
