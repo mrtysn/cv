@@ -2,6 +2,7 @@ import React from "react";
 import SectionItem from "../components/SectionItem";
 import SectionTitle from "../components/SectionTitle";
 import SectionToggle from "../components/SectionToggle";
+import { SHOW_DEV_CONTROLS } from "../constants";
 import { TAGS } from "../constants/tags";
 import { useCVContext } from "../context/CVContext";
 import educationData from "../data/education.json";
@@ -15,7 +16,7 @@ function Education() {
   return (
     <div>
       <SectionTitle title={"EDUCATION"}>
-        <SectionToggle tag={TAGS.COURSEWORK} label="courses" />
+        {SHOW_DEV_CONTROLS && <SectionToggle tag={TAGS.COURSEWORK} label="courses" />}
       </SectionTitle>
       {data.map((education, index) => {
         return (
