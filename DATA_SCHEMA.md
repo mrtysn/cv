@@ -173,6 +173,7 @@ Contains personal information displayed in the page header.
   "name": "John Doe",
   "title": "Senior Software Engineer",
   "documentTitle": "John Doe ▸ CV",
+  "description": "The complete CV, rendered from JSON. Download it as a PDF with working links.",
   "contact": {
     "phone": "+1 555 123 4567",
     "email": "john.doe@example.com",
@@ -195,6 +196,7 @@ Contains personal information displayed in the page header.
 | `name` | string | ✅ | Full name displayed in large header text |
 | `title` | string | ✅ | Professional title or role |
 | `documentTitle` | string | ✅ | Browser tab title (often includes name + "CV") |
+| `description` | string | ✅ | One sentence, max 200 chars. Becomes the search-result snippet and the text on the LinkedIn/Slack/Twitter card. `scripts/prerender.js` writes it into `build/index.html`; nothing renders it on the page |
 | `contact` | object | ✅ | Contact information object |
 | `contact.phone` | string | ✅ | Phone number with country code |
 | `contact.email` | string | ✅ | Email address (validated as email format) |

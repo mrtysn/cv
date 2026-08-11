@@ -40,7 +40,10 @@
       Regenerate with scripts/vendor-semantic after bumping semantic-ui-css.
     -->
     <link rel="stylesheet" href="%PUBLIC_URL%/vendor/semantic.min.css" />
-    <title>Mert Yaşin CV</title>
+    <!-- Placeholder. scripts/prerender.js writes documentTitle from
+         src/data/header.json here at build time, and Header.js sets it again at
+         runtime, so no name is hardcoded outside the data layer. -->
+    <title>CV</title>
     <style>
       /*
         Ubuntu is self-hosted rather than loaded from Google Fonts, and each

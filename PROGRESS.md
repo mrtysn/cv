@@ -29,6 +29,28 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-11 - Social and Search Metadata
+**Type**: [Architecture]
+**Impact**: Medium
+
+The served HTML carried no `description`, no `og:` tags and no `twitter:` tags,
+so every unfurler guessed. A LinkedIn Featured card added long ago still
+described the repo rather than the CV, and showed a thumbnail LinkedIn had
+rendered once and cached.
+
+`scripts/prerender.js` now writes twelve meta tags into `build/index.html`,
+built from a new `description` field in `src/data/header.json` plus `homepage`
+from `package.json`. Two reasons it lives there rather than in
+`public/index.html`: no unfurler runs JS, so the tags have to be static in the
+served file, and every other user-facing string in this project comes from
+`src/data/`, which is what makes the template clonable by editing one file.
+
+`predeploy` now also writes `build/og.png` via `screenshot-og.js`, so each
+deploy ships a card image matching the CV it deploys. The width and height in
+the meta tags are that script's defaults and are coupled to them.
+
+---
+
 ## 2026-08-11 - Link-Preview Still
 **Type**: [Notes]
 **Impact**: Low

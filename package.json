@@ -16,7 +16,7 @@
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "postbuild": "node scripts/prerender.js",
-    "predeploy": "pnpm run build",
+    "predeploy": "pnpm run build && OG_OUT=build/og.png node scripts/screenshot-og.js",
     "deploy": "gh-pages -d build",
     "generate-pdf": "pnpm run build && node scripts/generate-pdf.js",
     "generate-pdf-local": "node scripts/generate-pdf-local.js",

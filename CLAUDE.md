@@ -78,7 +78,11 @@ src/App.css             print styles: .hideFromPrint, .noPageBreak
 src/constants.js        CV_VERSION and DATE, bump on content changes
 ```
 
-`postbuild` prerenders the app into `build/index.html` so crawlers get content.
+`postbuild` prerenders the app into `build/index.html` so crawlers get content,
+and writes the `description`, `og:` and `twitter:` meta tags there as well,
+built from `description` in `header.json` and `homepage` in `package.json`.
+Unfurlers do not run JS, so those tags cannot come from React; `predeploy`
+generates the `og.png` they point at.
 `scripts/prerender.js` bundles `scripts/prerender-entry.js` for node with
 esbuild and renders it with `renderToString`, which means **the component tree
 has to survive being imported outside a browser**. Touch `window` or `document`

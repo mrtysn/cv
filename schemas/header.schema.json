@@ -4,7 +4,7 @@
   "title": "CV Header Schema",
   "description": "Schema for the header section containing personal information and contact details",
   "type": "object",
-  "required": ["name", "title", "documentTitle", "contact"],
+  "required": ["name", "title", "documentTitle", "description", "contact"],
   "properties": {
     "name": {
       "type": "string",
@@ -23,6 +23,13 @@
       "description": "Browser tab/window title for the CV page",
       "minLength": 1,
       "examples": ["John Doe ▸ CV"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Sentence used for the search-result snippet and the social card, injected into build/index.html by scripts/prerender.js",
+      "minLength": 1,
+      "maxLength": 200,
+      "examples": ["The complete CV, rendered from JSON. Download it as a PDF with working links."]
     },
     "contact": {
       "type": "object",
