@@ -21,6 +21,7 @@
     "generate-pdf": "pnpm run build && node scripts/generate-pdf.js",
     "generate-pdf-local": "node scripts/generate-pdf-local.js",
     "record-preview": "pnpm run build && node scripts/record-preview.js",
+    "screenshot-og": "node scripts/screenshot-og.js",
     "serve-build": "node scripts/serve-build.js",
     "check-pdf": "scripts/check-cv-pdf"
   },

@@ -29,6 +29,24 @@ Fixed Firefox font loading. Ubuntu font only, added weight 500.
 
 ---
 
+## 2026-08-11 - Link-Preview Still
+**Type**: [Notes]
+**Impact**: Low
+
+`scripts/screenshot-og.js` captures a 1200x630 still of the built site, run with
+`pnpm screenshot-og`. The site ships no `og:image`, so an unfurler renders its
+own thumbnail once and caches it — a LinkedIn Featured card added months ago
+still shows the CV as it looked that day. This produces a replacement to upload
+by hand, framed here rather than by a crawler, and taken from the build in hand
+for the same reason the PDF and the preview GIF are: deploys are manual, so the
+live URL lags the working tree.
+
+Reuses `serveBuild`. Hides `.controlStrip, .sectionToggle` — the buttons a still
+cannot use — but deliberately not all of `.hideFromPrint`, whose hidden dividers
+carry the top spacing that keeps the name off the frame edge.
+
+---
+
 ## 2026-08-11 - One Workflow, One Build
 **Type**: [Config]
 **Impact**: Medium
