@@ -9,10 +9,12 @@ const { serveBuild } = require('./serve-build');
  * @param {string} options.pageUrl - URL to generate PDF from
  * @param {boolean} options.useLocalBuild - Serve build/ over HTTP instead of using the deployed URL
  * @param {number} options.scale - Scale factor for PDF content (0.1-2.0, default: 1.0). Lower values reduce content size.
- * @returns {Promise<{filename: string, outputPath: string, repoPath: string, version: string}>}
+ * @param {string} options.query - Query string appended to the URL (e.g. "preset=backend"), selecting a view the same way the toggles UI encodes it
+ * @param {string} options.outPath - Write the PDF to this exact path instead of pdfs/, and do not refresh the repo-root copy. For one-off renders (e.g. a preset view for a job application) that must not enter the repo's versioned artifacts.
+ * @returns {Promise<{filename: string, outputPath: string, repoPath: string|null, version: string}>}
  */
 async function generatePDF(options = {}) {
-  const { pageUrl, useLocalBuild = false, scale = 1.0 } = options;
+  const { pageUrl, useLocalBuild = false, scale = 1.0, query, outPath } = options;
   let browser;
   let staticServer;
 
@@ -85,6 +87,10 @@ async function generatePDF(options = {}) {
       url = 'https://mrtysn.github.io/cv/';
     }
 
+    if (query) {
+      url += (url.includes('?') ? '&' : '?') + query;
+    }
+
     console.log(`🌐 Loading page: ${url}`);
     await page.goto(url, {
       waitUntil: 'networkidle0',
@@ -123,14 +129,22 @@ async function generatePDF(options = {}) {
 
     // Generate filename with version
     const versionForFilename = version.replace(/\./g, '_');
-    const filename = `Mert_Yasin_CV_${versionForFilename}.pdf`;
+    let filename = `Mert_Yasin_CV_${versionForFilename}.pdf`;
 
-    // Output to pdfs/ directory for local versioned copies
-    const pdfsDir = path.join(__dirname, '..', 'pdfs');
-    if (!fs.existsSync(pdfsDir)) {
-      fs.mkdirSync(pdfsDir, { recursive: true });
+    // Output to pdfs/ directory for local versioned copies, unless the caller
+    // asked for an exact output path (one-off render outside the repo).
+    let outputPath;
+    if (outPath) {
+      outputPath = path.resolve(outPath);
+      filename = path.basename(outputPath);
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    } else {
+      const pdfsDir = path.join(__dirname, '..', 'pdfs');
+      if (!fs.existsSync(pdfsDir)) {
+        fs.mkdirSync(pdfsDir, { recursive: true });
+      }
+      outputPath = path.join(pdfsDir, filename);
     }
-    const outputPath = path.join(pdfsDir, filename);
 
     console.log(`📄 Generating PDF: ${filename}`);
 
@@ -163,12 +177,16 @@ async function generatePDF(options = {}) {
     const stats = fs.statSync(outputPath);
     console.log(`📊 File size: ${(stats.size / 1024).toFixed(2)} KB`);
 
-    // Every path also refreshes the repo-root copy, so the PDF tracked in git
-    // cannot drift depending on which script produced it. scripts/check-cv-pdf
-    // and the pre-commit hook both read this file.
-    const repoPath = path.join(__dirname, '..', 'Mert_Yasin_CV.pdf');
-    fs.copyFileSync(outputPath, repoPath);
-    console.log(`📋 Copied to: ${path.basename(repoPath)} (tracked in git)`);
+    // Every default-path render also refreshes the repo-root copy, so the PDF
+    // tracked in git cannot drift depending on which script produced it.
+    // scripts/check-cv-pdf and the pre-commit hook both read this file.
+    // outPath renders are one-off views and must not touch the tracked copy.
+    let repoPath = null;
+    if (!outPath) {
+      repoPath = path.join(__dirname, '..', 'Mert_Yasin_CV.pdf');
+      fs.copyFileSync(outputPath, repoPath);
+      console.log(`📋 Copied to: ${path.basename(repoPath)} (tracked in git)`);
+    }
 
     return { filename, outputPath, repoPath, version };
 

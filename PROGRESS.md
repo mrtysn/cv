@@ -21,6 +21,29 @@ This file documents substantial updates, changes, and important notes for the CV
 
 ---
 
+## 2026-08-13 - One-off PDF renders for job applications
+**Type**: Config
+**Impact**: Medium
+
+`generate-pdf-local` (and `pdf-generator.js`) now accept `--query=` and `--out=`:
+`--query` appends a view-selecting query string to the URL (same encoding the
+toggles UI writes, e.g. `verbose=false&hide=coursework,highschool,community&preset=backend`),
+and `--out=/abs/path.pdf` writes the render to an exact path *without* touching
+`pdfs/` or the tracked repo-root `Mert_Yasin_CV.pdf`. Purpose: application-specific
+CV renders for the job-search pipeline (ai-job-search repo) reuse this repo as the
+single design/renderer while keeping one-off artifacts out of the repo's history.
+Note: `preset=` alone does not expand server-side — pass the full encoded state
+(`verbose`/`hide`), which is what `encodeStateToURL` writes.
+
+Same session, user decision: **URL-driven modes are now development-only.**
+`decodeStateFromURL` returns null in production builds, so the deployed site
+always shows the default view regardless of query parameters. Consequence:
+one-off mode renders MUST go through `generate-pdf-local` (dev server);
+`generate-pdf --query=...` against a production build silently renders the
+default view. The short/long + tags machinery itself is kept.
+
+---
+
 ## 2025-07-28 - Font Loading Fix
 **Impact**: Medium
 

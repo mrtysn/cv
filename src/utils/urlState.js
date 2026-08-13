@@ -26,6 +26,12 @@ export function decodeStateFromURL() {
   // parameters, which is the only thing a single prerendered file can assume.
   if (typeof window === "undefined") return null;
 
+  // The live site always shows the default view: URL-driven modes are a
+  // development-only capability (used by the toggles UI and by one-off PDF
+  // renders via generate-pdf-local, which runs against the dev server).
+  // Production builds ignore these parameters entirely.
+  if (process.env.NODE_ENV === "production") return null;
+
   const params = new URLSearchParams(window.location.search);
 
   if (!params.has("verbose") && !params.has("hide") && !params.has("preset")) {

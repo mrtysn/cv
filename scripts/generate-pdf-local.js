@@ -67,10 +67,16 @@ if (require.main === module) {
     let serverStartedByUs = false;
 
     try {
-      // Parse scale argument from command line
+      // Parse arguments from command line
       const args = process.argv.slice(2);
       const scaleArg = args.find(arg => arg.startsWith('--scale='));
       const scale = scaleArg ? parseFloat(scaleArg.split('=')[1]) : 1.0;
+      // --query=preset=backend  appends a view-selecting query string to the URL
+      // --out=/abs/path.pdf     writes there instead of pdfs/ and skips the repo-root copy
+      const queryArg = args.find(arg => arg.startsWith('--query='));
+      const query = queryArg ? queryArg.slice('--query='.length) : undefined;
+      const outArg = args.find(arg => arg.startsWith('--out='));
+      const outPath = outArg ? outArg.slice('--out='.length) : undefined;
 
       if (scaleArg && (isNaN(scale) || scale < 0.1 || scale > 2.0)) {
         console.error('❌ Scale must be between 0.1 and 2.0');
@@ -99,10 +105,12 @@ if (require.main === module) {
       }
 
       // Generate PDF
-      const result = await generatePDF({ pageUrl: 'http://localhost:3000/cv', scale });
+      const result = await generatePDF({ pageUrl: 'http://localhost:3000/cv', scale, query, outPath });
 
       console.log(`\n🎉 PDF Generation Complete!`);
-      console.log(`📁 Versioned file: ${result.filename} (in pdfs/)`);
+      console.log(outPath
+        ? `📁 One-off render: ${result.outputPath}`
+        : `📁 Versioned file: ${result.filename} (in pdfs/)`);
       console.log(`🏷️  Version: ${result.version}`);
       // The repo-root copy is written by pdf-generator.js, so every entry point
       // refreshes it identically.

@@ -21,8 +21,10 @@ export const PDF_SCALE = 0.92; // PDF generation scale (0.1-2.0). Lower = smalle
  * reintroduce them at runtime and desync from the prerendered markup. Read once
  * at module load, so adding or removing the parameter needs a reload.
  *
- * The URL parameters these controls set (?verbose, ?hide) keep working
- * everywhere, so hiding a control never removes the capability behind it.
+ * The URL parameters these controls set (?verbose, ?hide) are also
+ * development-only: production builds ignore them (see utils/urlState.js), so
+ * the live site always shows the default view. The capability survives for
+ * dev and for one-off PDF renders through generate-pdf-local.
  */
 export const SHOW_DEV_CONTROLS =
   process.env.NODE_ENV !== "production" &&
