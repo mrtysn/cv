@@ -259,10 +259,10 @@ the DOM cannot produce markup React accepts while the app uses inline styles.
 **Impact**: Medium
 
 `generate-gif.yml` used to record the deployed site and push the result back to
-master. The recording is not deterministic, so its `git diff-index --quiet HEAD`
+main. The recording is not deterministic, so its `git diff-index --quiet HEAD`
 guard never fired and every qualifying push produced a fresh ~6 MB blob:
 twenty-one revisions, `.git` at 98 MB for a repo otherwise a few hundred KB, and
-a bot push racing every human push to master.
+a bot push racing every human push to main.
 
 The workflow now publishes the GIF as an asset on a dedicated `cv-preview`
 release and README.md points at the download URL, which is stable across the
@@ -541,7 +541,7 @@ Enhanced GitHub icon with outline/filled hover states using custom SVG files. Re
 **Type**: Architecture
 **Impact**: High
 
-Implemented complete PDF generation pipeline using GitHub Actions + Puppeteer to solve the core issue of non-working links in PDFs. Added smart download system: GitHub Releases API → local fallback. Created `/scripts/generate-pdf.js` with optimized Puppeteer settings for CI/CD. Added Puppeteer as dev dependency for local interactive PDF generation via `pnpm run generate-pdf`. System automatically creates versioned releases with working PDF links on every master push. Key insight: Puppeteer preserves HTML structure including clickable links, unlike html2canvas which creates static images.
+Implemented complete PDF generation pipeline using GitHub Actions + Puppeteer to solve the core issue of non-working links in PDFs. Added smart download system: GitHub Releases API → local fallback. Created `/scripts/generate-pdf.js` with optimized Puppeteer settings for CI/CD. Added Puppeteer as dev dependency for local interactive PDF generation via `pnpm run generate-pdf`. System automatically creates versioned releases with working PDF links on every main push. Key insight: Puppeteer preserves HTML structure including clickable links, unlike html2canvas which creates static images.
 
 ---
 

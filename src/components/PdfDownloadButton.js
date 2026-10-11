@@ -57,7 +57,7 @@ const PdfDownloadButton = () => {
         console.log('🔧 Development fallback: Using image-based PDF generation');
         console.log('⚠️  Links will NOT work in this PDF');
         console.log('💡 For interactive PDF with working links, run: pnpm run generate-pdf');
-        console.log('🚀 Or push to master - GitHub Actions will generate interactive PDF');
+        console.log('🚀 Or push to main - GitHub Actions will generate interactive PDF');
       }
       
       const element = document.querySelector(".ui.text.container");
