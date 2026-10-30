@@ -11,9 +11,10 @@
     "tags": ["professional", "backend", "gamedev"],
     "responsibilities": [
       "Architected and built the backends of {Match Squad} and {Royal Smash} from scratch as the sole backend engineer, using .NET, SignalR for real-time multiplayer & live chat, MongoDB, and Redis for the backplane, cache, and job queues",
-      "Designed a multi-tenant backend isolating each game's data and live traffic, and launched Royal Smash as its first title",
       "Scaled Royal Smash to 4.4M+ players and 1M+ DAU in 4 weeks, top 10 worldwide by daily downloads, #2 Top Free Game on US Google Play, #1 Top Free Game in the Turkish App Store and #17 Top Free Casual Game in the US App Store",
+      "Designed a multi-tenant backend isolating each game's data and live traffic, with Royal Smash as its first title",
       "Developed the LiveOps event engine with automated event scheduling, season passes, team events, and real-time leaderboards, alongside the studio's admin dashboard (React, TypeScript) for managing players, teams, in-game economy, monetization, and live server configuration, gated by per-environment access control",
+      "Shipped server-side cheat detection and kept modified clients off the leaderboards",
       "Built and ran production on Terraform-managed AWS (ECS Fargate, ALB) with zero-downtime deployments, automated k6 load testing, a custom distributed job scheduler, and OpenTelemetry observability (Prometheus, Jaeger)"
     ],
     "short": {
