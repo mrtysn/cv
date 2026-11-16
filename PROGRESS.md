@@ -30,7 +30,7 @@ This file documents substantial updates, changes, and important notes for the CV
 toggles UI writes, e.g. `verbose=false&hide=coursework,highschool,community&preset=backend`),
 and `--out=/abs/path.pdf` writes the render to an exact path *without* touching
 `pdfs/` or the tracked repo-root `Mert_Yasin_CV.pdf`. Purpose: application-specific
-CV renders for the job-search pipeline (ai-job-search repo) reuse this repo as the
+CV renders for a private job-search pipeline reuse this repo as the
 single design/renderer while keeping one-off artifacts out of the repo's history.
 Note: `preset=` alone does not expand server-side — pass the full encoded state
 (`verbose`/`hide`), which is what `encodeStateToURL` writes.
