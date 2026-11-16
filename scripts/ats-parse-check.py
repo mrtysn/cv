@@ -103,9 +103,18 @@ def load_expectations(root: Path) -> dict:
         for e in experience
     )
 
+    # The opening words of the first employer's first bullet, link tokens
+    # removed: the reading-order check looks for them between that employer and
+    # the next, so a short entry is not mistaken for a detached one.
+    first_bullet = ""
+    if experience and experience[0].get("responsibilities"):
+        words = re.sub(r"[{}]", "", str(experience[0]["responsibilities"][0])).split()
+        first_bullet = " ".join(words[:4])
+
     return {
         "name": header.get("name", ""),
         "companies": companies,
+        "first_bullet": first_bullet,
         "month_ranges": month_ranges,
         "urls": urls,
         "emails": emails,
@@ -355,7 +364,10 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
             following = text[here:here + 4000]
             nxt = min((following.find(c) for c in expected["companies"][1:]
                        if following.find(c) > 0), default=len(following))
-            if nxt < 200:
+            bullet = expected["first_bullet"]
+            between = " ".join(following[:nxt].split())
+            detached = bullet not in between if bullet else nxt < 200
+            if detached:
                 report.add(
                     f"bullets follow their employer ({label})",
                     WARN,
