@@ -252,7 +252,7 @@ An array of work experience entries, ordered chronologically (most recent first)
 | `company` | object | ✅ | Company information |
 | `company.name` | string | ✅ | Company name |
 | `company.url` | string | ✅ | Company website URL |
-| `location` | string | ✅ | Work location (city, country, or "Remote") |
+| `location` | string | ✅ | The employer's location (city, country); for a remote role, the employer's location followed by " (Remote)", never where you worked from |
 | `position` | string | ✅ | Job title or role |
 | `startDate` | string | ✅ | Start date (MM/YYYY or YYYY format) |
 | `endDate` | string/null | ❌ | End date or null for current position |
