@@ -40,8 +40,11 @@
       frame = null;
       document.documentElement.style.overflow = "";
     }
-    button.textContent = narrow ? NARROW + " px · show wide" : "wide · show " + NARROW + " px";
-    button.setAttribute("aria-pressed", narrow ? "true" : "false");
+    // The label says what a click will do, and the tooltip says it in full.
+    button.textContent = narrow ? "switch to full width" : "switch to phone width";
+    button.title = narrow
+      ? "Show this page at the window's width again"
+      : "Show this page in a " + NARROW + " px frame, the width of a phone";
   }
 
   button.addEventListener("click", function () {
