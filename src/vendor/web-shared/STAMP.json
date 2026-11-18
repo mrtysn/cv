@@ -1,0 +1,9 @@
+{
+ "sha256": {
+  "view-width.js": "2f77640dc7526b7793d47a11d6153345b89520991bc6250b13186bd204dd8fb0"
+ },
+ "sources": {
+  "view-width.js": "src/view-width.js"
+ },
+ "web_shared_revision": "5fd842dab834"
+}
