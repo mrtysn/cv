@@ -126,11 +126,11 @@
     "tags": ["academic", "teaching"],
     "responsibilities": [
       "Instructor for <i>Problem Solving and Programming Laboratory</i> (C++)",
-      "Teaching Assistant for <i>Introduction to Deep Learning</i> (Tensorflow), <i>Data Mining: Algorithms and Applications</i> (Python, R), <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka), <i>Python Programming</i> (Python), <i>Introduction to Programming and Computation for Engineers</i> (MATLAB)"
+      "Teaching assistant for <i>Introduction to Deep Learning</i> (TensorFlow), <i>Data Mining: Algorithms and Applications</i> (Python, R), <i>Intelligent Systems: Algorithms and Tools</i> (R, Weka), <i>Python Programming</i>, and <i>Introduction to Programming and Computation for Engineers</i> (MATLAB)"
     ],
     "short": {
       "responsibilities": [
-        "Instructor for C++ lab; Teaching Assistant for 5 courses including Deep Learning, Data Mining, and Intelligent Systems"
+        "Instructor for C++ lab; Teaching assistant for 5 courses including Deep Learning, Data Mining, and Intelligent Systems"
       ]
     }
   },

@@ -10,19 +10,9 @@
     "endDate": "2021",
     "tags": ["academic", "research"],
     "achievements": [
-      "Successfully passed Ph.D. Qualifying Exam – 2020",
-      {
-        "type": "complex",
-        "content": "Research Projects:",
-        "subItems": [
-          {
-            "content": "<i>Early seizure detection in neonatal brains with EEG data;</i> using structural & functional brain network models, and deep learning & wavelet-based methodologies to perform temporal & spectral analyses"
-          },
-          {
-            "content": "<i>Disease subtyping using genomic and clinical data;</i> integrating datasets from multiple cohorts, and identifying cancer subtypes via bioinformatics, data mining, and machine learning"
-          }
-        ]
-      }
+      "Passed the Ph.D. qualifying exam, 2020",
+      "<i>Early seizure detection in neonatal brains with EEG data:</i> structural & functional brain network models, with deep learning and wavelet-based temporal & spectral analyses",
+      "<i>Disease subtyping using genomic and clinical data:</i> integrating datasets from multiple cohorts to identify cancer subtypes with bioinformatics, data mining and machine learning"
     ],
     "short": {
       "achievements": [
