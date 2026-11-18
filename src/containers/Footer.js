@@ -22,7 +22,7 @@ class Footer extends React.Component {
           >
             Mert Yaşin
           </a>{" "}
-          ▸ Made with <span className="colorHeart">❤</span> in İstanbul, Turkey{" "}
+          ▸ Made with <span className="colorHeart">❤</span> in İstanbul, Türkiye{" "}
         </span>
         <span>
           Powered by{" "}
