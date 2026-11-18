@@ -216,6 +216,20 @@ div#narrowSkillTitle {
   }
 }
 
+/* On a phone every entry's location goes under its name. Side by side, a long location crowded
+   the name on some entries and wrapped under it on others, so the column read unevenly. */
+@media screen and (max-width: 560px) {
+  .itemHeading {
+    flex-direction: column;
+  }
+
+  /* Under the name, the location is regular weight so the name leads; !important because
+     SectionItem sets the weight inline. */
+  .itemHeading > :last-child span {
+    font-weight: 400 !important;
+  }
+}
+
 /* Three controls do not fit beside the header on a phone, so the labels drop to
    their short forms and the row tightens. Nothing is hidden — the strip stays a
    single row down to the narrowest common viewport. */

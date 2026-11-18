@@ -7,10 +7,11 @@ const SectionItem = ({ companyTitle, location, jobTitle, startDate, endDate, des
       style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}
       className="noPageBreak"
     >
+      {/* A row, except on a phone, where App.css stacks the location under the name. */}
       <div
+        className="itemHeading"
         style={{
           display: "flex",
-          flexDirection: "row",
           justifyContent: "space-between",
           flexWrap: "wrap",
         }}
