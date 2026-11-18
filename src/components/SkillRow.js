@@ -12,12 +12,13 @@ export class SkillRow extends React.Component {
           className={"colorSkillTitle"}
           id={this.props.isNarrow ? "narrowSkillTitle" : ""}
         >
+          {/* App.css centres the name beside its skills, and puts it at their top on a phone. */}
           <div
+            className="skillTitle"
             style={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "end",
-              alignItems: "center",
               height: "100%",
             }}
           >

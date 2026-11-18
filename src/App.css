@@ -75,6 +75,15 @@ ul.ui.list li::before {
   padding-left: 0 !important;
 }
 
+/* The grid starts its name column 1rem left of the page edge. From 740 px up the longest name
+   still ends inside the edge; narrower, it ran past it, so the column takes its 1rem back and a
+   long name wraps instead. */
+@media screen and (max-width: 739px) {
+  .colorSkillTitle {
+    padding-left: 1rem !important;
+  }
+}
+
 .colorHeart {
   color: #da0037 !important;
 }
@@ -102,6 +111,12 @@ ul.ui.list li::before {
 div#narrowSkillTitle {
   padding-bottom: 0px !important;
   padding-top: 0px !important;
+}
+
+/* A skill category's name sits level with the first line of its skills. Centred on a list of
+   several lines, it sat below that first line, which then read as part of the category above. */
+.skillTitle {
+  align-items: flex-start;
 }
 
 @media print {
