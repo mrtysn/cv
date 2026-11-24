@@ -144,6 +144,13 @@ on bulleted list items keeps responsibilities next to the job they belong to;
 and the self-hosted `@font-face` blocks in `public/index.html` must carry no
 `unicode-range` or Turkish characters split their words apart.
 
+No on-screen tool may reach the PDF. The check FAILs on control labels ("switch
+to phone width", "download PDF", "page default"), spaced or not. A floating
+control carries `data-ws-screen-only` (hidden by the `@media print` block in
+`App.css`) or `.hideFromPrint`, and web-shared's controls also skip any
+automated browser (`navigator.webdriver`), which is what renders the PDF, the
+preview GIF and `og.png`.
+
 ## GitHub Pages
 
 Source: deploy from branch. Branch: `gh-pages`. Folder: `/`. The `homepage`

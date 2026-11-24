@@ -198,6 +198,19 @@ class Report:
 CAPS_WITH_SPACES = re.compile(r"^\s*([A-Z]{1,}(?:\s+[A-Z]+)+)\s*$", re.M)
 DATE_RANGE = re.compile(r"(\d{2}/\d{4})\s*[–—-]\s*(\d{2}/\d{4}|Present)")
 LONE_BULLET = re.compile(r"^\s*[•●▪-]\s*$", re.M)
+# Labels of on-screen tools (a width toggle, a font menu, a download button) that
+# must never reach the PDF: printed, a parser reads them as CV content, and one
+# fused with the next employer ("switch to phone widthappliedAI").
+SCREEN_CONTROL = re.compile(
+    r"(?:switch to [\w -]{2,30}(?:view|width|mode|layout)|(?:show|view) (?:more|less|all)\b|"
+    r"(?:download|print|save) (?:as )?(?:pdf|cv|resume)\b|(?:dark|light) (?:mode|theme)\b|"
+    r"toggle [\w -]{2,20}|click here|back to top|page default)", re.I)
+# The same labels with every space removed: a monospace label can extract one
+# letter at a time ("s w i t c h t o p h o n e w i d t h"), which the pattern
+# above cannot see.
+SCREEN_CONTROL_TIGHT = re.compile(
+    r"switchto\w{2,30}?(?:view|width|mode|layout)|(?:download|print|save)(?:as)?(?:pdf|resume)|"
+    r"(?:dark|light)(?:mode|theme)|clickhere|backtotop|pagedefault", re.I)
 
 
 def split_diacritics(text: str) -> list[str]:
@@ -327,6 +340,20 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
         "CSS letter-spacing becomes real spaces on extraction, so an ATS that "
         "cannot match the heading cannot scope the section under it. Source: "
         "src/App.css .fontSectionHeader",
+    )
+
+    leaked = {n: sorted({m.group(0) for m in SCREEN_CONTROL.finditer(t)}
+                        | {m.group(0) for m in SCREEN_CONTROL_TIGHT.finditer(re.sub(r"\s", "", t))})
+              for n, t in texts.items()}
+    leaked = {n: v for n, v in leaked.items() if v}
+    report.add(
+        "no screen controls printed",
+        FAIL if leaked else PASS,
+        "; ".join(f"{n}: {', '.join(v)}" for n, v in leaked.items()) if leaked
+        else "no on-screen tool labels in the text",
+        "a toggle or button label in the PDF is read as CV content. Mark the element "
+        "data-ws-screen-only or .hideFromPrint (src/App.css @media print), or keep it "
+        "out of automated browsers (navigator.webdriver)",
     )
 
     # --- soft signals ----------------------------------------------------

@@ -128,6 +128,14 @@ div#narrowSkillTitle {
     display: none !important;
   }
 
+  /* Screen-only controls from web-shared (the width toggle) mark themselves with
+     data-ws-screen-only and bring their own print rule; this one holds even if that
+     script's rule never loads. A toggle once printed into the PDF as "switch to phone
+     width", fused with an employer. scripts/ats-parse-check.py fails on such text. */
+  [data-ws-screen-only] {
+    display: none !important;
+  }
+
   body {
     margin-left: auto !important;
     margin-right: auto !important;

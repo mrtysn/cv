@@ -21,6 +21,25 @@ This file documents substantial updates, changes, and important notes for the CV
 
 ---
 
+## 2026-11-24 - Screen controls kept out of the PDF
+**Type**: Discovery/Config
+**Impact**: High
+
+The v3.9 build printed web-shared's width toggle into the PDF as "switch to
+phone width" (vendored in aa9c89e). The PDF is rendered from the build served on
+127.0.0.1, a local host, so the toggle mounted there, in CI too. pdfminer fused
+it with the next employer's name. The committed v3.8 PDF predates it and is clean.
+
+Three layers now stop it. web-shared's floating controls (b0444f8) carry
+`data-ws-screen-only`, add their own print rule, and do not mount when
+`navigator.webdriver` is set, so Puppeteer renders never see them; the vendored
+copy was refreshed with `page-vendor`. `App.css` hides `[data-ws-screen-only]`
+in print as a second line. `scripts/ats-parse-check.py` FAILs on control labels,
+also with spaces removed, because pypdf reads the monospace label one letter at a
+time; the CI release and the pre-commit hook both run it.
+
+---
+
 ## 2026-08-13 - One-off PDF renders for job applications
 **Type**: Config
 **Impact**: Medium

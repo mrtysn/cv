@@ -1,9 +1,9 @@
 {
  "sha256": {
-  "view-width.js": "bad21c43556a37706e699a6ce389aa465952455177210546d7ebddab478095ed"
+  "view-width.js": "05193b2e68f30a76c268f6de08fa1d668dd847cef10e160abbff7c6db5df0a82"
  },
  "sources": {
   "view-width.js": "src/view-width.js"
  },
- "web_shared_revision": "d6da334564e0"
+ "web_shared_revision": "b0444f809b28"
 }
