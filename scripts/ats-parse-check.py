@@ -314,8 +314,10 @@ def run_checks(texts: dict[str, str], links: list[str], expected: dict) -> Repor
         )
 
     if expected["urls"]:
-        annotated = set(links)
-        lost = {u for u in expected["urls"] if u not in annotated}
+        # Chrome writes a bare origin with a trailing slash ("https://mertyas.in"
+        # becomes "https://mertyas.in/"), so compare without one on either side.
+        annotated = {u.rstrip("/") for u in links}
+        lost = {u for u in expected["urls"] if u.rstrip("/") not in annotated}
         report.add(
             "hyperlinks survive as annotations",
             FAIL if lost else PASS,
